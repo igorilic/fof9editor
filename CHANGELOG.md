@@ -10,6 +10,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Nothing yet
 
+## [0.2.0] - 2025-10-13
+
+### Added
+- Phase 3: Basic UI Framework (Steps 14-20)
+  - Application state management with singleton pattern
+  - Main window with Fyne UI integration
+  - Status bar with 4 sections (project, validation, records, saved status)
+  - Sidebar navigation with section selection
+  - Layout integration with BorderLayout
+  - Menu bar with File, Edit, View, Help menus
+  - Theme support with light/dark mode switching
+- Phase 4: List View (Steps 21-25)
+  - Player list view with table display (6 columns)
+  - Coach list view with position names (5 columns)
+  - Team list view with league structure (6 columns)
+  - Column-based sorting (click headers to sort, toggle ascending/descending)
+  - Visual sort indicators (▲/▼) on column headers
+  - Search/filter functionality for player list
+  - Real-time filtering as user types
+- 135 tests for Phase 3 (UI framework)
+- 29 tests for Phase 4 (list views)
+- Total: 164 passing tests
+
+### Changed
+- Window now uses BorderLayout with sidebar, status bar, and content area
+- Content area switches based on sidebar selection
+- Tables support interactive sorting and filtering
+
 ## [0.1.2] - 2025-10-13
 
 ### Added
