@@ -49,9 +49,18 @@ func (mw *MainWindow) setupWindow() {
 	mw.statusBar = NewStatusBar()
 
 	// Create placeholder content BEFORE sidebar to avoid nil pointer
-	mw.content = container.NewCenter(
-		widget.NewLabel("FOF9 Editor - Ready to load a project"),
+	welcomeTitle := widget.NewLabel("FOF9 Editor")
+	welcomeTitle.TextStyle = fyne.TextStyle{Bold: true}
+	welcomeMessage := widget.NewLabel("Ready to load a project")
+	welcomeMessage.Wrapping = fyne.TextWrapWord
+
+	welcomeContent := container.NewVBox(
+		welcomeTitle,
+		widget.NewSeparator(),
+		welcomeMessage,
 	)
+
+	mw.content = container.NewCenter(welcomeContent)
 
 	// Create sidebar with callback
 	mw.sidebar = NewSidebar(func(section string) {
@@ -75,13 +84,27 @@ func (mw *MainWindow) onSectionChange(section string) {
 	// Update state
 	mw.state.SetCurrentSection(section)
 
-	// Update status bar
-	// For now, just show the section name
-	// In later phases, this will load and display actual data
+	// Update content area with section placeholder
+	mw.updateContentArea(section)
+}
+
+// updateContentArea updates the main content area based on the current section
+func (mw *MainWindow) updateContentArea(section string) {
+	// Create section-specific placeholder
+	title := widget.NewLabel(fmt.Sprintf("%s", section))
+	title.TextStyle = fyne.TextStyle{Bold: true}
+
+	message := widget.NewLabel("Data loading and editing will be implemented in Phase 4-5")
+	message.Wrapping = fyne.TextWrapWord
+
+	content := container.NewVBox(
+		title,
+		widget.NewSeparator(),
+		message,
+	)
+
 	mw.content.Objects = []fyne.CanvasObject{
-		container.NewCenter(
-			widget.NewLabel(fmt.Sprintf("Section: %s (data loading not yet implemented)", section)),
-		),
+		container.NewCenter(content),
 	}
 	mw.content.Refresh()
 }
@@ -109,6 +132,19 @@ func (mw *MainWindow) GetStatusBar() *StatusBar {
 // GetSidebar returns the sidebar
 func (mw *MainWindow) GetSidebar() *Sidebar {
 	return mw.sidebar
+}
+
+// RefreshLayout refreshes the entire window layout
+func (mw *MainWindow) RefreshLayout() {
+	if mw.content != nil {
+		mw.content.Refresh()
+	}
+	if mw.statusBar != nil {
+		mw.statusBar.GetContainer().Refresh()
+	}
+	if mw.sidebar != nil {
+		mw.sidebar.GetContainer().Refresh()
+	}
 }
 
 // SetContent sets the window content

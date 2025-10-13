@@ -197,3 +197,41 @@ func TestMainWindow_SectionChangeCallback(t *testing.T) {
 		t.Errorf("Expected state section 'Teams', got '%s'", currentSection)
 	}
 }
+
+func TestMainWindow_UpdateContentArea(t *testing.T) {
+	app := test.NewApp()
+	defer app.Quit()
+
+	mw := NewMainWindow(app)
+
+	// Test updating content area for different sections
+	sections := []string{"Players", "Coaches", "Teams", "League Info"}
+	for _, section := range sections {
+		mw.updateContentArea(section)
+		// Verify content was updated (just check no panic)
+		if mw.content == nil {
+			t.Error("Content should not be nil after update")
+		}
+	}
+}
+
+func TestMainWindow_RefreshLayout(t *testing.T) {
+	app := test.NewApp()
+	defer app.Quit()
+
+	mw := NewMainWindow(app)
+
+	// Should not panic
+	mw.RefreshLayout()
+
+	// Verify components still accessible
+	if mw.content == nil {
+		t.Error("Content should not be nil after refresh")
+	}
+	if mw.statusBar == nil {
+		t.Error("StatusBar should not be nil after refresh")
+	}
+	if mw.sidebar == nil {
+		t.Error("Sidebar should not be nil after refresh")
+	}
+}
