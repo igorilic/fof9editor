@@ -10,6 +10,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Nothing yet
 
+## [0.1.2] - 2025-10-13
+
+### Added
+- PAT token support for workflow triggering (RELEASE_TOKEN)
+- Comprehensive PAT_TOKEN_SETUP.md guide for maintainers
+
+### Changed
+- Auto-tag workflow now uses RELEASE_TOKEN instead of GITHUB_TOKEN
+- README includes maintainer note about RELEASE_TOKEN requirement
+
+### Fixed
+- Release workflow now triggers properly when tags are created by auto-tag workflow
+- Resolved GitHub Actions security limitation preventing workflow-to-workflow triggering
+
 ## [0.1.1] - 2025-10-13
 
 ### Added
