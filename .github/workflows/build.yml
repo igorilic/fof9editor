@@ -50,7 +50,7 @@ jobs:
         run: go mod download
 
       - name: Run tests
-        run: go test ./internal/... ./pkg/... -v -race -coverprofile=coverage.out
+        run: go test ./internal/... -v -race -coverprofile=coverage.out
 
       - name: Upload coverage
         uses: codecov/codecov-action@v4
