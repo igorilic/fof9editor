@@ -1,10 +1,19 @@
 .PHONY: build run test clean
 
+# Version information
+VERSION ?= $(shell git describe --tags --always --dirty)
+COMMIT_HASH := $(shell git rev-parse HEAD)
+BUILD_DATE := $(shell date -u '+%Y-%m-%d_%H:%M:%S')
+LDFLAGS := -ldflags="-s -w \
+	-X github.com/igorilic/fof9editor/internal/version.Version=$(VERSION) \
+	-X github.com/igorilic/fof9editor/internal/version.CommitHash=$(COMMIT_HASH) \
+	-X github.com/igorilic/fof9editor/internal/version.BuildDate=$(BUILD_DATE)"
+
 # Build the application
 build:
-	@echo "Building fof9editor..."
+	@echo "Building fof9editor v$(VERSION)..."
 	@mkdir -p bin
-	@go build -o bin/fof9editor.exe ./cmd/fof9editor
+	@go build $(LDFLAGS) -o bin/fof9editor.exe ./cmd/fof9editor
 	@echo "Build complete: bin/fof9editor.exe"
 
 # Run the application
