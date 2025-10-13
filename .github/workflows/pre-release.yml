@@ -1,0 +1,171 @@
+name: Pre-Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version number (e.g., 0.2.0-beta.1)'
+        required: true
+        type: string
+      release_type:
+        description: 'Pre-release type'
+        required: true
+        type: choice
+        options:
+          - alpha
+          - beta
+          - rc
+
+jobs:
+  pre-release:
+    name: Create Pre-Release
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+          cache: true
+
+      - name: Validate version format
+        shell: bash
+        run: |
+          VERSION="${{ github.event.inputs.version }}"
+          RELEASE_TYPE="${{ github.event.inputs.release_type }}"
+
+          if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+-${RELEASE_TYPE}\.[0-9]+$ ]]; then
+            echo "Error: Version must match format X.Y.Z-${RELEASE_TYPE}.N"
+            echo "Example: 0.2.0-${RELEASE_TYPE}.1"
+            echo "You provided: $VERSION"
+            exit 1
+          fi
+
+          echo "Version format validated: $VERSION"
+
+      - name: Get build info
+        id: build_info
+        shell: bash
+        run: |
+          echo "COMMIT_HASH=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+          echo "BUILD_DATE=$(date -u '+%Y-%m-%d_%H:%M:%S')" >> $GITHUB_OUTPUT
+
+      - name: Download dependencies
+        run: go mod download
+
+      - name: Run tests
+        run: go test ./internal/... -v
+
+      - name: Build Windows executable
+        shell: bash
+        run: |
+          VERSION="${{ github.event.inputs.version }}"
+          COMMIT_HASH="${{ steps.build_info.outputs.COMMIT_HASH }}"
+          BUILD_DATE="${{ steps.build_info.outputs.BUILD_DATE }}"
+
+          go build -ldflags="-s -w -X github.com/igorilic/fof9editor/internal/version.Version=${VERSION} -X github.com/igorilic/fof9editor/internal/version.CommitHash=${COMMIT_HASH} -X github.com/igorilic/fof9editor/internal/version.BuildDate=${BUILD_DATE}" -o fof9editor-${VERSION}-windows-amd64.exe ./cmd/fof9editor
+
+      - name: Create release archive
+        shell: bash
+        run: |
+          VERSION="${{ github.event.inputs.version }}"
+          mkdir -p release
+          cp fof9editor-${VERSION}-windows-amd64.exe release/
+          cp README.md release/
+          cp CHANGELOG.md release/
+          cd release
+          7z a -tzip ../fof9editor-${VERSION}-windows-amd64.zip *
+
+      - name: Generate checksums
+        shell: bash
+        run: |
+          VERSION="${{ github.event.inputs.version }}"
+          sha256sum fof9editor-${VERSION}-windows-amd64.exe > checksums.txt
+          sha256sum fof9editor-${VERSION}-windows-amd64.zip >> checksums.txt
+
+      - name: Create pre-release notes
+        shell: bash
+        run: |
+          VERSION="${{ github.event.inputs.version }}"
+          RELEASE_TYPE="${{ github.event.inputs.release_type }}"
+          COMMIT_HASH="${{ steps.build_info.outputs.COMMIT_HASH }}"
+          BUILD_DATE="${{ steps.build_info.outputs.BUILD_DATE }}"
+
+          cat > pre_release_notes.md <<EOF
+          ## ⚠️ Pre-Release - $(echo ${RELEASE_TYPE} | tr '[:lower:]' '[:upper:]')
+
+          This is a **${RELEASE_TYPE}** pre-release version and may contain bugs or incomplete features.
+
+          **Not recommended for production use!**
+
+          ### What's New
+
+          EOF
+
+          # Extract unreleased changes from CHANGELOG.md
+          awk "/## \[Unreleased\]/{flag=1; next} /## \[/{flag=0} flag" CHANGELOG.md >> pre_release_notes.md || echo "See CHANGELOG.md for details." >> pre_release_notes.md
+
+          cat >> pre_release_notes.md <<EOF
+
+          ### Downloads
+          - **Windows (Standalone)**: \`fof9editor-${VERSION}-windows-amd64.exe\` - Single executable, no installation needed
+          - **Windows (ZIP)**: \`fof9editor-${VERSION}-windows-amd64.zip\` - Includes executable, README, and CHANGELOG
+
+          ### Installation
+          1. Download the \`.exe\` file or extract the \`.zip\` file
+          2. Run \`fof9editor-${VERSION}-windows-amd64.exe\`
+          3. Report any issues at https://github.com/${{ github.repository }}/issues
+
+          ### Testing Needed
+          - [ ] Player data import/export
+          - [ ] Coach data editing
+          - [ ] Team configuration
+          - [ ] League wizard
+          - [ ] Data validation
+
+          ### Known Issues
+          <!-- Add known issues here -->
+          - This is an early ${RELEASE_TYPE} release
+          - Some features may be incomplete or unstable
+
+          ### Checksums (SHA256)
+          See \`checksums.txt\` for file verification.
+
+          ---
+
+          **Build Information:**
+          - Version: ${VERSION}
+          - Commit: ${COMMIT_HASH}
+          - Built: ${BUILD_DATE}
+          - Type: ${RELEASE_TYPE}
+
+          EOF
+
+      - name: Create GitHub Pre-Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ github.event.inputs.version }}
+          name: Pre-Release v${{ github.event.inputs.version }}
+          draft: false
+          prerelease: true
+          body_path: pre_release_notes.md
+          files: |
+            fof9editor-${{ github.event.inputs.version }}-windows-amd64.exe
+            fof9editor-${{ github.event.inputs.version }}-windows-amd64.zip
+            checksums.txt
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: pre-release-artifacts-${{ github.event.inputs.version }}
+          path: |
+            fof9editor-${{ github.event.inputs.version }}-windows-amd64.exe
+            fof9editor-${{ github.event.inputs.version }}-windows-amd64.zip
+            checksums.txt
+          retention-days: 30
