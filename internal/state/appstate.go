@@ -6,14 +6,17 @@ package state
 import (
 	"fmt"
 	"sync"
+	"time"
 
+	"github.com/igorilic/fof9editor/internal/data"
 	"github.com/igorilic/fof9editor/internal/models"
 )
 
 // AppState represents the global application state
 type AppState struct {
 	// Current project
-	Project *models.Project
+	Project     *models.Project
+	ProjectPath string // Path to the .fof9proj file
 
 	// Loaded data
 	Players []models.Player
@@ -49,27 +52,93 @@ func GetInstance() *AppState {
 }
 
 // LoadProject loads a project from the given file path
-// This is a stub that will be implemented in later phases
 func (s *AppState) LoadProject(filepath string) error {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 
-	// TODO: Implement in Phase 8 (File Operations)
-	return fmt.Errorf("LoadProject not yet implemented")
+	// Load project file using data package
+	project, err := data.LoadProject(filepath)
+	if err != nil {
+		return fmt.Errorf("failed to load project: %w", err)
+	}
+
+	// Store project
+	s.Project = project
+	s.ProjectPath = filepath
+
+	// Load CSV data files
+	if project.DataPath != "" {
+		// Load players
+		playersPath := project.GetFullPath("players")
+		if players, err := data.LoadPlayers(playersPath); err == nil {
+			s.Players = players
+		}
+
+		// Load coaches
+		coachesPath := project.GetFullPath("coaches")
+		if coaches, err := data.LoadCoaches(coachesPath); err == nil {
+			s.Coaches = coaches
+		}
+
+		// Load teams
+		teamsPath := project.GetFullPath("teams")
+		if teams, err := data.LoadTeams(teamsPath); err == nil {
+			s.Teams = teams
+		}
+	}
+
+	// Mark as clean (no unsaved changes)
+	s.IsDirty = false
+
+	return nil
 }
 
 // SaveProject saves the current project to disk
-// This is a stub that will be implemented in later phases
 func (s *AppState) SaveProject() error {
-	s.mu.RLock()
-	defer s.mu.RUnlock()
+	s.mu.Lock()
+	defer s.mu.Unlock()
 
 	if s.Project == nil {
 		return fmt.Errorf("no project loaded")
 	}
 
-	// TODO: Implement in Phase 8 (File Operations)
-	return fmt.Errorf("SaveProject not yet implemented")
+	if s.ProjectPath == "" {
+		return fmt.Errorf("no project path set")
+	}
+
+	// Update LastModified timestamp
+	s.Project.LastModified = time.Now()
+
+	// Save project file
+	if err := data.SaveProject(s.Project, s.ProjectPath); err != nil {
+		return fmt.Errorf("failed to save project file: %w", err)
+	}
+
+	// Save CSV data files
+	if s.Project.DataPath != "" {
+		// Save players
+		playersPath := s.Project.GetFullPath("players")
+		if err := data.SavePlayers(playersPath, s.Players); err != nil {
+			return fmt.Errorf("failed to save players: %w", err)
+		}
+
+		// Save coaches
+		coachesPath := s.Project.GetFullPath("coaches")
+		if err := data.SaveCoaches(coachesPath, s.Coaches); err != nil {
+			return fmt.Errorf("failed to save coaches: %w", err)
+		}
+
+		// Save teams
+		teamsPath := s.Project.GetFullPath("teams")
+		if err := data.SaveTeams(teamsPath, s.Teams); err != nil {
+			return fmt.Errorf("failed to save teams: %w", err)
+		}
+	}
+
+	// Mark as clean (no unsaved changes)
+	s.IsDirty = false
+
+	return nil
 }
 
 // SetProject sets the current project

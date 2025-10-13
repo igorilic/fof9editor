@@ -5,9 +5,11 @@ package ui
 
 import (
 	"fmt"
+	"path/filepath"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
+	"fyne.io/fyne/v2/dialog"
 	"fyne.io/fyne/v2/widget"
 	"github.com/igorilic/fof9editor/internal/state"
 	"github.com/igorilic/fof9editor/internal/version"
@@ -25,6 +27,7 @@ type MainWindow struct {
 	playerList   *PlayerList
 	coachList    *CoachList
 	teamList     *TeamList
+	playerForm   *FormView
 }
 
 // NewMainWindow creates a new main window
@@ -39,6 +42,7 @@ func NewMainWindow(app fyne.App) *MainWindow {
 		playerList:   NewPlayerList(),
 		coachList:    NewCoachList(),
 		teamList:     NewTeamList(),
+		playerForm:   NewFormView(),
 	}
 
 	mw.setupWindow()
@@ -68,7 +72,8 @@ func (mw *MainWindow) setupWindow() {
 		welcomeMessage,
 	)
 
-	mw.content = container.NewCenter(welcomeContent)
+	// Use NewMax instead of NewCenter to fill available space
+	mw.content = container.NewMax(container.NewCenter(welcomeContent))
 
 	// Create sidebar with callback
 	mw.sidebar = NewSidebar(func(section string) {
@@ -88,6 +93,11 @@ func (mw *MainWindow) setupWindow() {
 
 	// Setup menu bar
 	mw.setupMenuBar()
+
+	// Setup close intercept for unsaved changes prompt
+	mw.window.SetCloseIntercept(func() {
+		mw.handleWindowClose()
+	})
 }
 
 // setupMenuBar creates and configures the application menu bar
@@ -97,13 +107,13 @@ func (mw *MainWindow) setupMenuBar() {
 		// Placeholder for Phase 9 (New League Wizard)
 	})
 	openItem := fyne.NewMenuItem("Open Project...", func() {
-		// Placeholder for Phase 8 (File Operations)
+		mw.openLeague()
 	})
 	saveItem := fyne.NewMenuItem("Save", func() {
-		// Placeholder for Phase 8 (File Operations)
+		mw.saveLeague()
 	})
 	saveAsItem := fyne.NewMenuItem("Save As...", func() {
-		// Placeholder for Phase 8 (File Operations)
+		mw.saveLeagueAs()
 	})
 	exitItem := fyne.NewMenuItem("Exit", func() {
 		mw.app.Quit()
@@ -183,21 +193,38 @@ func (mw *MainWindow) updateContentArea(section string) {
 		// Load players from state and display in list
 		players := mw.state.GetPlayers()
 		mw.playerList.SetPlayers(players)
-		mw.content.Objects = []fyne.CanvasObject{mw.playerList.GetContainer()}
+
+		// Set callback to update form on row selection
+		mw.playerList.SetOnSelectChange(func(index int) {
+			mw.state.SetSelectedIndex(index)
+			mw.updatePlayerForm()
+		})
+
+		// Create split view with list on top and form on bottom
+		split := container.NewVSplit(
+			mw.playerList.GetContainer(),
+			mw.playerForm.GetContainer(),
+		)
+		split.SetOffset(0.4) // 40% list, 60% form
+
+		// Wrap in NewMax to fill available space
+		mw.content.Objects = []fyne.CanvasObject{container.NewMax(split)}
 		mw.statusBar.SetRecordCount("Players", len(players))
 
 	case "Coaches":
 		// Load coaches from state and display in list
 		coaches := mw.state.GetCoaches()
 		mw.coachList.SetCoaches(coaches)
-		mw.content.Objects = []fyne.CanvasObject{mw.coachList.GetContainer()}
+		// Wrap in NewMax to fill available space
+		mw.content.Objects = []fyne.CanvasObject{container.NewMax(mw.coachList.GetContainer())}
 		mw.statusBar.SetRecordCount("Coaches", len(coaches))
 
 	case "Teams":
 		// Load teams from state and display in list
 		teams := mw.state.GetTeams()
 		mw.teamList.SetTeams(teams)
-		mw.content.Objects = []fyne.CanvasObject{mw.teamList.GetContainer()}
+		// Wrap in NewMax to fill available space
+		mw.content.Objects = []fyne.CanvasObject{container.NewMax(mw.teamList.GetContainer())}
 		mw.statusBar.SetRecordCount("Teams", len(teams))
 
 	default:
@@ -221,6 +248,141 @@ func (mw *MainWindow) updateContentArea(section string) {
 	}
 
 	mw.content.Refresh()
+}
+
+// updatePlayerForm updates the player form with the currently selected player
+func (mw *MainWindow) updatePlayerForm() {
+	// Get selected player index from state
+	selectedIndex := mw.state.GetSelectedIndex()
+	players := mw.state.GetPlayers()
+
+	if selectedIndex < 0 || selectedIndex >= len(players) {
+		// No valid selection - clear form
+		mw.playerForm.Clear()
+		return
+	}
+
+	player := players[selectedIndex]
+
+	// Define form fields for player (key fields only for now)
+	fields := []FieldDef{
+		{Name: "firstName", Label: "First Name", Type: FieldTypeText, Value: player.FirstName},
+		{Name: "lastName", Label: "Last Name", Type: FieldTypeText, Value: player.LastName},
+		{Name: "team", Label: "Team", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", player.Team)},
+		{Name: "position", Label: "Position", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", player.PositionKey)},
+		{Name: "uniform", Label: "Uniform", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", player.Uniform)},
+		{Name: "overall", Label: "Overall Rating", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", player.OverallRating)},
+	}
+
+	// Set fields in form
+	mw.playerForm.SetFields(fields)
+
+	// Add buttons if not already present
+	if mw.playerForm.buttonBar == nil {
+		mw.playerForm.AddButtons()
+	}
+
+	// Wire callbacks
+	mw.playerForm.SetCallbacks(
+		func() { // onSave
+			mw.savePlayerForm()
+		},
+		func() { // onDelete
+			mw.deletePlayer()
+		},
+		func() { // onNext
+			mw.navigatePlayer(1)
+		},
+		func() { // onPrev
+			mw.navigatePlayer(-1)
+		},
+	)
+
+	// Form updates in-place within the split view - no need to refresh content
+}
+
+// savePlayerForm saves changes from the player form
+func (mw *MainWindow) savePlayerForm() {
+	selectedIndex := mw.state.GetSelectedIndex()
+	players := mw.state.GetPlayers()
+
+	if selectedIndex < 0 || selectedIndex >= len(players) {
+		return
+	}
+
+	// Get field values
+	players[selectedIndex].FirstName = mw.playerForm.GetFieldValue("firstName")
+	players[selectedIndex].LastName = mw.playerForm.GetFieldValue("lastName")
+
+	// Parse numeric fields
+	if team := mw.playerForm.GetFieldValue("team"); team != "" {
+		if val, err := fmt.Sscan(team, &players[selectedIndex].Team); err == nil && val > 0 {
+			// Successfully parsed
+		}
+	}
+	if pos := mw.playerForm.GetFieldValue("position"); pos != "" {
+		if val, err := fmt.Sscan(pos, &players[selectedIndex].PositionKey); err == nil && val > 0 {
+			// Successfully parsed
+		}
+	}
+	if uniform := mw.playerForm.GetFieldValue("uniform"); uniform != "" {
+		if val, err := fmt.Sscan(uniform, &players[selectedIndex].Uniform); err == nil && val > 0 {
+			// Successfully parsed
+		}
+	}
+	if overall := mw.playerForm.GetFieldValue("overall"); overall != "" {
+		if val, err := fmt.Sscan(overall, &players[selectedIndex].OverallRating); err == nil && val > 0 {
+			// Successfully parsed
+		}
+	}
+
+	// Mark as modified
+	mw.state.MarkDirty()
+	mw.statusBar.SetSavedStatus(true)
+
+	// Refresh player list
+	mw.playerList.SetPlayers(players)
+}
+
+// deletePlayer removes the currently selected player
+func (mw *MainWindow) deletePlayer() {
+	selectedIndex := mw.state.GetSelectedIndex()
+	players := mw.state.GetPlayers()
+
+	if selectedIndex < 0 || selectedIndex >= len(players) {
+		return
+	}
+
+	// Remove player
+	players = append(players[:selectedIndex], players[selectedIndex+1:]...)
+	mw.state.SetPlayers(players)
+
+	// Mark as modified
+	mw.state.MarkDirty()
+	mw.statusBar.SetSavedStatus(true)
+
+	// Refresh list and go back to list view
+	mw.playerList.SetPlayers(players)
+	mw.content.Objects = []fyne.CanvasObject{container.NewMax(mw.playerList.GetContainer())}
+	mw.content.Refresh()
+	mw.statusBar.SetRecordCount("Players", len(players))
+}
+
+// navigatePlayer moves to the next or previous player
+func (mw *MainWindow) navigatePlayer(delta int) {
+	selectedIndex := mw.state.GetSelectedIndex()
+	players := mw.state.GetPlayers()
+
+	newIndex := selectedIndex + delta
+	if newIndex < 0 {
+		newIndex = 0
+	}
+	if newIndex >= len(players) {
+		newIndex = len(players) - 1
+	}
+
+	mw.state.SetSelectedIndex(newIndex)
+	mw.updatePlayerForm()
 }
 
 // Show displays the window
@@ -278,4 +440,157 @@ func (mw *MainWindow) UpdateTitle(projectName string) {
 	} else {
 		mw.window.SetTitle(fmt.Sprintf("%s - FOF9 Editor v%s", projectName, version.GetShortVersion()))
 	}
+}
+
+// openLeague opens an existing league project
+func (mw *MainWindow) openLeague() {
+	// Check for unsaved changes
+	if mw.state.IsDirtyState() {
+		dialog.ShowConfirm("Unsaved Changes", "You have unsaved changes. Do you want to save before opening another project?",
+			func(save bool) {
+				if save {
+					mw.saveLeague()
+				}
+				mw.showOpenDialog()
+			}, mw.window)
+		return
+	}
+
+	mw.showOpenDialog()
+}
+
+// showOpenDialog shows the file open dialog
+func (mw *MainWindow) showOpenDialog() {
+	dialog.ShowFileOpen(func(reader fyne.URIReadCloser, err error) {
+		if err != nil {
+			dialog.ShowError(err, mw.window)
+			return
+		}
+		if reader == nil {
+			// User cancelled
+			return
+		}
+		defer reader.Close()
+
+		filePath := reader.URI().Path()
+
+		// Load project
+		if err := mw.state.LoadProject(filePath); err != nil {
+			dialog.ShowError(fmt.Errorf("failed to open project: %w", err), mw.window)
+			return
+		}
+
+		// Update UI
+		project := mw.state.GetProject()
+		if project != nil {
+			mw.UpdateTitle(project.LeagueName)
+			mw.statusBar.SetProjectStatus(project.LeagueName)
+		}
+
+		// Navigate to Players section
+		mw.sidebar.SetSelectedSection("Players")
+		mw.updateContentArea("Players")
+
+		// Show success message
+		dialog.ShowInformation("Success", fmt.Sprintf("Opened league: %s", project.LeagueName), mw.window)
+	}, mw.window)
+}
+
+// saveLeague saves the current league project
+func (mw *MainWindow) saveLeague() {
+	if !mw.state.HasProject() {
+		dialog.ShowInformation("No Project", "No project is currently loaded.", mw.window)
+		return
+	}
+
+	// Save project
+	if err := mw.state.SaveProject(); err != nil {
+		dialog.ShowError(fmt.Errorf("failed to save project: %w", err), mw.window)
+		return
+	}
+
+	// Update status bar
+	mw.statusBar.SetSavedStatus(false)
+
+	// Update window title
+	project := mw.state.GetProject()
+	if project != nil {
+		mw.UpdateTitle(project.LeagueName)
+	}
+
+	// Show success message
+	dialog.ShowInformation("Success", "Project saved successfully.", mw.window)
+}
+
+// saveLeagueAs saves the league project to a new location
+func (mw *MainWindow) saveLeagueAs() {
+	if !mw.state.HasProject() {
+		dialog.ShowInformation("No Project", "No project is currently loaded.", mw.window)
+		return
+	}
+
+	project := mw.state.GetProject()
+	if project == nil {
+		return
+	}
+
+	// Show save dialog
+	dialog.ShowFileSave(func(writer fyne.URIWriteCloser, err error) {
+		if err != nil {
+			dialog.ShowError(err, mw.window)
+			return
+		}
+		if writer == nil {
+			// User cancelled
+			return
+		}
+		defer writer.Close()
+
+		newPath := writer.URI().Path()
+
+		// Ensure .fof9proj extension
+		if filepath.Ext(newPath) != ".fof9proj" {
+			newPath += ".fof9proj"
+		}
+
+		// Update project path in state
+		mw.state.ProjectPath = newPath
+
+		// Save to new location
+		if err := mw.state.SaveProject(); err != nil {
+			dialog.ShowError(fmt.Errorf("failed to save project: %w", err), mw.window)
+			return
+		}
+
+		// Update UI
+		mw.UpdateTitle(project.LeagueName)
+		mw.statusBar.SetSavedStatus(false)
+
+		// Show success message
+		dialog.ShowInformation("Success", fmt.Sprintf("Project saved as: %s", filepath.Base(newPath)), mw.window)
+	}, mw.window)
+}
+
+// handleWindowClose handles the window close event, prompting for unsaved changes
+func (mw *MainWindow) handleWindowClose() {
+	// Check for unsaved changes
+	if mw.state.IsDirtyState() {
+		dialog.ShowConfirm("Unsaved Changes",
+			"You have unsaved changes. Do you want to save before closing?",
+			func(save bool) {
+				if save {
+					// Save project
+					if err := mw.state.SaveProject(); err != nil {
+						dialog.ShowError(fmt.Errorf("failed to save project: %w", err), mw.window)
+						return
+					}
+				}
+				// Close window
+				mw.window.Close()
+			}, mw.window)
+		return
+	}
+
+	// No unsaved changes, close immediately
+	mw.window.Close()
 }
