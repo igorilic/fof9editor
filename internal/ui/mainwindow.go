@@ -15,10 +15,11 @@ import (
 
 // MainWindow represents the main application window
 type MainWindow struct {
-	window  fyne.Window
-	app     fyne.App
-	content *fyne.Container
-	state   *state.AppState
+	window    fyne.Window
+	app       fyne.App
+	content   *fyne.Container
+	state     *state.AppState
+	statusBar *StatusBar
 }
 
 // NewMainWindow creates a new main window
@@ -43,12 +44,24 @@ func (mw *MainWindow) setupWindow() {
 	// Set minimum window size
 	mw.window.SetFixedSize(false)
 
+	// Create status bar
+	mw.statusBar = NewStatusBar()
+
 	// Create placeholder content
 	mw.content = container.NewCenter(
 		widget.NewLabel("FOF9 Editor - Ready to load a project"),
 	)
 
-	mw.window.SetContent(mw.content)
+	// Create main layout with status bar at bottom
+	mainLayout := container.NewBorder(
+		nil,                        // top
+		mw.statusBar.GetContainer(), // bottom
+		nil,                        // left
+		nil,                        // right
+		mw.content,                 // center
+	)
+
+	mw.window.SetContent(mainLayout)
 }
 
 // Show displays the window
@@ -64,6 +77,11 @@ func (mw *MainWindow) ShowAndRun() {
 // GetWindow returns the underlying Fyne window
 func (mw *MainWindow) GetWindow() fyne.Window {
 	return mw.window
+}
+
+// GetStatusBar returns the status bar
+func (mw *MainWindow) GetStatusBar() *StatusBar {
+	return mw.statusBar
 }
 
 // SetContent sets the window content

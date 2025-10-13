@@ -105,3 +105,36 @@ func TestMainWindow_DefaultSize(t *testing.T) {
 		t.Fatal("Window should not be nil")
 	}
 }
+
+func TestMainWindow_StatusBar(t *testing.T) {
+	app := test.NewApp()
+	defer app.Quit()
+
+	mw := NewMainWindow(app)
+
+	// Verify status bar is created
+	statusBar := mw.GetStatusBar()
+	if statusBar == nil {
+		t.Fatal("Status bar should not be nil")
+	}
+
+	// Verify we can update status bar
+	statusBar.SetProjectStatus("Test Project")
+	// Just verify no panic - we can't easily check UI state in tests
+}
+
+func TestMainWindow_GetStatusBar(t *testing.T) {
+	app := test.NewApp()
+	defer app.Quit()
+
+	mw := NewMainWindow(app)
+
+	statusBar := mw.GetStatusBar()
+	if statusBar == nil {
+		t.Fatal("GetStatusBar returned nil")
+	}
+
+	if statusBar != mw.statusBar {
+		t.Error("GetStatusBar did not return the correct status bar")
+	}
+}
