@@ -15,12 +15,13 @@ import (
 
 // MainWindow represents the main application window
 type MainWindow struct {
-	window    fyne.Window
-	app       fyne.App
-	content   *fyne.Container
-	state     *state.AppState
-	statusBar *StatusBar
-	sidebar   *Sidebar
+	window       fyne.Window
+	app          fyne.App
+	content      *fyne.Container
+	state        *state.AppState
+	statusBar    *StatusBar
+	sidebar      *Sidebar
+	themeManager *ThemeManager
 }
 
 // NewMainWindow creates a new main window
@@ -28,9 +29,10 @@ func NewMainWindow(app fyne.App) *MainWindow {
 	window := app.NewWindow(fmt.Sprintf("FOF9 Editor v%s", version.GetShortVersion()))
 
 	mw := &MainWindow{
-		window: window,
-		app:    app,
-		state:  state.GetInstance(),
+		window:       window,
+		app:          app,
+		state:        state.GetInstance(),
+		themeManager: NewThemeManager(app),
 	}
 
 	mw.setupWindow()
@@ -121,7 +123,11 @@ func (mw *MainWindow) setupMenuBar() {
 		mw.RefreshLayout()
 	})
 
-	viewMenu := fyne.NewMenu("View", refreshItem)
+	toggleThemeItem := fyne.NewMenuItem("Toggle Theme", func() {
+		mw.themeManager.ToggleTheme()
+	})
+
+	viewMenu := fyne.NewMenu("View", refreshItem, fyne.NewMenuItemSeparator(), toggleThemeItem)
 
 	// Help menu
 	aboutItem := fyne.NewMenuItem("About", func() {
@@ -208,6 +214,11 @@ func (mw *MainWindow) GetStatusBar() *StatusBar {
 // GetSidebar returns the sidebar
 func (mw *MainWindow) GetSidebar() *Sidebar {
 	return mw.sidebar
+}
+
+// GetThemeManager returns the theme manager
+func (mw *MainWindow) GetThemeManager() *ThemeManager {
+	return mw.themeManager
 }
 
 // RefreshLayout refreshes the entire window layout

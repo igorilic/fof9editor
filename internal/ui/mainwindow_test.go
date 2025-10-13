@@ -298,3 +298,70 @@ func TestMainWindow_ShowAboutDialog(t *testing.T) {
 	mw.showAboutDialog()
 	// Can't easily verify dialog content in tests, but we can verify no crash
 }
+
+func TestMainWindow_ThemeManager(t *testing.T) {
+	app := test.NewApp()
+	defer app.Quit()
+
+	mw := NewMainWindow(app)
+
+	// Verify theme manager is created
+	tm := mw.GetThemeManager()
+	if tm == nil {
+		t.Fatal("Theme manager should not be nil")
+	}
+
+	// Verify default theme
+	if tm.GetCurrentTheme() != ThemeLight {
+		t.Errorf("Expected default theme ThemeLight, got %d", tm.GetCurrentTheme())
+	}
+}
+
+func TestMainWindow_ThemeToggle(t *testing.T) {
+	app := test.NewApp()
+	defer app.Quit()
+
+	mw := NewMainWindow(app)
+
+	tm := mw.GetThemeManager()
+
+	// Start with light theme
+	if tm.GetCurrentTheme() != ThemeLight {
+		t.Fatalf("Expected initial theme ThemeLight, got %d", tm.GetCurrentTheme())
+	}
+
+	// Toggle to dark
+	tm.ToggleTheme()
+	if tm.GetCurrentTheme() != ThemeDark {
+		t.Errorf("Expected ThemeDark after toggle, got %d", tm.GetCurrentTheme())
+	}
+
+	// Toggle back to light
+	tm.ToggleTheme()
+	if tm.GetCurrentTheme() != ThemeLight {
+		t.Errorf("Expected ThemeLight after second toggle, got %d", tm.GetCurrentTheme())
+	}
+}
+
+func TestMainWindow_ViewMenuTheme(t *testing.T) {
+	app := test.NewApp()
+	defer app.Quit()
+
+	mw := NewMainWindow(app)
+
+	mainMenu := mw.window.MainMenu()
+	if mainMenu == nil || len(mainMenu.Items) < 3 {
+		t.Fatal("Main menu not properly initialized")
+	}
+
+	// View menu should be third (index 2)
+	viewMenu := mainMenu.Items[2]
+	if viewMenu.Label != "View" {
+		t.Errorf("Expected 'View' menu, got '%s'", viewMenu.Label)
+	}
+
+	// View menu should have at least 2 items (Refresh, Toggle Theme)
+	if len(viewMenu.Items) < 2 {
+		t.Errorf("Expected at least 2 items in View menu, got %d", len(viewMenu.Items))
+	}
+}
