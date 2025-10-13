@@ -8,6 +8,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Nothing yet
+
+## [0.1.0] - 2025-10-13
+
+### Added
+- Initial project setup with Go 1.21 and Fyne v2.6.3 UI framework
+- Core data models for Project, Player, Coach, Team, and LeagueInfo
+- Complete data structures matching FOF9 game format (90+ player fields)
+- CSV struct tags for all models
+- Helper methods for data manipulation
+- Basic application window with "Hello from FOF9 Editor" message
 - Version management infrastructure with build-time injection
 - `--version` CLI flag to display version information
 - Version display in window title
@@ -18,27 +29,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Comprehensive RELEASING.md documentation
 - Automatic changelog extraction in release notes
 - Build information in release artifacts (commit hash, build date)
-
-### Changed
-- Window title now shows version number (e.g., "FOF9 Editor v0.1.0")
-- Release workflow now includes version info injection via ldflags
-- Release archives now include CHANGELOG.md instead of spec.md
-- Enhanced release notes with automatic changelog content
-
-### Infrastructure
-- Enhanced release.yml with prerelease support and changelog extraction
-- Added pre-release.yml workflow for alpha/beta/rc releases
-- Added changelog-check.yml to enforce changelog updates in PRs
-
-## [0.1.0] - TBD (First Release)
-
-### Added
-- Initial project setup with Go 1.21 and Fyne v2.6.3 UI framework
-- Core data models for Project, Player, Coach, Team, and LeagueInfo
-- Complete data structures matching FOF9 game format (90+ player fields)
-- CSV struct tags for all models
-- Helper methods for data manipulation
-- Basic application window
 - Comprehensive test suite (23 tests, all passing)
 - GitHub Actions CI/CD pipeline for automated builds and releases
 - Project specification and implementation plan documentation
@@ -48,12 +38,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Makefile for build automation with version injection
 - GitHub Actions workflows for build, test, and release
 - Automated Windows executable generation for releases
-- Version information displayed in builds
+- Enhanced release.yml with prerelease support and changelog extraction
+- Added pre-release.yml workflow for alpha/beta/rc releases
+- Added changelog-check.yml to enforce changelog updates in PRs
+- Version information displayed in builds and window title
+- Release archives include CHANGELOG.md
 
 ### Notes
 - This is a development release
 - Core features are in progress
-- Not yet ready for production use
+- Only basic UI window is functional
+- Not yet ready for production use - this release is for infrastructure testing
 
 ---
 
