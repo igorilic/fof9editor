@@ -61,8 +61,8 @@ func (sb *Sidebar) setupList() {
 	// Select first item by default
 	sb.list.Select(0)
 
-	// Set minimum width for sidebar (200 pixels)
-	sb.list.Resize(fyne.NewSize(200, 0))
+	// Set minimum width for sidebar (180 pixels for more content space)
+	sb.list.Resize(fyne.NewSize(180, 0))
 
 	sb.container = container.NewMax(sb.list)
 }

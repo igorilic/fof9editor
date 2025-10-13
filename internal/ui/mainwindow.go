@@ -47,8 +47,8 @@ func NewMainWindow(app fyne.App) *MainWindow {
 
 // setupWindow initializes the window with default settings
 func (mw *MainWindow) setupWindow() {
-	// Set default window size
-	mw.window.Resize(fyne.NewSize(1200, 800))
+	// Set default window size - larger for better content visibility
+	mw.window.Resize(fyne.NewSize(1400, 900))
 
 	// Set minimum window size
 	mw.window.SetFixedSize(false)

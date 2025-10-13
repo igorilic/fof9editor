@@ -46,23 +46,34 @@ func NewPlayerList() *PlayerList {
 
 // setupUI creates and configures the UI components
 func (pl *PlayerList) setupUI() {
-	// Create search entry
+	// Create search entry with better visibility
 	pl.searchEntry = widget.NewEntry()
-	pl.searchEntry.SetPlaceHolder("Search players...")
+	pl.searchEntry.SetPlaceHolder("Search players by name or ID...")
 	pl.searchEntry.OnChanged = func(text string) {
 		pl.filterText = text
 		pl.applyFilter()
 	}
 
+	// Create search bar with label and entry in an HBox for better layout
+	searchLabel := widget.NewLabel("Search:")
+	searchBar := container.NewBorder(
+		nil, // top
+		nil, // bottom
+		searchLabel, // left
+		nil, // right
+		pl.searchEntry, // center
+	)
+
 	pl.setupTable()
 
-	// Create container with search on top and table below
+	// Create container with search bar on top and table below
+	// Add padding around search bar
 	pl.container = container.NewBorder(
-		pl.searchEntry, // top
-		nil,            // bottom
-		nil,            // left
-		nil,            // right
-		container.NewMax(pl.table), // center
+		container.NewPadded(searchBar), // top with padding
+		nil,                             // bottom
+		nil,                             // left
+		nil,                             // right
+		container.NewMax(pl.table),      // center
 	)
 }
 
