@@ -10,6 +10,44 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Nothing yet
 
+## [0.3.0] - 2025-10-13
+
+### Added
+- Phase 5: Form View (Steps 26-28, 32)
+  - FormView component for editing records with text, number, and select fields
+  - Player form with key fields (name, team, position, uniform, overall rating)
+  - Split view layout showing list (40%) and form (60%) simultaneously
+  - Draggable divider between list and form
+  - Previous/Next navigation buttons to move between records
+  - Save button to persist changes to player data
+  - Delete button to remove players from the list
+  - Form updates in real-time when selecting players from list
+- Phase 8: File Operations (Steps 43-47)
+  - Project file I/O with atomic writes using temp files
+  - SaveProject/LoadProject functions with comprehensive validation
+  - File > Open Project menu item loads .fof9proj files and all CSV data
+  - File > Save menu item saves project with LastModified timestamp
+  - File > Save As menu item saves to new location with extension validation
+  - Window close intercept prompts to save unsaved changes
+  - Unsaved changes prompt when opening another project
+  - Status bar updates to reflect saved/unsaved state
+- Cross-compilation support
+  - Makefile targets: build-windows (MinGW), build-linux (native)
+  - MinGW cross-compiler support for building Windows executables from WSL2
+- 10 tests for FormView component
+- 8 tests for project I/O operations
+- Total: 192 passing tests (all internal packages)
+
+### Changed
+- Content area now uses split view for simultaneous list and form display
+- Window size increased to 1400x900 for better content visibility
+- Sidebar width reduced to 180px for more content space
+- AppState now includes ProjectPath field for tracking current project file
+- SaveProject updates LastModified timestamp automatically
+
+### Fixed
+- Content area sizing issue - forms and lists now expand to fill available space
+
 ## [0.2.0] - 2025-10-13
 
 ### Added
