@@ -23,6 +23,7 @@ type MainWindow struct {
 	sidebar      *Sidebar
 	themeManager *ThemeManager
 	playerList   *PlayerList
+	coachList    *CoachList
 }
 
 // NewMainWindow creates a new main window
@@ -35,6 +36,7 @@ func NewMainWindow(app fyne.App) *MainWindow {
 		state:        state.GetInstance(),
 		themeManager: NewThemeManager(app),
 		playerList:   NewPlayerList(),
+		coachList:    NewCoachList(),
 	}
 
 	mw.setupWindow()
@@ -181,6 +183,13 @@ func (mw *MainWindow) updateContentArea(section string) {
 		mw.playerList.SetPlayers(players)
 		mw.content.Objects = []fyne.CanvasObject{mw.playerList.GetContainer()}
 		mw.statusBar.SetRecordCount("Players", len(players))
+
+	case "Coaches":
+		// Load coaches from state and display in list
+		coaches := mw.state.GetCoaches()
+		mw.coachList.SetCoaches(coaches)
+		mw.content.Objects = []fyne.CanvasObject{mw.coachList.GetContainer()}
+		mw.statusBar.SetRecordCount("Coaches", len(coaches))
 
 	default:
 		// Create section-specific placeholder for other sections

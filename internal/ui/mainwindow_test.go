@@ -383,3 +383,21 @@ func TestMainWindow_PlayerList(t *testing.T) {
 	// Verify status bar shows player count (should be 0 initially)
 	// Can't easily verify UI state, but we can check no panic
 }
+
+func TestMainWindow_CoachList(t *testing.T) {
+	app := test.NewApp()
+	defer app.Quit()
+
+	mw := NewMainWindow(app)
+
+	// Verify coach list is created
+	if mw.coachList == nil {
+		t.Fatal("Coach list should not be nil")
+	}
+
+	// Set Coaches section
+	mw.sidebar.SetSelectedSection("Coaches")
+
+	// Verify status bar shows coach count (should be 0 initially)
+	// Can't easily verify UI state, but we can check no panic
+}
