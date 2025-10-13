@@ -9,6 +9,7 @@ This document describes the release process for FOF9 Editor.
 - Full changelog required
 - All tests must pass
 - Released from `main` branch
+- **Automatically released** when CHANGELOG.md is updated with new version
 
 ### Pre-Releases
 - **Alpha** (vX.Y.Z-alpha.N): Early development, unstable, major bugs expected
@@ -17,7 +18,86 @@ This document describes the release process for FOF9 Editor.
 
 ---
 
-## Creating a Stable Release
+## 🤖 Automatic Releases (Recommended)
+
+**Every merge to `main` with a CHANGELOG.md update automatically creates a release!**
+
+### How It Works
+
+1. **Update CHANGELOG.md** in your PR with a new version section
+2. **Merge PR to main**
+3. **Auto-tag workflow runs**:
+   - Detects new version in CHANGELOG.md
+   - Validates version format (X.Y.Z)
+   - Creates git tag automatically (e.g., v0.2.0)
+4. **Release workflow triggers** automatically
+5. **Release published** with Windows binaries
+
+### Workflow
+
+```markdown
+## [Unreleased]
+
+### Added
+- Nothing yet
+
+## [0.2.0] - 2025-10-15    ← Add this section in your PR
+
+### Added
+- New feature X
+- New feature Y
+
+### Fixed
+- Bug Z
+```
+
+**That's it!** When the PR is merged:
+- ✅ Tag `v0.2.0` is created automatically
+- ✅ Release workflow builds Windows executable
+- ✅ GitHub Release is published
+- ✅ Changelog content is extracted to release notes
+
+### Requirements for Auto-Release
+
+1. ✅ Version follows semantic versioning: `X.Y.Z` (e.g., 0.2.0, 1.0.0)
+2. ✅ Version has a date (not "TBD"): `## [0.2.0] - 2025-10-15`
+3. ✅ Version is newer than the latest git tag
+4. ✅ CHANGELOG.md is updated in the commit
+
+### Example PR Workflow
+
+```bash
+# 1. Create feature branch
+git checkout -b feature/new-dashboard
+
+# 2. Make your changes
+# ... code changes ...
+
+# 3. Update CHANGELOG.md
+# Add new version section with today's date
+
+# 4. Commit and push
+git add .
+git commit -m "feat: add new dashboard
+
+- Added dashboard component
+- Added metrics visualization
+- Updated navigation"
+
+git push origin feature/new-dashboard
+
+# 5. Create PR and merge to main
+# → Auto-tag workflow creates v0.2.0
+# → Release workflow builds and publishes
+```
+
+---
+
+## 📝 Manual Releases (Alternative)
+
+If you prefer manual control, you can still use the scripts:
+
+### Creating a Stable Release
 
 ### 1. Update CHANGELOG.md
 

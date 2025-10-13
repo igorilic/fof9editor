@@ -16,8 +16,22 @@
 
 ## Changelog Entry
 
-<!-- Add your changelog entry below following Keep a Changelog format -->
-<!-- Remove sections that don't apply -->
+<!--
+IMPORTANT FOR RELEASES:
+If this PR should trigger a release, update CHANGELOG.md with a new version section:
+
+## [X.Y.Z] - YYYY-MM-DD
+
+This will automatically create a release when merged to main.
+
+Otherwise, add your changes to the [Unreleased] section.
+-->
+
+### Added to CHANGELOG.md
+- [ ] Updated [Unreleased] section
+- [ ] OR created new version section (triggers automatic release)
+
+<!-- Your changelog entry (following Keep a Changelog format): -->
 
 ### Added
 -

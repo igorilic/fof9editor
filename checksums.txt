@@ -1,0 +1,2 @@
+7277230870500f5c06b321f292a23bc745a49f55508c125062f031ecbcc97d60 *fof9editor-0.1.0-windows-amd64.exe
+99e0fc8976a7f4af963b113d6f6afb1af01bd46acfb623d659c39fdb678dad14 *fof9editor-0.1.0-windows-amd64.zip

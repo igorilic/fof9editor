@@ -2,6 +2,12 @@
 
 A desktop application for creating and editing custom leagues for Front Office Football Nine.
 
+[![Latest Release](https://img.shields.io/github/v/release/igorilic/fof9editor)](https://github.com/igorilic/fof9editor/releases/latest)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/igorilic/fof9editor/build.yml?branch=main)](https://github.com/igorilic/fof9editor/actions)
+[![License](https://img.shields.io/github/license/igorilic/fof9editor)](LICENSE)
+
+> **Note**: Releases are automatically created when changes are merged to main. Check the [Releases page](https://github.com/igorilic/fof9editor/releases) for the latest version!
+
 ## 📥 Download
 
 **For Users (No Go Installation Required):**
