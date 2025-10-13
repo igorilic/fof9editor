@@ -7,6 +7,8 @@ A desktop application for creating and editing custom leagues for Front Office F
 [![License](https://img.shields.io/github/license/igorilic/fof9editor)](LICENSE)
 
 > **Note**: Releases are automatically created when changes are merged to main. Check the [Releases page](https://github.com/igorilic/fof9editor/releases) for the latest version!
+>
+> **For maintainers**: Automatic releases require the `RELEASE_TOKEN` secret to be configured. See [PAT Token Setup](.github/PAT_TOKEN_SETUP.md).
 
 ## 📥 Download
 

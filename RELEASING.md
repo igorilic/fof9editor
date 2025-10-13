@@ -63,6 +63,8 @@ This document describes the release process for FOF9 Editor.
 2. ✅ Version has a date (not "TBD"): `## [0.2.0] - 2025-10-15`
 3. ✅ Version is newer than the latest git tag
 4. ✅ CHANGELOG.md is updated in the commit
+5. ✅ **`RELEASE_TOKEN` secret configured** (Personal Access Token with `repo` scope)
+   - See [PAT Token Setup Guide](.github/PAT_TOKEN_SETUP.md) for instructions
 
 ### Example PR Workflow
 

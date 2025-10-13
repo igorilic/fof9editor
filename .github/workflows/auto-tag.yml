@@ -19,6 +19,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.RELEASE_TOKEN }}
 
       - name: Check for new version in CHANGELOG
         id: check_version
@@ -86,6 +87,8 @@ jobs:
 
       - name: Create and push tag
         if: steps.check_version.outputs.should_release == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         run: |
           NEW_VERSION="${{ steps.check_version.outputs.new_version }}"
           NEW_TAG="${{ steps.check_version.outputs.new_tag }}"
@@ -106,7 +109,7 @@ jobs:
 
           git tag -a "${NEW_TAG}" -m "$TAG_MESSAGE"
 
-          # Push tag
+          # Push tag (using PAT token for authentication)
           git push origin "${NEW_TAG}"
 
           echo "✅ Created and pushed tag: ${NEW_TAG}"
