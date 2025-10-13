@@ -844,9 +844,11 @@ func (mw *MainWindow) savePlayersCSV() {
 		if writer == nil {
 			return
 		}
-		defer writer.Close()
 
 		filePath := writer.URI().Path()
+
+		// Close the writer immediately to release the file lock
+		writer.Close()
 
 		// Save players to CSV
 		if err := data.SavePlayers(filePath, players); err != nil {
@@ -878,9 +880,11 @@ func (mw *MainWindow) saveCoachesCSV() {
 		if writer == nil {
 			return
 		}
-		defer writer.Close()
 
 		filePath := writer.URI().Path()
+
+		// Close the writer immediately to release the file lock
+		writer.Close()
 
 		// Save coaches to CSV
 		if err := data.SaveCoaches(filePath, coaches); err != nil {
@@ -912,9 +916,11 @@ func (mw *MainWindow) saveTeamsCSV() {
 		if writer == nil {
 			return
 		}
-		defer writer.Close()
 
 		filePath := writer.URI().Path()
+
+		// Close the writer immediately to release the file lock
+		writer.Close()
 
 		// Save teams to CSV
 		if err := data.SaveTeams(filePath, teams); err != nil {
