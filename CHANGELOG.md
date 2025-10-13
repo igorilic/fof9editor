@@ -10,6 +10,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Nothing yet
 
+## [0.1.1] - 2025-10-13
+
+### Added
+- Automatic release system based on CHANGELOG.md updates
+- Auto-tag workflow that creates git tags on version detection
+- Comprehensive automatic-release-plan.md documentation
+
+### Changed
+- README now shows release badges and auto-release note
+- PR template reminds developers about CHANGELOG updates
+- RELEASING.md updated with automatic release workflow
+
+### Infrastructure
+- Auto-tag.yml workflow for automatic tag creation
+- Release process now fully automated from CHANGELOG update
+
 ## [0.1.0] - 2025-10-13
 
 ### Added
