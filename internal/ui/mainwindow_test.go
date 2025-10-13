@@ -138,3 +138,62 @@ func TestMainWindow_GetStatusBar(t *testing.T) {
 		t.Error("GetStatusBar did not return the correct status bar")
 	}
 }
+
+func TestMainWindow_Sidebar(t *testing.T) {
+	app := test.NewApp()
+	defer app.Quit()
+
+	mw := NewMainWindow(app)
+
+	// Verify sidebar is created
+	sidebar := mw.GetSidebar()
+	if sidebar == nil {
+		t.Fatal("Sidebar should not be nil")
+	}
+
+	// Verify default section is Players
+	selected := sidebar.GetSelectedSection()
+	if selected != "Players" {
+		t.Errorf("Expected default section 'Players', got '%s'", selected)
+	}
+}
+
+func TestMainWindow_GetSidebar(t *testing.T) {
+	app := test.NewApp()
+	defer app.Quit()
+
+	mw := NewMainWindow(app)
+
+	sidebar := mw.GetSidebar()
+	if sidebar == nil {
+		t.Fatal("GetSidebar returned nil")
+	}
+
+	if sidebar != mw.sidebar {
+		t.Error("GetSidebar did not return the correct sidebar")
+	}
+}
+
+func TestMainWindow_SectionChangeCallback(t *testing.T) {
+	app := test.NewApp()
+	defer app.Quit()
+
+	mw := NewMainWindow(app)
+
+	// Change section via sidebar
+	mw.sidebar.SetSelectedSection("Coaches")
+
+	// Verify state was updated
+	currentSection := mw.state.GetCurrentSection()
+	if currentSection != "Coaches" {
+		t.Errorf("Expected state section 'Coaches', got '%s'", currentSection)
+	}
+
+	// Change to Teams
+	mw.sidebar.SetSelectedSection("Teams")
+
+	currentSection = mw.state.GetCurrentSection()
+	if currentSection != "Teams" {
+		t.Errorf("Expected state section 'Teams', got '%s'", currentSection)
+	}
+}

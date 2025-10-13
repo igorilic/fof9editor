@@ -20,6 +20,7 @@ type MainWindow struct {
 	content   *fyne.Container
 	state     *state.AppState
 	statusBar *StatusBar
+	sidebar   *Sidebar
 }
 
 // NewMainWindow creates a new main window
@@ -47,21 +48,42 @@ func (mw *MainWindow) setupWindow() {
 	// Create status bar
 	mw.statusBar = NewStatusBar()
 
-	// Create placeholder content
+	// Create placeholder content BEFORE sidebar to avoid nil pointer
 	mw.content = container.NewCenter(
 		widget.NewLabel("FOF9 Editor - Ready to load a project"),
 	)
 
-	// Create main layout with status bar at bottom
+	// Create sidebar with callback
+	mw.sidebar = NewSidebar(func(section string) {
+		mw.onSectionChange(section)
+	})
+
+	// Create main layout with sidebar on left and status bar at bottom
 	mainLayout := container.NewBorder(
 		nil,                        // top
 		mw.statusBar.GetContainer(), // bottom
-		nil,                        // left
+		mw.sidebar.GetContainer(),  // left
 		nil,                        // right
 		mw.content,                 // center
 	)
 
 	mw.window.SetContent(mainLayout)
+}
+
+// onSectionChange handles section navigation changes
+func (mw *MainWindow) onSectionChange(section string) {
+	// Update state
+	mw.state.SetCurrentSection(section)
+
+	// Update status bar
+	// For now, just show the section name
+	// In later phases, this will load and display actual data
+	mw.content.Objects = []fyne.CanvasObject{
+		container.NewCenter(
+			widget.NewLabel(fmt.Sprintf("Section: %s (data loading not yet implemented)", section)),
+		),
+	}
+	mw.content.Refresh()
 }
 
 // Show displays the window
@@ -82,6 +104,11 @@ func (mw *MainWindow) GetWindow() fyne.Window {
 // GetStatusBar returns the status bar
 func (mw *MainWindow) GetStatusBar() *StatusBar {
 	return mw.statusBar
+}
+
+// GetSidebar returns the sidebar
+func (mw *MainWindow) GetSidebar() *Sidebar {
+	return mw.sidebar
 }
 
 // SetContent sets the window content
