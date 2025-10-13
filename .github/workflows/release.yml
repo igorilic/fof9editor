@@ -1,0 +1,95 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version number (e.g., 0.1.0)'
+        required: true
+        type: string
+
+jobs:
+  build-release:
+    name: Build Release Binaries
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+          cache: true
+
+      - name: Get version
+        id: version
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+            echo "TAG=v${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          else
+            echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+            echo "TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Download dependencies
+        run: go mod download
+
+      - name: Run tests
+        run: go test ./... -v
+
+      - name: Build Windows executable
+        run: |
+          go build -ldflags="-s -w -X main.Version=${{ steps.version.outputs.VERSION }}" -o fof9editor-${{ steps.version.outputs.VERSION }}-windows-amd64.exe ./cmd/fof9editor
+
+      - name: Create release archive
+        shell: bash
+        run: |
+          mkdir -p release
+          cp fof9editor-${{ steps.version.outputs.VERSION }}-windows-amd64.exe release/
+          cp README.md release/
+          cp spec.md release/
+          cd release
+          7z a -tzip ../fof9editor-${{ steps.version.outputs.VERSION }}-windows-amd64.zip *
+
+      - name: Generate checksums
+        shell: bash
+        run: |
+          sha256sum fof9editor-${{ steps.version.outputs.VERSION }}-windows-amd64.exe > checksums.txt
+          sha256sum fof9editor-${{ steps.version.outputs.VERSION }}-windows-amd64.zip >> checksums.txt
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.version.outputs.TAG }}
+          name: Release ${{ steps.version.outputs.TAG }}
+          draft: false
+          prerelease: false
+          body: |
+            ## FOF9 Editor ${{ steps.version.outputs.TAG }}
+
+            ### Downloads
+            - **Windows (Standalone)**: `fof9editor-${{ steps.version.outputs.VERSION }}-windows-amd64.exe` - Single executable, no installation needed
+            - **Windows (ZIP)**: `fof9editor-${{ steps.version.outputs.VERSION }}-windows-amd64.zip` - Includes executable, README, and documentation
+
+            ### Installation
+            1. Download the `.exe` file or extract the `.zip` file
+            2. Run `fof9editor-${{ steps.version.outputs.VERSION }}-windows-amd64.exe`
+            3. No additional dependencies required!
+
+            ### What's New
+            See [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md) for details.
+
+            ### Checksums (SHA256)
+            See `checksums.txt` for file verification.
+          files: |
+            fof9editor-${{ steps.version.outputs.VERSION }}-windows-amd64.exe
+            fof9editor-${{ steps.version.outputs.VERSION }}-windows-amd64.zip
+            checksums.txt
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

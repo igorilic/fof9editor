@@ -2,6 +2,23 @@
 
 A desktop application for creating and editing custom leagues for Front Office Football Nine.
 
+## 📥 Download
+
+**For Users (No Go Installation Required):**
+
+Download the latest release from the [Releases page](https://github.com/igorilic/fof9editor/releases):
+- **Windows Executable**: `fof9editor-X.X.X-windows-amd64.exe` - Single file, just download and run
+- **Windows ZIP**: `fof9editor-X.X.X-windows-amd64.zip` - Includes executable and documentation
+
+### Installation (End Users)
+1. Download the `.exe` file from [Releases](https://github.com/igorilic/fof9editor/releases)
+2. Double-click to run - no installation needed!
+3. Windows may show a security warning for unsigned applications - click "More info" → "Run anyway"
+
+**Requirements**: Windows 10/11 only. No other dependencies needed!
+
+---
+
 ## Description
 
 FOF9 Editor is a comprehensive CSV editor that allows users to:
@@ -10,7 +27,11 @@ FOF9 Editor is a comprehensive CSV editor that allows users to:
 - Import data from the default game files
 - Manage league settings, salary caps, and schedules
 
-## Requirements
+---
+
+## 🛠️ For Developers
+
+### Requirements
 
 - Go 1.21 or later
 - Windows 10/11 (primary target platform)
