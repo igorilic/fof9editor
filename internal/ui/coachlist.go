@@ -20,14 +20,18 @@ type CoachList struct {
 	headers        []string
 	selectedRow    int
 	onSelectChange func(int)
+	sortColumn     int
+	sortAscending  bool
 }
 
 // NewCoachList creates a new coach list view
 func NewCoachList() *CoachList {
 	cl := &CoachList{
-		coaches:     []models.Coach{},
-		headers:     []string{"First Name", "Last Name", "Position", "Team", "Pay Scale"},
-		selectedRow: -1,
+		coaches:       []models.Coach{},
+		headers:       []string{"First Name", "Last Name", "Position", "Team", "Pay Scale"},
+		selectedRow:   -1,
+		sortColumn:    -1,
+		sortAscending: true,
 	}
 
 	cl.setupTable()
@@ -48,7 +52,15 @@ func (cl *CoachList) setupTable() {
 
 			// Header row
 			if id.Row == 0 {
-				label.SetText(cl.headers[id.Col])
+				headerText := cl.headers[id.Col]
+				if cl.sortColumn == id.Col {
+					if cl.sortAscending {
+						headerText += " ▲"
+					} else {
+						headerText += " ▼"
+					}
+				}
+				label.SetText(headerText)
 				label.TextStyle = fyne.TextStyle{Bold: true}
 				return
 			}
@@ -88,7 +100,11 @@ func (cl *CoachList) setupTable() {
 
 	// Set up selection callback
 	cl.table.OnSelected = func(id widget.TableCellID) {
-		if id.Row > 0 { // Skip header row
+		if id.Row == 0 {
+			// Header row clicked - trigger sort
+			cl.SortByColumn(id.Col)
+		} else {
+			// Data row clicked - select coach
 			cl.selectedRow = id.Row - 1
 			if cl.onSelectChange != nil {
 				cl.onSelectChange(cl.selectedRow)
@@ -149,5 +165,64 @@ func (cl *CoachList) SetOnSelectChange(callback func(int)) {
 // Clear removes all coaches from the list
 func (cl *CoachList) Clear() {
 	cl.coaches = []models.Coach{}
+	cl.selectedRow = -1
 	cl.table.Refresh()
+}
+
+// SortByColumn sorts the coaches by the specified column
+func (cl *CoachList) SortByColumn(column int) {
+	if column < 0 || column >= len(cl.headers) {
+		return
+	}
+
+	if cl.sortColumn == column {
+		cl.sortAscending = !cl.sortAscending
+	} else {
+		cl.sortColumn = column
+		cl.sortAscending = true
+	}
+
+	cl.sortCoaches()
+	cl.table.Refresh()
+}
+
+// sortCoaches sorts the coaches based on current sort settings
+func (cl *CoachList) sortCoaches() {
+	if cl.sortColumn < 0 || len(cl.coaches) == 0 {
+		return
+	}
+
+	for i := 0; i < len(cl.coaches)-1; i++ {
+		for j := i + 1; j < len(cl.coaches); j++ {
+			if cl.compareCoach(i, j) {
+				cl.coaches[i], cl.coaches[j] = cl.coaches[j], cl.coaches[i]
+			}
+		}
+	}
+}
+
+// compareCoach compares two coaches based on current sort column
+func (cl *CoachList) compareCoach(i, j int) bool {
+	c1, c2 := cl.coaches[i], cl.coaches[j]
+
+	var result bool
+	switch cl.sortColumn {
+	case 0: // First Name
+		result = c1.FirstName > c2.FirstName
+	case 1: // Last Name
+		result = c1.LastName > c2.LastName
+	case 2: // Position
+		result = c1.Position > c2.Position
+	case 3: // Team
+		result = c1.Team > c2.Team
+	case 4: // Pay Scale
+		result = c1.PayScale > c2.PayScale
+	default:
+		return false
+	}
+
+	if !cl.sortAscending {
+		result = !result
+	}
+	return result
 }

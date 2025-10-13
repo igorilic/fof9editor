@@ -20,14 +20,18 @@ type PlayerList struct {
 	headers        []string
 	selectedRow    int
 	onSelectChange func(int)
+	sortColumn     int
+	sortAscending  bool
 }
 
 // NewPlayerList creates a new player list view
 func NewPlayerList() *PlayerList {
 	pl := &PlayerList{
-		players:     []models.Player{},
-		headers:     []string{"ID", "First Name", "Last Name", "Position", "Team", "Overall"},
-		selectedRow: -1,
+		players:       []models.Player{},
+		headers:       []string{"ID", "First Name", "Last Name", "Position", "Team", "Overall"},
+		selectedRow:   -1,
+		sortColumn:    -1,
+		sortAscending: true,
 	}
 
 	pl.setupTable()
@@ -48,7 +52,16 @@ func (pl *PlayerList) setupTable() {
 
 			// Header row
 			if id.Row == 0 {
-				label.SetText(pl.headers[id.Col])
+				headerText := pl.headers[id.Col]
+				// Add sort indicator if this column is sorted
+				if pl.sortColumn == id.Col {
+					if pl.sortAscending {
+						headerText += " ▲"
+					} else {
+						headerText += " ▼"
+					}
+				}
+				label.SetText(headerText)
 				label.TextStyle = fyne.TextStyle{Bold: true}
 				return
 			}
@@ -91,7 +104,11 @@ func (pl *PlayerList) setupTable() {
 
 	// Set up selection callback
 	pl.table.OnSelected = func(id widget.TableCellID) {
-		if id.Row > 0 { // Skip header row
+		if id.Row == 0 {
+			// Header row clicked - trigger sort
+			pl.SortByColumn(id.Col)
+		} else {
+			// Data row clicked - select player
 			pl.selectedRow = id.Row - 1
 			if pl.onSelectChange != nil {
 				pl.onSelectChange(pl.selectedRow)
@@ -134,5 +151,68 @@ func (pl *PlayerList) SetOnSelectChange(callback func(int)) {
 // Clear removes all players from the list
 func (pl *PlayerList) Clear() {
 	pl.players = []models.Player{}
+	pl.selectedRow = -1
 	pl.table.Refresh()
+}
+
+// SortByColumn sorts the players by the specified column
+func (pl *PlayerList) SortByColumn(column int) {
+	if column < 0 || column >= len(pl.headers) {
+		return
+	}
+
+	// Toggle sort direction if clicking same column
+	if pl.sortColumn == column {
+		pl.sortAscending = !pl.sortAscending
+	} else {
+		pl.sortColumn = column
+		pl.sortAscending = true
+	}
+
+	pl.sortPlayers()
+	pl.table.Refresh()
+}
+
+// sortPlayers sorts the players based on current sort settings
+func (pl *PlayerList) sortPlayers() {
+	if pl.sortColumn < 0 || len(pl.players) == 0 {
+		return
+	}
+
+	// Use a simple bubble sort for clarity (for large datasets, use sort.Slice)
+	for i := 0; i < len(pl.players)-1; i++ {
+		for j := i + 1; j < len(pl.players); j++ {
+			if pl.comparePlayer(i, j) {
+				pl.players[i], pl.players[j] = pl.players[j], pl.players[i]
+			}
+		}
+	}
+}
+
+// comparePlayer compares two players based on current sort column
+func (pl *PlayerList) comparePlayer(i, j int) bool {
+	p1, p2 := pl.players[i], pl.players[j]
+
+	var result bool
+	switch pl.sortColumn {
+	case 0: // ID
+		result = p1.PlayerID > p2.PlayerID
+	case 1: // First Name
+		result = p1.FirstName > p2.FirstName
+	case 2: // Last Name
+		result = p1.LastName > p2.LastName
+	case 3: // Position
+		result = p1.PositionKey > p2.PositionKey
+	case 4: // Team
+		result = p1.Team > p2.Team
+	case 5: // Overall
+		result = p1.OverallRating > p2.OverallRating
+	default:
+		return false
+	}
+
+	if !pl.sortAscending {
+		result = !result
+	}
+	return result
 }

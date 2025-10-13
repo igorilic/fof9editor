@@ -127,3 +127,98 @@ func TestPlayerList_Headers(t *testing.T) {
 		}
 	}
 }
+
+func TestPlayerList_SortByColumn(t *testing.T) {
+	pl := NewPlayerList()
+
+	players := []models.Player{
+		{PlayerID: 3, FirstName: "Charlie", LastName: "Wilson", PositionKey: 1, Team: 3, OverallRating: 85},
+		{PlayerID: 1, FirstName: "Alice", LastName: "Smith", PositionKey: 2, Team: 1, OverallRating: 90},
+		{PlayerID: 2, FirstName: "Bob", LastName: "Johnson", PositionKey: 1, Team: 2, OverallRating: 88},
+	}
+
+	pl.SetPlayers(players)
+
+	// Sort by ID (column 0) ascending
+	pl.SortByColumn(0)
+	if pl.players[0].PlayerID != 1 {
+		t.Errorf("After sorting by ID asc, expected first ID 1, got %d", pl.players[0].PlayerID)
+	}
+	if pl.sortColumn != 0 {
+		t.Errorf("Expected sortColumn 0, got %d", pl.sortColumn)
+	}
+	if !pl.sortAscending {
+		t.Error("Expected sortAscending true")
+	}
+
+	// Click same column to toggle descending
+	pl.SortByColumn(0)
+	if pl.players[0].PlayerID != 3 {
+		t.Errorf("After sorting by ID desc, expected first ID 3, got %d", pl.players[0].PlayerID)
+	}
+	if pl.sortAscending {
+		t.Error("Expected sortAscending false after toggle")
+	}
+}
+
+func TestPlayerList_SortByFirstName(t *testing.T) {
+	pl := NewPlayerList()
+
+	players := []models.Player{
+		{PlayerID: 3, FirstName: "Charlie", LastName: "Wilson", PositionKey: 1, Team: 3, OverallRating: 85},
+		{PlayerID: 1, FirstName: "Alice", LastName: "Smith", PositionKey: 2, Team: 1, OverallRating: 90},
+		{PlayerID: 2, FirstName: "Bob", LastName: "Johnson", PositionKey: 1, Team: 2, OverallRating: 88},
+	}
+
+	pl.SetPlayers(players)
+
+	// Sort by First Name (column 1)
+	pl.SortByColumn(1)
+
+	if pl.players[0].FirstName != "Alice" {
+		t.Errorf("After sorting by first name, expected first 'Alice', got '%s'", pl.players[0].FirstName)
+	}
+	if pl.players[2].FirstName != "Charlie" {
+		t.Errorf("After sorting by first name, expected last 'Charlie', got '%s'", pl.players[2].FirstName)
+	}
+}
+
+func TestPlayerList_SortByOverallRating(t *testing.T) {
+	pl := NewPlayerList()
+
+	players := []models.Player{
+		{PlayerID: 3, FirstName: "Charlie", LastName: "Wilson", PositionKey: 1, Team: 3, OverallRating: 85},
+		{PlayerID: 1, FirstName: "Alice", LastName: "Smith", PositionKey: 2, Team: 1, OverallRating: 90},
+		{PlayerID: 2, FirstName: "Bob", LastName: "Johnson", PositionKey: 1, Team: 2, OverallRating: 88},
+	}
+
+	pl.SetPlayers(players)
+
+	// Sort by Overall (column 5) ascending
+	pl.SortByColumn(5)
+
+	if pl.players[0].OverallRating != 85 {
+		t.Errorf("After sorting by overall asc, expected first 85, got %d", pl.players[0].OverallRating)
+	}
+	if pl.players[2].OverallRating != 90 {
+		t.Errorf("After sorting by overall asc, expected last 90, got %d", pl.players[2].OverallRating)
+	}
+}
+
+func TestPlayerList_SortInvalidColumn(t *testing.T) {
+	pl := NewPlayerList()
+
+	players := []models.Player{
+		{PlayerID: 1, FirstName: "Alice", LastName: "Smith", PositionKey: 2, Team: 1, OverallRating: 90},
+	}
+
+	pl.SetPlayers(players)
+
+	// Try to sort by invalid column
+	pl.SortByColumn(99)
+
+	// Should not crash and sortColumn should remain -1
+	if pl.sortColumn != -1 {
+		t.Errorf("Expected sortColumn to remain -1, got %d", pl.sortColumn)
+	}
+}
