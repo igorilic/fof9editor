@@ -16,6 +16,9 @@ on:
           - beta
           - rc
 
+permissions:
+  contents: write
+
 jobs:
   pre-release:
     name: Create Pre-Release
