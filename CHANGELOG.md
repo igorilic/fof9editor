@@ -16,11 +16,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Automatic release system based on CHANGELOG.md updates
 - Auto-tag workflow that creates git tags on version detection
 - Comprehensive automatic-release-plan.md documentation
+- Release badges in README (Latest Release, Build Status, License)
 
 ### Changed
 - README now shows release badges and auto-release note
 - PR template reminds developers about CHANGELOG updates
 - RELEASING.md updated with automatic release workflow
+
+### Fixed
+- YAML syntax error in auto-tag workflow (multiline string)
+- Removed accidental "auto_activate_base" line from README
 
 ### Infrastructure
 - Auto-tag.yml workflow for automatic tag creation
