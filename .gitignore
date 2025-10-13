@@ -4,11 +4,14 @@
 *.dll
 *.so
 *.dylib
+fof9editor
+fof9editor.exe
 
 # Go build artifacts
 *.test
 *.out
 go.work
+coverage.out
 
 # IDE
 .idea/
@@ -20,6 +23,7 @@ go.work
 # OS
 .DS_Store
 Thumbs.db
+*:Zone.Identifier
 
 # Logs
 *.log
@@ -30,3 +34,4 @@ Thumbs.db
 # Test coverage
 *.coverprofile
 coverage.html
+coverage.out
