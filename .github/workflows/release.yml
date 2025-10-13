@@ -10,6 +10,11 @@ on:
         description: 'Version number (e.g., 0.1.0)'
         required: true
         type: string
+      prerelease:
+        description: 'Mark as pre-release?'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   build-release:
@@ -18,6 +23,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Need full history for changelog
 
       - name: Setup Go
         uses: actions/setup-go@v5
@@ -37,15 +44,19 @@ jobs:
             echo "TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
           fi
 
+          # Get commit hash and build date
+          echo "COMMIT_HASH=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+          echo "BUILD_DATE=$(date -u '+%Y-%m-%d_%H:%M:%S')" >> $GITHUB_OUTPUT
+
       - name: Download dependencies
         run: go mod download
 
       - name: Run tests
-        run: go test ./... -v
+        run: go test ./internal/... -v
 
       - name: Build Windows executable
         run: |
-          go build -ldflags="-s -w -X main.Version=${{ steps.version.outputs.VERSION }}" -o fof9editor-${{ steps.version.outputs.VERSION }}-windows-amd64.exe ./cmd/fof9editor
+          go build -ldflags="-s -w -X github.com/igorilic/fof9editor/internal/version.Version=${{ steps.version.outputs.VERSION }} -X github.com/igorilic/fof9editor/internal/version.CommitHash=${{ steps.version.outputs.COMMIT_HASH }} -X github.com/igorilic/fof9editor/internal/version.BuildDate=${{ steps.version.outputs.BUILD_DATE }}" -o fof9editor-${{ steps.version.outputs.VERSION }}-windows-amd64.exe ./cmd/fof9editor
 
       - name: Create release archive
         shell: bash
@@ -53,7 +64,8 @@ jobs:
           mkdir -p release
           cp fof9editor-${{ steps.version.outputs.VERSION }}-windows-amd64.exe release/
           cp README.md release/
-          cp spec.md release/
+          cp CHANGELOG.md release/
+          cp LICENSE release/ || echo "No LICENSE file"
           cd release
           7z a -tzip ../fof9editor-${{ steps.version.outputs.VERSION }}-windows-amd64.zip *
 
@@ -63,33 +75,76 @@ jobs:
           sha256sum fof9editor-${{ steps.version.outputs.VERSION }}-windows-amd64.exe > checksums.txt
           sha256sum fof9editor-${{ steps.version.outputs.VERSION }}-windows-amd64.zip >> checksums.txt
 
+      - name: Extract changelog for this version
+        id: changelog
+        shell: bash
+        run: |
+          VERSION="${{ steps.version.outputs.TAG }}"
+
+          # Extract changelog section for this version
+          CHANGELOG_CONTENT=$(awk "/## \[${VERSION#v}\]/{flag=1; next} /## \[/{flag=0} flag" CHANGELOG.md)
+
+          if [ -z "$CHANGELOG_CONTENT" ]; then
+            # Fallback to Unreleased section if version not found
+            CHANGELOG_CONTENT=$(awk "/## \[Unreleased\]/{flag=1; next} /## \[/{flag=0} flag" CHANGELOG.md)
+          fi
+
+          if [ -z "$CHANGELOG_CONTENT" ]; then
+            CHANGELOG_CONTENT="See [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md) for details."
+          fi
+
+          # Write to file to preserve formatting
+          cat > release_notes.md <<'EOF'
+          ## FOF9 Editor ${{ steps.version.outputs.TAG }}
+
+          ### Downloads
+          - **Windows (Standalone)**: `fof9editor-${{ steps.version.outputs.VERSION }}-windows-amd64.exe` - Single executable, no installation needed
+          - **Windows (ZIP)**: `fof9editor-${{ steps.version.outputs.VERSION }}-windows-amd64.zip` - Includes executable, README, and CHANGELOG
+
+          ### Installation
+          1. Download the `.exe` file or extract the `.zip` file
+          2. Run `fof9editor-${{ steps.version.outputs.VERSION }}-windows-amd64.exe`
+          3. No additional dependencies required!
+
+          ### What's New
+          EOF
+
+          echo "$CHANGELOG_CONTENT" >> release_notes.md
+
+          cat >> release_notes.md <<'EOF'
+
+          ### Checksums (SHA256)
+          See `checksums.txt` for file verification.
+
+          ---
+
+          **Build Information:**
+          - Version: ${{ steps.version.outputs.VERSION }}
+          - Commit: ${{ steps.version.outputs.COMMIT_HASH }}
+          - Built: ${{ steps.version.outputs.BUILD_DATE }}
+          EOF
+
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ steps.version.outputs.TAG }}
           name: Release ${{ steps.version.outputs.TAG }}
           draft: false
-          prerelease: false
-          body: |
-            ## FOF9 Editor ${{ steps.version.outputs.TAG }}
-
-            ### Downloads
-            - **Windows (Standalone)**: `fof9editor-${{ steps.version.outputs.VERSION }}-windows-amd64.exe` - Single executable, no installation needed
-            - **Windows (ZIP)**: `fof9editor-${{ steps.version.outputs.VERSION }}-windows-amd64.zip` - Includes executable, README, and documentation
-
-            ### Installation
-            1. Download the `.exe` file or extract the `.zip` file
-            2. Run `fof9editor-${{ steps.version.outputs.VERSION }}-windows-amd64.exe`
-            3. No additional dependencies required!
-
-            ### What's New
-            See [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md) for details.
-
-            ### Checksums (SHA256)
-            See `checksums.txt` for file verification.
+          prerelease: ${{ github.event.inputs.prerelease || false }}
+          body_path: release_notes.md
           files: |
             fof9editor-${{ steps.version.outputs.VERSION }}-windows-amd64.exe
             fof9editor-${{ steps.version.outputs.VERSION }}-windows-amd64.zip
             checksums.txt
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-artifacts-${{ steps.version.outputs.VERSION }}
+          path: |
+            fof9editor-${{ steps.version.outputs.VERSION }}-windows-amd64.exe
+            fof9editor-${{ steps.version.outputs.VERSION }}-windows-amd64.zip
+            checksums.txt
+          retention-days: 90
