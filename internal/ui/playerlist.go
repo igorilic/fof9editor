@@ -5,6 +5,7 @@ package ui
 
 import (
 	"fmt"
+	"strings"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
@@ -14,35 +15,62 @@ import (
 
 // PlayerList represents a list view for players
 type PlayerList struct {
-	container      *fyne.Container
-	table          *widget.Table
-	players        []models.Player
-	headers        []string
-	selectedRow    int
-	onSelectChange func(int)
-	sortColumn     int
-	sortAscending  bool
+	container       *fyne.Container
+	table           *widget.Table
+	players         []models.Player
+	filteredPlayers []models.Player
+	headers         []string
+	selectedRow     int
+	onSelectChange  func(int)
+	sortColumn      int
+	sortAscending   bool
+	filterText      string
+	searchEntry     *widget.Entry
 }
 
 // NewPlayerList creates a new player list view
 func NewPlayerList() *PlayerList {
 	pl := &PlayerList{
-		players:       []models.Player{},
-		headers:       []string{"ID", "First Name", "Last Name", "Position", "Team", "Overall"},
-		selectedRow:   -1,
-		sortColumn:    -1,
-		sortAscending: true,
+		players:         []models.Player{},
+		filteredPlayers: []models.Player{},
+		headers:         []string{"ID", "First Name", "Last Name", "Position", "Team", "Overall"},
+		selectedRow:     -1,
+		sortColumn:      -1,
+		sortAscending:   true,
+		filterText:      "",
+	}
+
+	pl.setupUI()
+	return pl
+}
+
+// setupUI creates and configures the UI components
+func (pl *PlayerList) setupUI() {
+	// Create search entry
+	pl.searchEntry = widget.NewEntry()
+	pl.searchEntry.SetPlaceHolder("Search players...")
+	pl.searchEntry.OnChanged = func(text string) {
+		pl.filterText = text
+		pl.applyFilter()
 	}
 
 	pl.setupTable()
-	return pl
+
+	// Create container with search on top and table below
+	pl.container = container.NewBorder(
+		pl.searchEntry, // top
+		nil,            // bottom
+		nil,            // left
+		nil,            // right
+		container.NewMax(pl.table), // center
+	)
 }
 
 // setupTable creates and configures the table widget
 func (pl *PlayerList) setupTable() {
 	pl.table = widget.NewTable(
 		func() (int, int) {
-			return len(pl.players) + 1, len(pl.headers) // +1 for header row
+			return len(pl.filteredPlayers) + 1, len(pl.headers) // +1 for header row
 		},
 		func() fyne.CanvasObject {
 			return widget.NewLabel("Template")
@@ -68,12 +96,12 @@ func (pl *PlayerList) setupTable() {
 
 			// Data rows
 			playerIdx := id.Row - 1
-			if playerIdx >= len(pl.players) {
+			if playerIdx >= len(pl.filteredPlayers) {
 				label.SetText("")
 				return
 			}
 
-			player := pl.players[playerIdx]
+			player := pl.filteredPlayers[playerIdx]
 			switch id.Col {
 			case 0:
 				label.SetText(fmt.Sprintf("%d", player.PlayerID))
@@ -115,14 +143,12 @@ func (pl *PlayerList) setupTable() {
 			}
 		}
 	}
-
-	pl.container = container.NewMax(pl.table)
 }
 
 // SetPlayers updates the displayed players
 func (pl *PlayerList) SetPlayers(players []models.Player) {
 	pl.players = players
-	pl.table.Refresh()
+	pl.applyFilter()
 }
 
 // GetPlayers returns the current list of players
@@ -137,10 +163,10 @@ func (pl *PlayerList) GetContainer() *fyne.Container {
 
 // GetSelectedPlayer returns the currently selected player, or nil if none selected
 func (pl *PlayerList) GetSelectedPlayer() *models.Player {
-	if pl.selectedRow < 0 || pl.selectedRow >= len(pl.players) {
+	if pl.selectedRow < 0 || pl.selectedRow >= len(pl.filteredPlayers) {
 		return nil
 	}
-	return &pl.players[pl.selectedRow]
+	return &pl.filteredPlayers[pl.selectedRow]
 }
 
 // SetOnSelectChange sets the callback for when a player is selected
@@ -151,7 +177,12 @@ func (pl *PlayerList) SetOnSelectChange(callback func(int)) {
 // Clear removes all players from the list
 func (pl *PlayerList) Clear() {
 	pl.players = []models.Player{}
+	pl.filteredPlayers = []models.Player{}
 	pl.selectedRow = -1
+	pl.filterText = ""
+	if pl.searchEntry != nil {
+		pl.searchEntry.SetText("")
+	}
 	pl.table.Refresh()
 }
 
@@ -173,17 +204,17 @@ func (pl *PlayerList) SortByColumn(column int) {
 	pl.table.Refresh()
 }
 
-// sortPlayers sorts the players based on current sort settings
+// sortPlayers sorts the filtered players based on current sort settings
 func (pl *PlayerList) sortPlayers() {
-	if pl.sortColumn < 0 || len(pl.players) == 0 {
+	if pl.sortColumn < 0 || len(pl.filteredPlayers) == 0 {
 		return
 	}
 
 	// Use a simple bubble sort for clarity (for large datasets, use sort.Slice)
-	for i := 0; i < len(pl.players)-1; i++ {
-		for j := i + 1; j < len(pl.players); j++ {
+	for i := 0; i < len(pl.filteredPlayers)-1; i++ {
+		for j := i + 1; j < len(pl.filteredPlayers); j++ {
 			if pl.comparePlayer(i, j) {
-				pl.players[i], pl.players[j] = pl.players[j], pl.players[i]
+				pl.filteredPlayers[i], pl.filteredPlayers[j] = pl.filteredPlayers[j], pl.filteredPlayers[i]
 			}
 		}
 	}
@@ -191,7 +222,7 @@ func (pl *PlayerList) sortPlayers() {
 
 // comparePlayer compares two players based on current sort column
 func (pl *PlayerList) comparePlayer(i, j int) bool {
-	p1, p2 := pl.players[i], pl.players[j]
+	p1, p2 := pl.filteredPlayers[i], pl.filteredPlayers[j]
 
 	var result bool
 	switch pl.sortColumn {
@@ -215,4 +246,49 @@ func (pl *PlayerList) comparePlayer(i, j int) bool {
 		result = !result
 	}
 	return result
+}
+
+// applyFilter applies the current filter text to the player list
+func (pl *PlayerList) applyFilter() {
+	if pl.filterText == "" {
+		// No filter - show all players
+		pl.filteredPlayers = pl.players
+	} else {
+		// Filter players based on search text
+		pl.filteredPlayers = []models.Player{}
+		for _, player := range pl.players {
+			if pl.matchesFilter(player) {
+				pl.filteredPlayers = append(pl.filteredPlayers, player)
+			}
+		}
+	}
+
+	// Re-apply sort if active
+	if pl.sortColumn >= 0 {
+		pl.sortPlayers()
+	}
+
+	pl.table.Refresh()
+}
+
+// matchesFilter checks if a player matches the current filter text
+func (pl *PlayerList) matchesFilter(player models.Player) bool {
+	if pl.filterText == "" {
+		return true
+	}
+
+	filter := strings.ToLower(pl.filterText)
+
+	// Search in ID, first name, last name
+	if strings.Contains(strings.ToLower(fmt.Sprintf("%d", player.PlayerID)), filter) {
+		return true
+	}
+	if strings.Contains(strings.ToLower(player.FirstName), filter) {
+		return true
+	}
+	if strings.Contains(strings.ToLower(player.LastName), filter) {
+		return true
+	}
+
+	return false
 }
