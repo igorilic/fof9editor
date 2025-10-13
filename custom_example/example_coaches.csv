@@ -1,0 +1,61 @@
+LASTNAME,FIRSTNAME,BIRTHMONTH,BIRTHDAY,BIRTHYEAR,BIRTHCITY,CITYID,COLLEGE,COLLEGEID,TEAM,POSITION,POSITIONGROUP,OFFENSIVESTYLE,DEFENSIVESTYLE,PAYSCALE
+Harbaugh,John,9,23,1962,Perrysburg_OH,14499,Miami (OH),101,1,0,10,0,2,158
+Monken,Todd,2,5,1966,Wheaton_IL,5331,Knox,537,1,1,6,1,0,146
+Macdonald,Mike,6,26,1987,Boston_MA,7215,Georgia,14,1,2,9,0,2,69
+Weaver,Anthony,7,28,1980,Killeen_TX,18119,Notre Dame,37,1,3,8,0,2,91
+Elliott,Scott,1,1,1985,Leavenworth_KS,6118,Emporia State,297,1,4,11,0,0,79
+Belichick,Bill,4,16,1952,Nashville_TN,17445,Wesleyan,645,2,0,10,0,1,284
+O'Brien,Bill,10,23,1969,Andover_MA,7183,Brown,139,2,1,3,2,0,140
+Belichick,Stephen,3,25,1987,Summit_NJ,12451,Rutgers,46,2,2,10,0,2,73
+Judge,Joe,12,31,1981,Philadelphia_PA,16242,Mississippi State,31,2,3,9,0,1,83
+Cabrera,Moses,8,20,1978,Deming_NM,12557,Oral Roberts,1238,2,4,11,0,0,111
+Daboll,Brian,4,19,1975,Welland_Ontario,30906,Rochester (NY),602,3,0,3,3,0,134
+Kafka,Mike,7,25,1987,Chicago_IL,4552,Northwestern,36,3,1,3,3,0,86
+Martindale,Don,5,19,1963,Dayton_OH,14128,Defiance,482,3,2,9,0,2,132
+McGaughey,Thomas,5,8,1973,Chicago_IL,4552,Houston,92,3,3,10,0,1,87
+Fitzgerald,Craig,9,15,1972,Philadelphia_PA,16242,Maryland,25,3,4,11,0,0,123
+Sirianni,Nick,6,15,1981,Jamestown_NY,13287,Mount Union,576,4,0,6,1,0,82
+Johnson,Brian ,2,16,1987,Barrett Station_TX,17847,Utah,57,4,1,3,4,0,74
+Desai,Sean,4,21,1983,Shelton_CT,2493,Temple,119,4,2,10,0,4,61
+Patullo,Kevin,7,14,1981,Hillsborough Township_NJ,12262,South Florida,116,4,3,3,4,0,83
+Noriega,Fernando,4,10,1991,El Monte_CA,1376,Whitworth,653,4,4,11,0,0,79
+Tomlin,Mike,3,15,1972,Hampton_VA,19081,William and Mary,250,5,0,10,0,2,140
+Canada,Matt,1,19,1972,New Palestine_IN,5725,Indiana,17,5,1,3,2,0,78
+Austin,Teryl,3,3,1965,Sharon_PA,16362,Pittsburgh,44,5,2,10,0,1,138
+Smith,Danny,11,7,1953,Pittsburgh_PA,16249,Edinboro,295,5,3,10,0,1,195
+Giemont,Garrett,8,31,1957,Fullerton_CA,1426,Fullerton College,807,5,4,11,0,0,195
+Rivera,Ron,1,7,1962,Fort Ord_CA,1851,California,8,6,0,9,0,3,152
+Bieniemy,Eric,8,15,1969,New Orleans_LA,7053,Colorado,10,6,1,4,1,0,152
+Del Rio,Jack,4,4,1963,Castro Valley_CA,1277,Southern California,48,6,2,9,0,3,168
+Kaczor,Nate,4,8,1967,Scott City_KS,6244,Utah State,127,6,3,7,2,0,91
+Englehart,Chad,6,5,1981,New Orleans_LA,7053,Southeastern Louisiana,229,6,4,11,0,0,105
+Eberflus,Matt,5,17,1970,Toledo_OH,14647,Toledo,123,7,0,9,0,4,94
+Getsy,Luke,2,16,1984,Munhall_PA,15884,Akron,67,7,1,6,1,0,94
+Williams,Alan,11,4,1969,Norfolk_VA,19211,William and Mary,250,7,2,10,0,4,144
+Hightower,Richard,9,15,1980,Houston_TX,18061,Texas,52,7,3,6,1,0,75
+Arthur,Jim,7,12,1978,Cheshire_CT,2368,Springfield,622,7,4,11,0,0,83
+Stefanski,Kevin,5,8,1982,Philadelphia_PA,16242,Pennsylvania,211,8,0,3,1,0,74
+Van Pelt,Alex,5,1,1970,Pittsburgh_PA,16249,Pittsburgh,44,8,1,3,1,0,140
+Schwartz,Jim,6,2,1966,Halethorpe_MD,7731,Georgetown,168,8,2,9,0,3,180
+Ventrone,Raymond,10,21,1982,Pittsburgh_PA,16249,Villanova,244,8,3,10,0,3,71
+Jackson,Larry,10,7,1971,Rockdale_TX,18424,Texas A&M,53,8,4,11,0,0,99
+Campbell,Dan,4,13,1976,Clifton_TX,17808,Texas A&M,53,9,0,5,3,0,86
+Johnson,Ben,5,11,1986,Charleston_SC,16688,North Carolina,34,9,1,5,2,0,98
+Glenn,Aaron,7,16,1972,Humble_TX,18067,Texas A&M,53,9,2,10,0,3,73
+Montgomery,Scottie,5,26,1978,Shelby_NC,11221,Duke,11,9,3,4,2,0,59
+Schuler,Josh,10,5,1983,Muscatine_IA,3981,Iowa State,19,9,4,11,0,0,91
+McVay,Sean,1,24,1986,Marietta_GA,3282,Miami (OH),101,10,0,6,4,0,86
+LaFleur,Mike,3,3,1987,Mount Pleasant_MI,8707,Elmhurst,490,10,1,6,3,0,90
+Morris,Raheem,9,3,1976,Houston_TX,18061,Hofstra,949,10,2,10,0,1,114
+Lake,Jimmy,12,17,1976,Walnut Creek_CA,2026,Eastern Washington,162,10,3,10,0,1,117
+Lovett,Justin,1,8,1977,Dayton_OH,14128,Findlay,301,10,4,11,0,0,91
+Shanahan,Kyle,12,14,1979,Minneapolis_MN,9342,Texas,52,11,0,3,6,0,110
+Kubiak,Klint,2,17,1987,Houston_TX,18061,Colorado State,82,11,1,3,2,0,82
+Wilks,Steve,8,8,1969,Charlotte_NC,10832,Appalachian State,69,11,2,10,0,4,120
+Lynn,Anthony,12,21,1968,McKinney_TX,18232,Texas Tech,55,11,3,4,4,0,147
+Perry,Dustin,9,30,1985,Marcellus_MI,8656,Western Michigan,129,11,4,11,0,0,95
+Reid,Andy,3,19,1958,Los Angeles_CA,1594,Brigham Young,75,12,0,3,4,0,194
+Nagy,Matt,4,24,1978,Plainfield_NJ,12372,Delaware,155,12,1,3,6,0,110
+Spagnuolo,Steve,12,21,1959,Whitinsville_MA,7579,Springfield,622,12,2,10,0,4,150
+Toub,Dave,6,1,1962,Ossining_NY,13543,Texas - El Paso,120,12,3,8,0,3,141
+Reynolds,Ryan,1,15,1981,Fulton_IL,4712,Iowa,18,12,4,11,0,0,79

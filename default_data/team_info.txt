@@ -1,0 +1,42 @@
+team_info.csv
+
+Information used to create teams when starting a new league, and a default configuration is chosen related to a specific season. This replaces the Default Teams table for those leagues.
+
+Note that if you are starting a new universe and using a player file shipped with the game, the entries in this file corresponding to the year of that player file will be used.
+
+Fields
+
+YEAR - The year the league begins. Note that there are years in this table for which no default player files currently exist. Front Office Football Nine, at release time, only includes a 2023 player file.
+TEAMID - The ID number for that team, with 1 being the first team.
+TEAMNAME - The name of the team.
+NICKNAME - The nickname for the team.
+ABBREVIATION - The abbreviation for the team.
+CONFERENCE - The conference number for the team. Note that this must be 1 or 2.
+DIVISION - The division number for the team. This is within the specific conference. For example, if there are eight divisions, the fourth division in conference 1 would have a 4 in this field as would the fourth division in conference 2.
+CITY - The CITYID index, from the City table, for the home city for this team.
+PRIMARYRED - The red component of the primary color used to identify the team.
+PRIMARYGREEN - The green component of the primary color used to identify the team.
+PRIMARYBLUE - The blue component of the primary color used to identify the team.
+SECONDARYRED - The red component of the secondary color used to identify the team.
+SECONDARYGREEN - The green component of the secondary color used to identify the team.
+SECONDARYBLUE - The blue component of the secondary color used to identify the team.
+ROOF - 0 if the home stadium has no roof, 1 if there's a permanent roof, 2 if there's a retractible roof.
+TURF - 0 if the home stadium has a grass turf, 1 if there's an artificial turf, 2 if there's a "hybrid" turf consisting of artificial blades used to enhance a grass field. Stadiums with roofs can still support grass, but additional expense is incurred since the grass field is kept in a massive tray that can be wheeled in and out of the stadium.
+BUILT - Year the stadium was constructed.
+CAPACITY - The attendance capacity in the stadium.
+LUXURY - Number of luxury boxes in the stadium.
+CONDITION - The condition, from 1-10, of the stadium. Lower condition requires higher maintenance costs.
+ATTENDANCE - Percentage, from 0-100, of Capacity filled during the previous season.
+SUPPORT - Percentage, from 0-100, of local voters who would likely support new stadium construction.
+PLAN - 1 if there is a plan in place committing to construct a new stadium, 0 if there is no plan.
+COMPLETED - Year the new construction will finish, 0 if there is no plan.
+FUTURE - The CITYID index, from the City table, of the city where the new stadium is being built, 0 if there is no plan.
+FUTURENAME - The new name of the team after the new stadium is built, blank if the name won't be changed or if there is no plan.
+FUTUREABBR - The new abbreviation for the team after the new stadium is built, blank if there is no plan.
+FUTUREROOF - If a plan is in place, the roof type (0 if none) of the new stadium.
+FUTURETURF - If a plan is in place, the turf type of the new stadium.
+FUTURECAP - The attendance capacity of the new stadium.
+FUTURELUXURY - The number of luxury boxes in the new stadium.
+TEAMCONTRIBUTION - In units of 1,000,000, the amount the team has to pay for the new stadium construction.
+
+This table is used only when starting a new league. If editing, make sure there is one entry for each team, from 1 to the total number of teams, for the selected year. Note that there may be entries in this table, but no supporting player file entries. In these cases, the teams can be created, but random players will be created to fill teams.

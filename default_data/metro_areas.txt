@@ -1,0 +1,44 @@
+metro_areas.csv
+
+Information about significant population areas, as defined by the US Census. Included are CBSAs: metropolitan areas (usually divided into subareas), consisting of one or more counties, and micropolitan areas (one county).
+
+Fields
+
+METROID - Index of the area, with 0 representing the entire world. This is how any other data type in the game will refer to the area. Areas 1-1999 are reserved for the US, 2000-2499 for Canada and 2500-2999 for the UK.
+NAME - The name of the area, usually its major city or cities.
+REGION - Abbreviation for the region or regions that comprise the area (used only to describe the area within this file - it is not connected to Regions).
+COUNTRY - The index for the country containing this region.
+HFLAG - Is this area included when host cities for new franchises are chosen by the game (1 for yes, 0 for no)?
+RNAME - When choosing this area for a host city, is the name of the region used for the franchise? 0 - never, 1 - 1/8 of the time, 2 - 1/2 of the time, 3 - 7/8 of the time, 4 - 7/8 of the time, use metro area name instead of region name.
+POP2019 - Population estimate for the area in 2019, if possible.
+GROWTH - Approximate yearly growth rate (2018 - 2019 basis) of area (multiplied by 1000, so 1000 is no growth, 999 is -0.1% growth).
+LATITUDE - Approximate Latitude of the center of the area (multiplied by 1000).
+LONGITUDE - Approximate Longitude of the center of the area (multiplied by 1000).
+TVNAME - Call Sign and Home City of the television station broadcasting from this area (NA if no station present).
+TVCITY - City ID of the television station broadcasting from this area (0 if no station present).
+TVLAT - Approximate Latitude of center of TV city (0 if no station present, multiplied by 1000).
+TVLONG - Approximate Longitude of center of TV City (0 if no station present, multiplied by 1000).
+
+Weather Information Note - Record 0 (No Area) shows averages, and is often the basis for determining local weather - changes here may cause extensive climate change.
+
+JANHIGH-DECHIGH - High Temperatures, by month, for the area (multiplied by 10).
+JANLOW-DECLOW - Low Temperatures, by month, for the area (multiplied by 10).
+JANPRC-DECPRC - Precipiation totals, by month, as compared to the average (average reported as multiplied by 100).
+PRECIPITATION - Percentage of days with more than a trace of precipitation, as compared to the average (average reported as percentage of all days, multiplied by 100).
+HEAVY_RAIN - Percentage of days with heavy rain, as compared to the average (average reported as a percentage of all days with precipitation).
+STORM - When heavy rain is in area, percentage of time this becomes stormy weather.
+WIND - Average Wind Speed, in MPH, for the area.
+
+General Weather Algorithm
+
+A grid, based in longitude, is placed over the entire world of simulation. Random numbers from 0-100 are applied, with small changes from area to area.
+
+Several "fronts" are placed over the grid, close to vertical, of varying lengths. These are straight lines.
+
+A general "precipitation percentage" is calculated based on distance west or southwest of the nearest front.
+
+A temperature is calculated, based on the high for the date (monthly values used, interpolating the value between months), high minus low used to create a standard deviation, the grid value used to set a range based on high and standard deviation, with precipitation percentage modifying the base down, if it's significant.
+
+The precipitation percentage is modified by the local precipitation averages to calculate a percentage chance of precipitation for the area. This is then randomly assigned. If there is precipitation assigned, similar adjustments are made based on a chance of heavy rain, and then for storms or for heavy snow. Rain is assumed at 37 degrees or higher, snow at 30 or lower, and rain/snow is random in between.
+
+Wind is assigned using a similar algorithm, with higher winds in worse weather conditions. Weather for all metro areas is calculated at the same time, once per day. The temperature grid is then moved east, along with fronts, with new fronts and grid values added at the west end of the simluated world.

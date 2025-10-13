@@ -1,0 +1,43 @@
+cities.csv
+
+Information about cities. A city, in the game, is usually defined by how it's referenced by the post office. This means it may not be incorporated or otherwise formally designated. Some cities in the game may have populations many times that of their incorporated area. Some incorporated cities may not have a separate postal code. Those might not be included in the game. If cities are combined in areas, an attempt was made to determine the most likely name people from the area use, even though that might not correspond exactly with the reported population.
+
+Fields
+
+CITYID - Index of the city, with 0 representing a generic "foreign" city not modeled in the game. This is how any other data type in the game will refer to the city. US cities have 1-29999 reserved, Canada 30000-34999 and the United Kingdom 35000-39999. Cities from other countries use 40000-49999, though they do not contain information related to regions and can only be used as home cities for players.
+NAME - The name of the city. This is what's used within the game.
+RCODE - A code for the state or other area commonly used for identification. In the US, that's a state, with codes 1-99 reserved (census codes are used). In Canada, a province, with 100-149 reserved and in the UK, a traditional country, with 150-153 used (150 is England, 151 Wales, 152 Scotland and 153 Northern Ireland).
+REGION - Abbreviation for the state, province or traditional country. This is included for readability. The abbreviation used in the game is from the region database.
+CCODE - A code for the country. 1 is the United States, 2 is Canada, 3 is United Kingdom. Higher values are used for countries that don't have regions currently modeled in the game.
+COUNTRY - Abbreviation for the country. This is included for readability. The abbreviation used in the game is from the country database.
+AREA - Code identifying the area containing the city. In the US, these are counties and codes 1000-99999 are reserved, with census identifiers used (1000 * state code + county code). In Canada, the province and area are the same. In the UK, codes 150-199 are reserved and refer to a county, major city area, combination of counties, or combination of census districts.
+POPULATION - Census approximation of the population for the city. At present, 2019 estimates are used whenever possible.
+INCOME - Census approximation of the household income for the city, with an attempt made to find a consistent measure that works for all countries.
+LATITUDE - Approximate Latitude of the center of the city (multiplied by 1000).
+LONGITUDE - Approximate Longitude of the center of the city (multiplied by 1000).
+METROAREA - Index of the Metro Area, within the game, containing the city. The value 0 signifies that the city is not included in any modeled Metro Area. Codes 1-1999 are reserved for US areas, 2000-2499 for Canadian areas and 2500-2999 for UK areas. See the Metro Areas file for details.
+ISHOST - A flag indicating whether the city is in a Metro Area that can be used as a host city for a franchise (1 for yes, 0 for no).
+ISHOME - A flag indicating that the city may be used as a "name" host for a franchise, meaning the franchise could be called by this city name if the metro area has been selected to host a franchise (1 for yes, 0 for no).
+CLOSEST - Index of the Metro Area closest to the city, useful for when the city is outside of all metro areas. This is used when determining weather and population growth.
+TVAREA - Index of the Metro Area containing the closest city to this city which includes a television station.
+DISTTV - Approximate distance, in direct miles, from the city to the nearest city containing a television station. This is used to identify the strength of a city's attachment to an area (in the sense that if the distance is greater than a certain distance, the population of a city may be less interested in its local franchise).
+
+General Host Selection Algorithm
+
+If, when beginning a new universe, the game is to select host cities for franchises rather than use a set list, the game selects cities as follows:
+
+It uses a weighted random selection process to choose the first metro area host, based on population and whether the are is considered a possible host site.
+
+Within that metro area, a "name" host city is chosen.
+
+If the host city is not the largest potential "name" host city, it is then considered the host city for the franchise.
+
+If not, a host city is chosen by population within the metro area, through a weighted random process. The largest city is given extra weighting.
+
+A name for the franchise is then chosen - either that "name" city, or, if the area allows it, potentially the name of the state.
+
+For subsequent host cities, potential areas are chosen using the same process. Areas can be rejected if they are too close (as defined by an internal setting) to any other chosen host or if an existing franchise name uses that state name and the selection process comes up with the same state name.
+
+Division Assignments
+
+When reserved division names "North", "Northern", "South", "Southern", "East", "Eastern", "West", "Western" are used, then a conference will assign teams to divisions as best it can using that criteria. The term "Central" is not similarly reserved, as the name implies it is between two divisions with reserved names. The order of divisions within a conference is important. The first with a reserved name will always be assigned first, and so on. Therefore, when mixing North/South and East/West concepts within a conference, use East/West first, because geographic areas are often wider than they are tall, so this will keep divisional rivals closer together.

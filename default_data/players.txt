@@ -1,0 +1,128 @@
+xxxx_players.csv
+
+Information about the default player files provided with Front Office Football Nine. The xxxx in the file name corresponds to the year a universe started with that player file begins. The game will use this player file when starting a new universe.
+
+At the time of the 9.1 update in September 2024, the only entries with corresponding default player files are 2023 and 2024. This is done with the understanding that no professional football player has endorsed Front Office Football in any way, in accordance with the federal Lanham Act.
+
+Be careful when editing or creating a new matching player file. Not all values are thoroughly checked when starting a new universe, and a mistake could result in an unstable universe.
+
+If player ratings deviate from the distribution of ratings provided here, the universe could easily produce statistical performances that are very different from the default player file.
+
+If player birthdates deviate much from the years you see in a player file for a particular year, players may retire earlier or later than players should, given their experience.
+
+Fields
+
+PLAYERID - The interal identifier given this player in the initial universe. This must be unique within the universe and must be 1 or greater. When creating new players after the initial universe is created, they will be assigned unique IDs sequentially, beginning with one more than the highest ID in this file. Players should have player IDs of at least 1000, and entries should be sorted, lowest to highest ID.
+LASTNAME - The last name of the player. This should be no longer than 18 characters.
+FIRSTNAME - The first name of the player. This should be no longer than 16 characters.
+TEAM - The team the player is originally assigned to when there's no initial draft in the game. Use the ID for the team as found for the year of the player file in team_info.csv. Use 0 if the player was a free agent at the start of that year. 
+POSITION_KEY - The player's primary position, a value from 2 to 28. Values outside of this range could cause instability in a universe. Values are as follows:
+1	Quarterback (do not include quarterbacks in this file)
+2	Running Back
+3	Fullback
+4	Tight End
+5	Flanker
+6	Split End
+7	Left Tackle
+8	Left Guard
+9	Center
+10	Right Guard
+11	Right Tackle
+12	Punter
+13	Kicker
+14	Defensive Left End
+15	Defensive Left Tackle
+16	Defensive Nose Tackle
+17	Defensive Right Tackle
+18	Defensive Right End
+19	Strong-Side Linebacker
+20	Strong Inside Linebacker
+21	Middle Linebacker
+22	Weak Inside Linebacker
+23	Weak-Side Linebacker
+24	Left Cornerback
+25	Right Cornerback
+26	Strong Safety
+27	Free Safety
+28	Long Snapper
+UNIFORM - The player's uniform number with his initial team, when there's no initial draft. This should range from 0-99. A uniform number should be unique on this team, as no checking is done when starting a new league.
+HEIGHT - The player's height. This can be the number of inches (72 is six feet tall). Or, if the value is more than 99, it can be the number of inches, with the last digit indicating eighths of an inch (745 would be 6' 2 5/8"). You can mix these ranges in one player file.
+HANDSIZE - The player's hand size, in inches and eighths of an inch (93 is 9 3/8"). If this is a 0, which it is in the default Front Office Football player file, the game chooses an appropriate hand size.
+ARMLENGTH - The player's arm length, in inches and eighths of an inch. If this is a 0, which it is in the default Front Office Football player file, the game chooses an appropriate arm length.
+WEIGHT - The player's weight, in pounds.
+BIRTHMONTH - The month of the player's birthdate, a value from 1 to 12.
+BIRTHDAY - The day of the player's birthdate, a value from 1 to 31.
+BIRTHYEAR - The year of the player's birthdate. This should be consistent with the year of the player file. For instance, a player with four years of experience should probably have a birth year about 26-28 years earlier than the year of the player file.
+BIRTHCITY - This is a text field not read by the game, but helps when working with a player file.
+CITYID - The ID of the city of the player's birth. This must match an ID of a city in cities.csv.
+COLLEGE - This is a text field not read by the game, but helps when working with a player file.
+COLLEGEID - The ID of the college the player attended. This must match an ID of a college in colleges.csv (0 for No College).
+YEARENTRY - The year a player would have been part of a draft class, even if he wasn't drafted. Unusual values in this field could cause instabilty in areas where past draft results can be viewed.
+ROUNDDRAFTED - The round of the draft when a player was selected. This should be 0 if a player was undrafted.
+SELECTIONDRAFTED - The overall selection of the draft when a player was selected. This should be 0 if a player was undrafted.
+SUPPLEMENTAL - This should be 0 if a player was selected (or went undrafted) in the amateur draft. It should be 1 if he was selected during the league's supplemental draft. Front Office Football Nine does not include a supplemental draft of its own.
+ORIGINALTEAM - Either the team that drafted the player, or, if the player was undrafted, the team that first signed him (even if he never played for that team). Use the ID for the team as found for the year of the player file in team_info.csv. Use 0 if the player was not drafted or signed to any team within a year of first being available.
+EXPERIENCE - The player's accrued experience, in years, before the first season begins. This should be a value from 0 to 23.
+YEARSIGNED - The year that the player's current team, if starting without an initial draft, signed or drafted this player.
+PLAYPERCENTAGE - The percentage of snaps on offense, defense or special teams the player played, for his team, during the previous season. This should range from 0-100.
+HALLOFFAMEPOINTS - This field is used when calculating whether a player might reach the Hall of Fame when he retires. It ranges from 0 to 9999. Each season, a player's performances add to this value. The threshold for Hall entry varies by position.
+SALARYYEARS - The number of years remaining on a player's contract. This must range from 0-5.
+SALARYYEAR1 - The player's salary in the first year of this contract (in units of $10,000, so 452 would indicate a value of $4,520,000). Use 0 if the player is not under contract that season. Salaries and bonuses must be below 10,000 ($1 billion) in a player file.
+BONUSYEAR1 - The player's accrued bonus in the first year of this contract (in units of $10,000).
+SALARYYEAR2 - The player's salary in the second year of this contract (in units of $10,000).
+BONUSYEAR2 - The player's accrued bonus in the second year of this contract (in units of $10,000).
+SALARYYEAR3 - The player's salary in the third year of this contract (in units of $10,000).
+BONUSYEAR3 - The player's accrued bonus in the third year of this contract (in units of $10,000).
+SALARYYEAR4 - The player's salary in the fourth year of this contract (in units of $10,000).
+BONUSYEAR4 - The player's accrued bonus in the fourth year of this contract (in units of $10,000).
+SALARYYEAR5 - The player's salary in the fifth year of this contract (in units of $10,000).
+BONUSYEAR5 - The player's accrued bonus in the fifth year of this contract (in units of $10,000).
+OVERALLRATING - A value from 0-10, indicating the overall potential ability of this player. The game uses this value to create ratings. The ratings may differ significantly from universe to universe. There is a random element to new player ratings. The "X-Factor" in the new universe wizard determines the range of that random element. This is the most critical value in the player file. If you change how this value is distributed among players, it will considerably change the statistical performances you'll see in games and AI-controlled teams will struggle to manage rosters properly.
+0 - The player is of replacement quality for his position. Expect low ratings across the board.
+1 - The player is of backup quality. Ratings are generally low.
+2 - The player is of starting quality. Ratings can vary. For lower-value positions (FB/P/K/LS), this is the top value that can be assigned.
+3 - The player is usually one of the better starters in the league for his position.
+4-7 - Increasingly rare - players are often All-Star level.
+8 - The player is often the best in the league at his position.
+9 - The player is a generational talent at his position.
+10 - The player is below replacement quality for his position, and will only be placed on a team at the start of a new universe if he's needed to fill a roster.
+
+Player Attributes
+
+The remaining fields offer the ability to give each player in a new universe specific ratings. Use -1 if you want a player to have his ability in that category determined by using the overall rating. The default player file in Front Office Football Nine has all -1s here. If not -1, this field should range from 0-250. Be careful, as the distribution of player ratings can change how the game plays, considerably. The highest values should be reserved only for the very best players in the league. Most players should range from 0-100 in most categories.
+
+SKILL_SPEED - Player's raw speed in pads, resulting in more breakaway runs and receptions.
+SKILL_POWER - Player's raw strength in pads, resulting in more effective blocking and dealing with block attempts.
+HOLE_RECOGNITION - Ball carrier's ability to find the best possible path for gaining rushing yardage.
+ELUSIVENESS - Ball carrier's ability to avoid tackles, though this might result in moving backward.
+BLITZ_PICKUP - While in the backfield, a player's ability to detect and block an opposing blitzer.
+CATCH_HANDS - Receiver's ability to secure a catch.
+ADJUST_TO_BALL - Receiver's ability to make adjustments to his route in order to catch the ball.
+ROUTE_RUNNING - Receiver's ability to effectively run his assigned route.
+CATCH_IN_TRAFFIC - Receiver's ability to make a catch while navigating the middle of the field.
+DEFEAT_BLOCKERS - Receiver's ability to get past a defensive player in the five-yard contact zone.
+SECURE_HANDLING - Ball carrier's ability to hold on to the ball after contact.
+RUN_BLOCK_TECHNIQUE - Blocker's ability to effectively maintain a block while clearing a path for a runner.
+PASS_BLOCK_TECHNIQUE - Blocker's ability to effectively maintain a block while protecting the quarterback.
+BLOCKING_STRENGTH - Blocker's ability to effectively counter a pass rusher's strength.
+SCHEME_ACQUISITION - Offensive lineman's ability to adapt to a new team's blocking scheme.
+PUNT_DISTANCE - Punter's ability to kick the ball down the field.
+PUNT_HANG_TIME - Punter's ability to kick the ball higher, giving his team time to cover the punt.
+PUNT_DIRECTIONAL - Punter's ability to effectively kick the ball to the sidelines.
+KICKOFF_HANG_TIME - Kicker's ability to kick the ball closer to the goal line, giving his team time to cover kickoffs.
+FIELD_GOAL_ACCURACY - Kicker's accuracy in attempting field goals and extra points.
+FIELD_GOAL_DISTANCE - Kicker's ability to attempt and kick longer field goals.
+RUN_DEFENSE - Defensive player's ability to effectively defend running plays.
+PASS_RUSH_TECHNIQUE - Defensive player's ability to avoid blockers when rushing the quarterback.
+PASS_RUSH_STRENGTH - Defensive player's ability to overpower blockers when rushing the quarterback.
+PASS_DEFENSE_MAN - Defensive player's ability to defend passes while assigned to cover a specific receiver.
+PASS_DEFENSE_PHYSICAL - Defensive player's ability to defend passes while assigned to cover a receiver and engage in the five-yard contact zone.
+PASS_DEFENSE_ZONE - Defensive player's ability to identify and defend passes while assigned to a zone.
+PASS_DEFENSE_HANDS - Defensive player's ability to intercept a pass when effectively defending a pass attempt.
+DEFENSIVE_DIAGNOSIS - Defensive player's ability to correctly identify runs and passes, as well as his assigned role in each case.
+SPECIAL_TEAMS - Player's ability to effectively participate on special teams, particularly important when in the role of gunner.
+PUNT_RETURNS - Player's ability to effectively return punts.
+KICK_RETURNS - Player's ability to effectively return kickoffs.
+LONG_SNAPPING - Lineman's ability to accurately and quickly snap the ball to a kick holder or punter.
+KICK_HOLDING - Player's ability to catch a long snap and get it into the proper spot for a kicker.
+ENDURANCE - Player's ability to maintain top performance, play after play, particularly important for defensive players, receivers and running backs.

@@ -1,0 +1,19 @@
+team_colors.csv
+
+Information used when selecting colors for teams that are randomly created, rather than created using the Team Info or Default Teams tables.
+
+Fields
+
+RED - The red component of the color.
+GREEN - The green component of the color.
+BLUE - The blue component of the color.
+FREQUENCY - The weight assigned to the color when chosing primary colors for a team.
+SECONDARY - The weight assigned to the color when chosing secondary colors for a team.
+ANGLE - The hue for the color (angle on a HLS color wheel), a function of the RGB components.
+DARKNESS - The darkness for the color, a function of the RGB components. Colors with less than a 50 Darkness should not be used as primary colors, as white or off-white text is often used on these backgrounds.
+LUMINOSITY - The luminosity of the color, a function of the RGB components.
+SATURATION - The saturation of the color, a function of the RGB components.
+
+Colors are a combination of the three components, red, green, and blue. These are known as RGB parameters, and range from 0 to 255. The Hue, Darkness, Luminosity and Saturation values are calculated from the RGB parameters, and the values here are factored into the selection process. If changing or adding to this table, calculate the correct values for these entries.
+
+When using weights for teams, the frequencies are added together, then a selection is made by selecting a random number. When choosing the secondary color, an attempt is made to find a color that contrasts with the primary color just selected. The secondary color is more a highlight color for menus and logos and is not used for text.

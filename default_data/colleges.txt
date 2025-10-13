@@ -1,0 +1,15 @@
+colleges.csv
+
+Information about colleges. Every player in the game attended a college. This is mostly cosmetic, though colleges are chosen before home towns are chosen for game-generated players.
+
+Fields
+
+COLLEGEID - Index of the college, with 0 representing players who either did not go to college or their college isn't in this database. It is assumed that all players born outside the US and Canada went to a college in the US or Canada to play football. There are college teams in the UK and in other countries, but the college sports concept is very different and an athlete growing up in a European or African city seriously interested in professional football would attend a college in the US, even if just for a year.
+NAME - The name of the college.
+NICKNAME - The nickname of men's sports teams at that college.
+CITYID - The city index, within the game's database, where the college is located. For some colleges, the home city is not in the database. In these cases, the closest city within the database or the metro area if it's a suburb, is chosen.
+STPRV - The abbreviation of the state or province where the college is located.
+LEVEL - A code that helps determine how players are allocated to colleges. 1 is Major FBS, 2 is Mid-Major FBS, 3 is FCS, 4 is Division II, 5 is Division III, 6 is NAIA, 7 is Junior College, 8 is Canada, 9 is for active colleges that do not field football teams and 10 is for colleges that have closed. See the college_host file for details.
+FOOTBALL - A weight given to colleges that helps determine how players are allocated. The higher the weight, the more likely, within the college's level, it will be chosen. This can be fine-tuned to reflect any time period. The default values provide more college distribution than we've seen in recent years.
+DIVISION - The division for the college. 1 is for Division I (FBS and FCS), 2 is for Division II, 3 is for Division III, 4 is for NAIA, 5 is for Junior College, 8 is for Canadian Leagues and 9 is for colleges that have closed. This is cosmetic.
+

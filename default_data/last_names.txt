@@ -1,0 +1,9 @@
+last_names.csv
+
+A list of names that can be used for player and staff last names.
+
+Fields
+
+LASTNAME - A last name. Editing this list is simply a matter of adding or deleting an entry.
+FREQUENCY - A weight for that particular last name. Higher weights mean that the name has a greater chance of being chosen for a person.
+

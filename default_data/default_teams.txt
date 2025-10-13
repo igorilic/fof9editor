@@ -1,0 +1,24 @@
+default_teams.csv
+
+Information used to create teams when starting a new league, and no specific single-year configuration is used. Teams are connected to a specific league structure instead. This information is not used when starting a new league when random team hosts are selected.
+
+Note that if you're changing team information and using a default player file shipped with the game, changing this file will have no effect on a new universe.
+
+Fields
+
+LEAGUE - The string identifier, from the League Info table, for the specific league configuration. This must match exactly for each team.
+TEAMID - The ID number for that team, with 1 being the first team.
+TEAMNAME - The name of the team.
+NICKNAME - The nickname for the team.
+ABBREVIATION - The abbreviation for the team.
+CONFERENCE - The conference number for the team. Note that this must be 1 or 2.
+DIVISION - The division number for the team. This is within the specific conference. For example, if there are eight divisions, the fourth division in conference 1 would have a 4 in this field as would the fourth division in conference 2.
+CITY - The CITYID index, from the City table, for the home city for this team.
+PRIMARYRED - The red component of the primary color used to identify the team.
+PRIMARYGREEN - The green component of the primary color used to identify the team.
+PRIMARYBLUE - The blue component of the primary color used to identify the team.
+SECONDARYRED - The red component of the secondary color used to identify the team.
+SECONDARYGREEN - The green component of the secondary color used to identify the team.
+SECONDARYBLUE - The blue component of the secondary color used to identify the team.
+
+This table is used only when starting a new league. If editing, make sure there is one entry for each team, from 1 to the total number of teams, for each possible league configuration.

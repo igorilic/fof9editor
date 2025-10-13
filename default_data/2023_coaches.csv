@@ -1,0 +1,161 @@
+LASTNAME,FIRSTNAME,BIRTHMONTH,BIRTHDAY,BIRTHYEAR,BIRTHCITY,CITYID,COLLEGE,COLLEGEID,TEAM,POSITION,POSITIONGROUP,OFFENSIVESTYLE,DEFENSIVESTYLE,PAYSCALE
+Gannon,Jonathan,1,4,1983,Cleveland_OH,14092,Louisville,24,1,0,10,0,1,58
+Petzing,Drew,3,12,1987,Rochester_NY,13656,Middlebury,565,1,1,6,2,0,82
+Rallis,Nick,7,13,1993,Minneapolis_MN,9342,Minnesota,29,1,2,9,0,1,53
+Rodgers,Jeff,1,12,1978,Dakota County_MN,9220,Texas,52,1,3,9,0,2,105
+Morris,Buddy,9,29,1957,South Park Township_PA,15500,Pittsburgh,44,1,4,11,0,0,195
+Smith,Arthur,5,27,1982,Memphis_TN,17418,North Carolina,34,2,0,5,1,0,74
+Ragone,Dave,10,3,1979,Middleburg Heights_OH,14007,Louisville,24,2,1,3,1,0,122
+Nielsen,Ryan,3,20,1979,Los Angeles_CA,1594,Southern California,48,2,2,8,0,2,69
+Gray,Jerry,12,16,1962,Lubbock_TX,18196,Texas,52,2,3,10,0,2,171
+Stallworth,Thomas,3,2,1979,Nashville_TN,17445,Tennessee,51,2,4,11,0,0,79
+Harbaugh,John,9,23,1962,Perrysburg_OH,14499,Miami (OH),101,3,0,10,0,2,158
+Monken,Todd,2,5,1966,Wheaton_IL,5331,Knox,537,3,1,6,1,0,146
+Macdonald,Mike,6,26,1987,Boston_MA,7215,Georgia,14,3,2,9,0,2,69
+Weaver,Anthony,7,28,1980,Killeen_TX,18119,Notre Dame,37,3,3,8,0,2,91
+Elliott,Scott,1,1,1985,Leavenworth_KS,6118,Emporia State,297,3,4,11,0,0,79
+McDermott,Sean,3,21,1974,Omaha_NE,11705,William and Mary,250,4,0,10,0,3,104
+Dorsey,Ken,4,22,1981,Orinda_CA,1728,Miami (FL),26,4,1,3,6,0,110
+Holcomb,Al,10,22,1970,New York_NY,13493,West Virginia,64,4,2,9,0,3,93
+Washington,Eric,10,29,1969,Shreveport_LA,7124,Grambling State,169,4,3,8,0,1,105
+Ciano,Eric,8,8,1973,Waltham_MA,7541,Springfield,622,4,4,11,0,0,129
+Reich,Frank,12,4,1961,Freeport_NY,13140,Maryland,25,5,0,3,1,0,94
+Brown,Thomas,5,15,1986,Tucker_GA,3461,Georgia,14,5,1,4,4,0,78
+Evero,Ejiro,1,6,1981,Colchester_England,35243,California - Davis,143,5,2,10,0,2,69
+Staley,Duce,2,27,1975,West Columbia_SC,16935,South Carolina,47,5,3,4,4,0,91
+King,Kevin,1,1,1977,Wilson_NC,11326,East Carolina,84,5,4,11,0,0,91
+Eberflus,Matt,5,17,1970,Toledo_OH,14647,Toledo,123,6,0,9,0,4,94
+Getsy,Luke,2,16,1984,Munhall_PA,15884,Akron,67,6,1,6,1,0,94
+Williams,Alan,11,4,1969,Norfolk_VA,19211,William and Mary,250,6,2,10,0,4,144
+Hightower,Richard,9,15,1980,Houston_TX,18061,Texas,52,6,3,6,1,0,75
+Arthur,Jim,7,12,1978,Cheshire_CT,2368,Springfield,622,6,4,11,0,0,83
+Taylor,Zac,5,10,1983,Norman_OK,14998,Nebraska,33,7,0,3,5,0,78
+Callahan,Brian,6,10,1984,Champaign_IL,4540,UCLA,56,7,1,3,3,0,94
+Anarumo,Lou,8,18,1966,New York_NY,13493,Wagner,246,7,2,10,0,3,89
+Simmons,Darrin,4,9,1973,Elkhart_KS,6021,Kansas,20,7,3,3,5,0,147
+Boese,Joey,2,8,1980,Chicago_IL,4552,Wisconsin,65,7,4,11,0,0,95
+McCarthy,Mike,11,10,1963,Pittsburgh_PA,16249,Baker,677,8,0,3,6,0,176
+Schottenheimer,Brian,10,16,1973,Denver_CO,2139,Florida,12,8,1,3,2,0,182
+Quinn,Dan,9,11,1970,Orange_NJ,12346,Salisbury,615,8,2,8,0,1,138
+Fassel,John,1,10,1974,Anaheim_CA,1158,Weber State,247,8,3,5,3,0,117
+Nash,Harold,5,5,1970,New Orleans_LA,7053,Louisiana,95,8,4,11,0,0,141
+Payton,Sean,12,29,1963,San Mateo_CA,1878,Eastern Illinois,160,9,0,3,3,0,164
+Lombardi,Joe,6,6,1971,Seattle_WA,19869,Air Force,66,9,1,3,4,0,134
+Joseph,Vance,9,20,1972,Marrero_LA,7027,Colorado,10,9,2,10,0,1,120
+Kotwica,Ben,12,8,1974,Tinley Park_IL,5257,Army,71,9,3,9,0,1,91
+Dalrymple,Dan,8,26,1965,Cleveland_OH,14092,Miami (OH),101,9,4,11,0,0,171
+Campbell,Dan,4,13,1976,Clifton_TX,17808,Texas A&M,53,10,0,5,3,0,86
+Johnson,Ben,5,11,1986,Charleston_SC,16688,North Carolina,34,10,1,5,2,0,98
+Glenn,Aaron,7,16,1972,Humble_TX,18067,Texas A&M,53,10,2,10,0,3,73
+Montgomery,Scottie,5,26,1978,Shelby_NC,11221,Duke,11,10,3,4,2,0,59
+Schuler,Josh,10,5,1983,Muscatine_IA,3981,Iowa State,19,10,4,11,0,0,91
+LaFleur,Matt,11,14,1979,Mount Pleasant_MI,8707,Saginaw Valley State,369,11,0,3,2,0,90
+Stenavich,Adam,3,11,1983,Marshfield_WI,20278,Michigan,27,11,1,7,2,0,82
+Barry,Joe,7,5,1970,Boulder_CO,2100,Southern California,48,11,2,9,0,1,150
+Bisaccia,Rich,6,3,1960,Yonkers_NY,13943,Yankton,1019,11,3,4,3,0,153
+Gizzi,Chris,3,8,1975,Brunswick_OH,14044,Air Force,66,11,4,11,0,0,95
+Steichen,Shane,5,11,1985,Sacramento_CA,1848,Nevada - Las Vegas,105,12,0,3,4,0,66
+Cooter,Jim Bob,7,3,1984,Fayetteville_TN,17295,Tennessee,51,12,1,3,3,0,104
+Bradley,Gus,7,5,1966,Zumbrota_MN,9574,North Dakota State,206,12,2,9,0,3,120
+Mason,Brian,10,26,1986,Zionsville_IN,5923,Denison,484,12,3,4,3,0,51
+Howell,Richard,2,19,1972,Bladenboro_NC,10788,Davidson,153,12,4,11,0,0,99
+Pederson,Doug,1,31,1968,Bellingham_WA,19616,Louisiana - Monroe,96,13,0,3,3,0,86
+Taylor,Press,1,13,1988,Norman_OK,14998,Marshall,98,13,1,3,6,0,86
+Caldwell,Mike,8,31,1971,Oak Ridge_TN,17457,Middle Tennessee State,102,13,2,9,0,2,93
+Farwell,Heath,12,31,1981,Fontana_CA,1408,San Diego State,113,13,3,9,0,3,67
+Scott,Cedric,10,19,1977,Gulfport_MS,10347,Southern Mississippi,118,13,4,11,0,0,83
+Reid,Andy,3,19,1958,Los Angeles_CA,1594,Brigham Young,75,14,0,3,4,0,194
+Nagy,Matt,4,24,1978,Plainfield_NJ,12372,Delaware,155,14,1,3,6,0,110
+Spagnuolo,Steve,12,21,1959,Whitinsville_MA,7579,Springfield,622,14,2,10,0,4,150
+Toub,Dave,6,1,1962,Ossining_NY,13543,Texas - El Paso,120,14,3,8,0,3,141
+Reynolds,Ryan,1,15,1981,Fulton_IL,4712,Iowa,18,14,4,11,0,0,79
+McDaniel,Mike,3,6,1983,Greeley_CO,2187,Yale,252,15,0,6,6,0,78
+Smith,Frank,2,21,1981,Milwaukee_WI,20299,Miami (OH),101,15,1,5,2,0,98
+Fangio,Vic,8,22,1958,Dunmore_PA,16352,East Stroudsburg,293,15,2,9,0,2,240
+Studesville,Eric,5,29,1967,Madison_WI,20264,Wisconsin - Whitewater,667,15,3,4,1,0,171
+Puloka,Dave,1,12,1979,Arlington_MA,7184,Holy Cross,172,15,4,11,0,0,111
+O'Connell,Kevin,5,25,1985,Knoxville_TN,17373,San Diego State,113,16,0,3,2,0,70
+Phillips,Wes,2,17,1979,Houston_TX,18061,Texas - El Paso,120,16,1,5,6,0,110
+Flores,Brian,2,24,1981,New York_NY,13493,Boston College,7,16,2,9,0,1,89
+Pettine,Mike,9,25,1966,Doylestown_PA,15682,Virginia,59,16,3,9,0,2,83
+Hingst,Josh,12,29,1978,Fremont_NE,11606,Nebraska,33,16,4,11,0,0,129
+Belichick,Bill,4,16,1952,Nashville_TN,17445,Wesleyan,645,17,0,10,0,1,284
+O'Brien,Bill,10,23,1969,Andover_MA,7183,Brown,139,17,1,3,2,0,140
+Belichick,Stephen,3,25,1987,Summit_NJ,12451,Rutgers,46,17,2,10,0,2,73
+Judge,Joe,12,31,1981,Philadelphia_PA,16242,Mississippi State,31,17,3,9,0,1,83
+Cabrera,Moses,8,20,1978,Deming_NM,12557,Oral Roberts,1238,17,4,11,0,0,111
+Allen,Dennis,9,22,1972,Atlanta_GA,3023,Texas A&M,53,18,0,10,0,4,98
+Carmichael,Pete,10,6,1971,Framingham_MA,7299,Boston College,7,18,1,3,6,0,152
+Woods,Joe,6,25,1970,North Vandergrift_PA,16495,Illinois State,176,18,2,10,0,3,120
+Rizzi,Darren,7,21,1970,Hillsdale_NJ,12201,Rhode Island,216,18,3,9,0,4,105
+Rhea,Matt,1,1,1976,Tooele_UT,18813,Southern Utah,232,18,4,11,0,0,83
+Daboll,Brian,4,19,1975,Welland_Ontario,30906,Rochester (NY),602,19,0,3,3,0,134
+Kafka,Mike,7,25,1987,Chicago_IL,4552,Northwestern,36,19,1,3,3,0,86
+Martindale,Don,5,19,1963,Dayton_OH,14128,Defiance,482,19,2,9,0,2,132
+McGaughey,Thomas,5,8,1973,Chicago_IL,4552,Houston,92,19,3,10,0,1,87
+Fitzgerald,Craig,9,15,1972,Philadelphia_PA,16242,Maryland,25,19,4,11,0,0,123
+Saleh,Robert,1,31,1979,Dearborn_MI,8410,Northern Michigan,357,20,0,9,0,4,74
+Hackett,Nathaniel,12,19,1979,Fullerton_CA,1426,California - Davis,143,20,1,5,4,0,110
+Ulbrich,Jeff,2,17,1977,San Jose_CA,1868,Hawai'i,91,20,2,9,0,4,77
+Boyer,Brant,6,27,1971,Ogden_UT,18774,Arizona,2,20,3,9,0,4,79
+Galac,Justus,8,15,1980,Cattaraugus_NY,12925,Brockport,454,20,4,11,0,0,111
+McDaniels,Josh,4,22,1976,Barberton_OH,13989,John Carroll,530,21,0,3,5,0,122
+Lombardi,Mick,10,1,1988,Ocean City_NJ,12338,Fordham,165,21,1,6,4,0,78
+Graham,Patrick,1,24,1979,Des Plaines_IL,4619,Yale,252,21,2,9,0,4,93
+McMahon,Tom,7,12,1969,Helena_MT,10655,Carroll (MT),685,21,3,9,0,2,111
+Neibel,A.J.,8,31,1972,Cupertino_CA,1336,Long Beach State,933,21,4,11,0,0,129
+Sirianni,Nick,6,15,1981,Jamestown_NY,13287,Mount Union,576,22,0,6,1,0,82
+Johnson,Brian ,2,16,1987,Barrett Station_TX,17847,Utah,57,22,1,3,4,0,74
+Desai,Sean,4,21,1983,Shelton_CT,2493,Temple,119,22,2,10,0,4,61
+Patullo,Kevin,7,14,1981,Hillsborough Township_NJ,12262,South Florida,116,22,3,3,4,0,83
+Noriega,Fernando,4,10,1991,El Monte_CA,1376,Whitworth,653,22,4,11,0,0,79
+Tomlin,Mike,3,15,1972,Hampton_VA,19081,William and Mary,250,23,0,10,0,2,140
+Canada,Matt,1,19,1972,New Palestine_IN,5725,Indiana,17,23,1,3,2,0,78
+Austin,Teryl,3,3,1965,Sharon_PA,16362,Pittsburgh,44,23,2,10,0,1,138
+Smith,Danny,11,7,1953,Pittsburgh_PA,16249,Edinboro,295,23,3,10,0,1,195
+Giemont,Garrett,8,31,1957,Fullerton_CA,1426,Fullerton College,807,23,4,11,0,0,195
+Staley,Brandon,12,10,1982,Perry_OH,14498,Mercyhurst,333,24,0,9,0,2,62
+Moore,Kellen,7,12,1988,Prosser_WA,19840,Boise State,73,24,1,3,3,0,86
+Ansley,Derrick,12,11,1981,Tallassee_AL,483,Troy,124,24,2,10,0,2,65
+Ficken,Ryan,2,20,1980,Aurora_CO,2086,Arizona State,3,24,3,4,3,0,59
+Brooks,Jonathan,1,1,1986,Albuquerque_NM,12512,New Mexico,106,24,4,11,0,0,87
+Carroll,Pete,9,15,1951,San Francisco_CA,1864,Pacific (CA),966,25,0,10,0,3,242
+Waldron,Shane,8,17,1979,Portland_OR,15337,Tufts,634,25,1,5,3,0,90
+Hurtt,Clint,11,7,1978,Rochester_NY,13656,Miami (FL),26,25,2,8,0,1,77
+Smith,Carl,4,26,1948,Wasco_CA,2029,California Polytechnic,144,25,3,3,3,0,249
+Lewis,Ivan,9,14,1978,Idaho Falls_ID,4281,Idaho,93,25,4,11,0,0,95
+Shanahan,Kyle,12,14,1979,Minneapolis_MN,9342,Texas,52,26,0,3,6,0,110
+Kubiak,Klint,2,17,1987,Houston_TX,18061,Colorado State,82,26,1,3,2,0,82
+Wilks,Steve,8,8,1969,Charlotte_NC,10832,Appalachian State,69,26,2,10,0,4,120
+Lynn,Anthony,12,21,1968,McKinney_TX,18232,Texas Tech,55,26,3,4,4,0,147
+Perry,Dustin,9,30,1985,Marcellus_MI,8656,Western Michigan,129,26,4,11,0,0,95
+McVay,Sean,1,24,1986,Marietta_GA,3282,Miami (OH),101,27,0,6,4,0,86
+LaFleur,Mike,3,3,1987,Mount Pleasant_MI,8707,Elmhurst,490,27,1,6,3,0,90
+Morris,Raheem,9,3,1976,Houston_TX,18061,Hofstra,949,27,2,10,0,1,114
+Lake,Jimmy,12,17,1976,Walnut Creek_CA,2026,Eastern Washington,162,27,3,10,0,1,117
+Lovett,Justin,1,8,1977,Dayton_OH,14128,Findlay,301,27,4,11,0,0,91
+Bowles,Todd,11,18,1963,Elizabeth_NJ,12130,Temple,119,28,0,10,0,1,146
+Canales,Dave,5,7,1981,Harbor City_CA,1467,Azusa Pacific,264,28,1,6,2,0,128
+Rodgers,Kacy,6,24,1969,Humboldt_TN,17351,Tennessee,51,28,2,8,0,1,138
+Goodwin,Harold,11,14,1973,Columbia_SC,16700,Michigan,27,28,3,7,5,0,123
+Piroli,Anthony,5,26,1985,Aliquippa_PA,15437,Indiana (PA),313,28,4,11,0,0,95
+Vrabel,Mike,8,14,1975,Akron_OH,13953,Ohio State,38,29,0,9,0,2,74
+Kelly,Tim,8,17,1986,Chicago Heights_IL,4553,Eastern Illinois,160,29,1,5,1,0,90
+Bowen,Shane,12,9,1986,Pickerington_OH,14504,Georgia Tech,15,29,2,9,0,2,65
+Williams,Terrell,6,19,1974,Los Angeles_CA,1594,East Carolina,84,29,3,8,0,2,95
+Piraino,Frank,1,26,1980,Cleveland_OH,14092,Akron,67,29,4,11,0,0,95
+Rivera,Ron,1,7,1962,Fort Ord_CA,1851,California,8,30,0,9,0,3,152
+Bieniemy,Eric,8,15,1969,New Orleans_LA,7053,Colorado,10,30,1,4,1,0,152
+Del Rio,Jack,4,4,1963,Castro Valley_CA,1277,Southern California,48,30,2,9,0,3,168
+Kaczor,Nate,4,8,1967,Scott City_KS,6244,Utah State,127,30,3,7,2,0,91
+Englehart,Chad,6,5,1981,New Orleans_LA,7053,Southeastern Louisiana,229,30,4,11,0,0,105
+Stefanski,Kevin,5,8,1982,Philadelphia_PA,16242,Pennsylvania,211,31,0,3,1,0,74
+Van Pelt,Alex,5,1,1970,Pittsburgh_PA,16249,Pittsburgh,44,31,1,3,1,0,140
+Schwartz,Jim,6,2,1966,Halethorpe_MD,7731,Georgetown,168,31,2,9,0,3,180
+Ventrone,Raymond,10,21,1982,Pittsburgh_PA,16249,Villanova,244,31,3,10,0,3,71
+Jackson,Larry,10,7,1971,Rockdale_TX,18424,Texas A&M,53,31,4,11,0,0,99
+Ryans,DeMeco,7,28,1984,Bessemer_AL,132,Alabama,1,32,0,9,0,4,58
+Slowik,Bobby,6,9,1987,Princeton_NJ,12384,Michigan Tech,335,32,1,6,2,0,70
+Burke,Matt,3,25,1976,Hudson_MA,7337,Dartmouth,152,32,2,9,0,4,102
+Barrett,Danny,12,18,1961,Boynton Beach_FL,2632,Cincinnati,80,32,3,4,2,0,79
+Eubanks,Mike,12,31,1980,Kansas City_KS,6100,Wisconsin - Eau Claire,660,32,4,11,0,0,91

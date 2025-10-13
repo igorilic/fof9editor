@@ -1,0 +1,41 @@
+Front Office Football can be customized in many ways through its data files. Those control which league structures are available for new universes, schedules, default teams, elements of the geographic world, even the weather.
+
+Altering the data files, however, is an advanced topic. Any mistake, and you could create a universe that's unstable or can't be played. Product support is not available for any kind of customization. If you find that universes are unstable and you've tried customizing the database, back up your work and try reinstalling the product. Once an individual universe is created using unstable data, however, it's unlikely you'll be able to use or edit that universe. If you wish to try, note that the number of columns, name of the files and the labels in the top line of each file must remain exactly as they are.
+
+Default data files are found in a folder called default_data in the game's installation folder. In addition, text files (.txt) explain the data structures used for each data file. These text files are not read by the game.
+
+Team Logos:
+
+When the game creates teams for a new universe, it creates a logo for each team. Those logos are based on a series of alphabets found in the alpha1.bmp file. This file, along with other artwork for the game, can be found in a folder called artwork in the game's installation folder.
+
+While this file and others in the artwork folder can be changed, they are designed in a very specific format. The game will look for graphics in specific places within these files, and that can not be changed. The alphabet files are in an obvious format with a set number of alphabets. Each letter in each alphabet may vary in size, and that information can not be changed.
+
+However, the game will run with custom logos. There are two ways to create a custom logo. One is to use the Team Logo option on the Team Menu. This will load the current logo for a team in a slightly different format than the one used to create logos for new universes. You can then adjust the sliders to change the primary and secondary color for the team.
+
+You can also upload your own image for the logo. The game requires 150×150 bitmap (.bmp) files for logos. When finished, you can set that logo as the new logo for your team and it will be used within the game.
+
+You can also simply change the logo by replacing the logo files in your saved game. Once a new universe is started, logos can be found in the following folder: C:\\Users\Your_Profile_Name\AppData\Local\Solecismic Software\Front Office Football Nine\saved_games\Your_Universe_Name\logos.
+
+There are two files for each team within that folder. Both are 150×150 bitmap (.bmp) files. One is the primary logo for a team and the other is a black-and-white version for display on the schedule when a team lost a particular game. Each team has a two-digit identifier, beginning with 00 in a league. Find the team logo file you want to replace and simply replace it with the logo you want to use.
+
+Logos reserve the color magenta RGB(255, 0, 255) as a transparent color. That color cannot be displayed in a logo. If you want magenta in your logo, use a slightly different color. RGB(255, 1, 255) would work.
+
+If a bitmap is more than 150×150, the game will only use the upper-left area of that bitmap. If smaller, the result is unpredictable. If the file is not a Windows Bitmap file, the game will not find it.
+
+Player/Staff Portraits:
+
+Front Office Football Nine does not create player portraits or use FaceGen or a similar product. For player images, the game uses a bitmap representing the state, province or country (if not in the United States or Canada) of player's city of birth. Those can be found in the artwork/flags folder off of the installation folder. Those bitmaps can be replaced and the game will use them.
+
+There's an additional level of customization available for players and staff members. On a player card or a staff card within the game, you will see a Universe ID. That number is unique within a universe.
+
+You can create a 150×150 bitmap for use with any individual player, though this will only work within one universe. The Universe ID can be used as a file name. For instance, if you want to create a custom bitmap for a player with the Universe ID 1465, create a 150×150 bitmap called 1465.bmp. Place that file in the following folder: C:\\Users\Your_Profile_Name\AppData\Local\Solecismic Software\Front Office Football Nine\saved_games\Your_Universe_Name\portraits.
+
+You can do the same for staff members, only name the file slightly differently. For instance, if your staff member has a Universe ID of 413, create a file called s413.bmp for the portraits folder. Players and staff members each must have their own custom bitmaps - the game does not attempt to copy them if a player becomes a coach later on.
+
+As with the team logos, player images reserve the color magenta RGB(255, 0, 255) as a transparent color. That color cannot be displayed in a portrait. If you want magenta in your player portrait, use a slightly different color. RGB(255, 1, 255) would work.
+
+The default player file that comes with the game includes Universe IDs for use with a new universe. That way, it's a lot easier to import a set of player portraits once you have a new universe set up. There's no way to control the allocation of Universe IDs for new players once a new universe is established, but they are sequential and do not change once a player is created.
+
+If a bitmap is more than 150×150, the game will only use the upper-left area of that bitmap. If smaller, the result is unpredictable. If the file is not a Windows Bitmap file, the game will not find it.
+
+NOTE: If you find that the game doesn't seem to recognize your .BMP file properly, it's possible that the editor used to create the .BMP file didn't have all the information the Windows Device Context requires when reading .BMP files. Try editing your .BMP file in MSPaint, then saving it.

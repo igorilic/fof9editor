@@ -1,0 +1,13 @@
+countries.csv
+
+Information about countries. A country may or may not have cities. Countries without cities are included so that players in player files who were born in those countries can have a home area (they will not have a home city). Codes are included for US and UK Territories that are not independent countries.
+
+Fields
+
+COUNTRYID - Index of the country. This is how other data types in the game refer to the country. The value 0 represents an unknown country.
+NAME - Name of the country.
+ABBREV - Abbreviation for the country.
+HASCITIES - A flag indicating whether the country contains areas with cities in the game (1 if yes, 0 if no). A country without areas and cities cannot be chosen as the host of a team.
+LATITUDE - Approximate Latitude of the center of the country (multiplied by 1000).
+LONGITUDE - Approximate Longitude of the center of the country (multiplied by 1000).
+FOOTBALL - Weight used to assess football quality when choosing home towns for players. It's assumed that anyone not from the US (and a few from Canada) will go to college in the US. Currently, about 97% of professional players were born in the US, which is why much smaller US cities are included for variety. There must be at least one city for each country that has a football quality greater than 0.

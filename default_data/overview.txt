@@ -1,0 +1,62 @@
+Please read before attempting to make any changes to the data files associated with Front Office Football Nine.
+
+Much of the information used by the game to create a universe is defined by the .csv files in this folder. These files can be edited, as long as you're careful to preserve the format. However, some changes might end up causing problems within the game, so be careful about the changes you make.
+
+If you'd like to customize these files, make backups and start with easy, cosmetic changes. The working copies should remain in the game's installation folder. They are used with all new universes.
+
+Changes to league structures, or setting up a new league structure, rank as the most difficult and should not be attempted unless you're very familiar with the game's structures. Some mistakes might not be caught when the game loads, and you might be well into a universe and find you've hit a point where the game crashes on a data element that's outside the range the game or your league can support.
+
+All league structures require a schedule file that supports that specific league structure.
+
+The developer can't provide instruction or support for editing these files outside of what's provided here. At some point, information might be added to the product's documentation in the form of tips or possibly links to outside sources of data files.
+
+Every data file has a corresponding text file which explains each column in the data file.
+
+Data file Categories:
+
+GEOGRAPHY
+areas.csv - Areas within countries.
+cities.csv - Cities, which are tied to areas, metro areas and countries.
+college_levels.csv - Controls how colleges are selected for players and staff.
+colleges.csv - Colleges used within the universe.
+countries.csv - Countries used within the universe.
+metro_areas.csv - Major metropolitan areas, which contain cities that can be hosts for teams, as well as climate information used to determine weather.
+regions.csv - Regions within countries. Often, a player or staff member is from a city/region combination.
+
+PEOPLE
+first_names_1.csv through first_names_4.csv - First names for players and staff.
+last_names.csv - Last names for players and staff.
+injuries.csv - Information about specific injuries/illnesses related to a player.
+injury_levels.csv - Controls a portion of how injuries are generated within the game.
+
+TEAMS
+default_teams.csv - Information used to create teams when starting a new universe based on league structure and not a specific season.
+league_info.csv - Information used to initialize a league of a specific size and format. These leagues will begin in the default season for the product.
+league_years.csv - Information used to initialize a league when using a player file supplied by the game. It's unlikely you'll want to edit this file, as anything but minor cosmetic changes would likely make a universe unstable or unable to load.
+nicknames.csv - Team nicknames for use when a new league is creating new teams, not from a default teams list.
+team_colors.csv - Colors used to create team colors and logos for new teams, not from a default teams list.
+team_info.csv - Information used to create teams when starting a new universe based on a player file supplied by the game. Note that Front Office Football Nine only includes one player file at this time. No others are available.
+X_Y_Z_schedule.csv (many files) - Information used to create schedules of games within a league over a rotation of many seasons. Each file handles the schedule for leagues of that exact structure. These files must follow an exact format or a universe can become unstable.
+
+PLAYERS/COACHES
+players_xxxx.csv - The default player file for year xxxx. This is used to create a league based on a specific season (2023 is the only file provided for the Front Office Football Nine release).
+quarterbacks_xxxx.csv - The default quarterback file for year xxxx.
+coaches.csv - The default coaches file for year xxxx.
+historic_quarterbacks.csv - Information about historic quarterbacks for leagues using the historic quarterbacks option. Unlike players in the player and quarterback files, historic quarterbacks have specific ratings in every category.
+
+CUSTOM PLAYERS/COACHES
+The custom_example folder underneath the installation folder contains an example of a set of files used to create custom players and coaches for a league of any type supported by the game.
+xxxx_info.csv - Information tying the custom package to the available league types. This is a table with one row.
+xxxx_players.csv - A player file consisting of players available or assigned at the beginning of the universe, and players who can be drafted in the future.
+xxxx_quarterbacks.csv - A quarterback file consisting of quarterbacks available or assigned at the beginning of the universe, and quarterbacks who can be drafted in the future.
+xxxx_coaches.csv - A file containing information about coaches assigned to teams at the beginning of the universe.
+
+MISCELLANEOUS
+customization_info.txt - Information about customization in Front Office Football and adding custom player/staff/team images.
+encrypted_quotes.dat - Encrypted file containing the football-related quotes shown when opening the game. This file cannot be edited or viewed (easily).
+
+All these files are found off of the installation folder. In order to edit or add files here, you might need to change the folder permissions for these folders to allow write access for your Windows user account.
+
+Steam's default installation location is something like C:\\Program Files (x86)\Steam\steamapps\common\Front Office Football Nine\
+
+Editing or adding files to this directory is an advanced function that requires significant knowledge about how these structures work. That's why the files are protected in the installation folder.

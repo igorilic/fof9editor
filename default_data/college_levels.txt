@@ -1,0 +1,12 @@
+college_levels.csv
+
+Information that determines where a new random player went to college.
+
+Fields
+
+COLLEGELEVEL - A code that helps determine how players are allocated to colleges. 1 is Major FBS, 2 is Mid-Major FBS, 3 is FCS, 4 is Division II, 5 is Division III, 6 is NAIA, 7 is Junior College, 8 is Canada. Colleges with any other value cannot be chosen as host schools for new random players.
+TOPTALENT - Weight used to determine a college for players with a rating of 3 or higher in the 0-9 scale (see the player file documentation for how this works). These are likely quality starters at the pro level.
+MIDTALENT - Weight used to determine a college for players with a 1 or 2 rating in the 0-9 scale. These are likely players who will either start or get regular backup work at the pro level.
+BOTTOMTALENT - Weight used to determine a college for players with a 0 rating in the 0-9 scale. This is roster-filler, and these players are unlikely to have pro careers of any length.
+
+

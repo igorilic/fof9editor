@@ -1,0 +1,36 @@
+injuries.csv
+
+Information about injuries. An injury is a physical condition that prevents a player from playing to his abilities.
+
+Fields
+
+INJURYID - Index of the Injury, with 0 representing healthy. This is how other data types in the game refer to the injury.
+NAME - The name of the Injury, as reported in the game.
+SECTION - The general area of the Injury, often how it's reported during simulation before evaluation can take place.
+TYPE - The type of injury. 1 is an on-field or practice injury, 2 is an illness or condition that can happen at any time, 3 is a team-wide illness, limited to the season.
+CATEGORY - The nature of the injury. 1 is to a bone, 2 is to a muscle, 3 is to a tendon, 4 is to a ligament, 5 is concussion-related, 6 is for other on-field-related injuries, 7 is for chronic conditions and 8 is for illnesses.
+LEVEL - The level of the injury, within the category, increasing in severity.
+AREA - If not 0, indication of the area of the body this injury applies to. This relates specifically to a player's vulnerability at that location. Many injuries are unrelated to vulnerability. 1 is Back, 2 is Elbow, 3 is Shoulder, 4 is Knee, 5 is Ankle and 6 is Foot.
+CONDITION - If 1, this injury is a condition and may or may not go away.
+LOW - The minimum number of weeks for the injury. If the condition is 1, then if this is 0, the condition is permanent, if 1, it may go away in time.
+HIGH - The maximum number of weeks for the injury. This is ignored if the condition is 1.
+FREQUENCY - The frequency of the injury, within the given type and level. See the Injury Type table to control this.
+EFFECTIVE - The percentage of full effectiveness the player will have at the onset of the injury.
+OUT - The percentage of full effectiveness the player must reach before he can consider playing. If this is 0, then the player is never ruled out from this injury.
+EFFQ - The full effectiveness percentage if this player is a quarterback.
+OUTQ - The percentage of effectiveness for quarterbacks to consider playing.
+PERMANENT - The percentage chance, when this player is no longer considered out, that his ratings will permanently decline.
+RISK - The risk factor for reinjury when the player plays before fully recovered from this injury, ranging from 0-20. A value of 20 means there's a very high chance the player will be reinjured.
+SURGERY - The percentage chance that the injury will require surgery.
+SURGLOW - The minimum number of weeks added to the injury duration if surgery is required. This is 0 and built into the LOW field if there's a 100 percent chance of surgery.
+SURGHIGH - The maximum number of weeks affed to the injury duration if surgery is required.
+SURPERM - The percentage chance, when this player is no longer considered out after having had surgery, that his ratings will permanently decline. 
+INCREASE - If the player plays before fully recovered, and is reinjured, if this field is not 0, the index of the new injury.
+
+Injury Information
+
+Players can be injured during games or practice. Each week, the team doctor looks at new injuries and determines whether surgery is necessary. Then looks at existing injuries and updates each player's condition.
+
+Each player has an overall susceptibility to injury and health ratings for each key area of the body. This determines how frequently they are injured. An injury to a key area might make a player more susceptible.
+
+The Injury Levels table determines how this table is used when figuring out a new injury.

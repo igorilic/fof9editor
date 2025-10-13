@@ -14,9 +14,18 @@ FOF9 Editor is a comprehensive CSV editor that allows users to:
 
 - Go 1.21 or later
 - Windows 10/11 (primary target platform)
+- For development on Linux/WSL: X11 and OpenGL development libraries (or use Windows for building)
+
+### Linux/WSL Dependencies (for testing UI locally)
+
+On Ubuntu/Debian-based systems:
+```bash
+sudo apt-get install libgl1-mesa-dev xorg-dev
+```
 
 ## Build Instructions
 
+### On Windows
 ```bash
 # Build the application
 go build ./cmd/fof9editor
@@ -24,6 +33,14 @@ go build ./cmd/fof9editor
 # Or use make
 make build
 ```
+
+### Cross-compile from Linux/WSL to Windows
+```bash
+# Set environment variables for Windows target
+GOOS=windows GOARCH=amd64 CGO_ENABLED=1 CC=x86_64-w64-mingw32-gcc go build -o fof9editor.exe ./cmd/fof9editor
+```
+
+**Note**: Fyne requires CGO, so cross-compilation needs a C cross-compiler (like mingw-w64)
 
 ## Run Instructions
 

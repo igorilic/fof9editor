@@ -1,0 +1,1366 @@
+COLLEGEID,NAME,NICKNAME,CITYID,STPRV,LEVEL,FOOTBALL,DIVISION
+0,No College,No Nickname,0,ZZ,0,0,0
+1,Alabama,Crimson Tide,499,AL,1,30,1
+2,Arizona,Wildcats,1121,AZ,1,11,1
+3,Arizona State,Sun Devils,1110,AZ,1,14,1
+4,Arkansas,Razorbacks,655,AR,1,11,1
+5,Auburn,Tigers,120,AL,1,20,1
+6,Baylor,Bears,18603,TX,1,9,1
+7,Boston College,Eagles,7246,MA,1,14,1
+8,California,Golden Bears,1204,CA,1,20,1
+9,Clemson,Tigers,16695,SC,1,27,1
+10,Colorado,Buffaloes,2100,CO,1,11,1
+11,Duke,Blue Devils,10889,NC,1,7,1
+12,Florida,Gators,2721,FL,1,27,1
+13,Florida State,Seminoles,2956,FL,1,27,1
+14,Georgia,Bulldogs,3022,GA,1,27,1
+15,Georgia Tech,Yellow Jackets,3023,GA,1,11,1
+16,Illinois,Fighting Illini,4540,IL,1,14,1
+17,Indiana,Hoosiers,5399,IN,1,9,1
+18,Iowa,Hawkeyes,3854,IA,1,17,1
+19,Iowa State,Cyclones,3603,IA,1,11,1
+20,Kansas,Jayhawks,6116,KS,1,6,1
+21,Kansas State,Wildcats,6143,KS,1,14,1
+22,Kentucky,Wildcats,6573,KY,1,9,1
+23,Louisiana State,Tigers,6838,LA,1,27,1
+24,Louisville,Cardinals,6582,KY,1,14,1
+25,Maryland,Terrapins,7661,MD,1,17,1
+26,Miami (FL),Hurricanes,2830,FL,1,27,1
+27,Michigan,Wolverines,8257,MI,1,24,1
+28,Michigan State,Spartans,8433,MI,1,17,1
+29,Minnesota,Golden Gophers,9342,MN,1,9,1
+30,Mississippi,Rebels,10448,MS,1,14,1
+31,Mississippi State,Bulldogs,10519,MS,1,11,1
+32,Missouri,Tigers,9715,MO,1,9,1
+33,Nebraska,Cornhuskers,11659,NE,1,20,1
+34,North Carolina,Tar Heels,10831,NC,1,20,1
+35,North Carolina State,Wolfpack,11173,NC,1,11,1
+36,Northwestern,Wildcats,4676,IL,1,11,1
+37,Notre Dame,Fighting Irish,5835,IN,1,24,1
+38,Ohio State,Buckeyes,14102,OH,1,27,1
+39,Oklahoma,Sooners,14998,OK,1,27,1
+40,Oklahoma State,Cowboys,15081,OK,1,9,1
+41,Oregon,Ducks,15231,OR,1,17,1
+42,Oregon State,Beavers,15206,OR,1,11,1
+43,Penn State,Nittany Lions,16412,PA,1,20,1
+44,Pittsburgh,Panthers,16249,PA,1,11,1
+45,Purdue,Boilermakers,5896,IN,1,14,1
+46,Rutgers,Scarlet Knights,12369,NJ,1,9,1
+47,South Carolina,Gamecocks,16700,SC,1,17,1
+48,Southern California,Trojans,1594,CA,1,27,1
+49,Stanford,Cardinal,1946,CA,1,17,1
+50,Syracuse,Orange,13802,NY,1,11,1
+51,Tennessee,Volunteers,17373,TN,1,27,1
+52,Texas,Longhorns,17657,TX,1,24,1
+53,Texas A&M,Aggies,17815,TX,1,20,1
+54,Texas Christian,Horned Frogs,17954,TX,1,9,1
+55,Texas Tech,Red Raiders,18196,TX,1,9,1
+56,UCLA,Bruins,1594,CA,1,17,1
+57,Utah,Utes,18799,UT,1,11,1
+58,Vanderbilt,Commodores,17445,TN,1,7,1
+59,Virginia,Cavaliers,18930,VA,1,17,1
+60,Virginia Tech,Hokies,18874,VA,1,17,1
+61,Wake Forest,Demon Deacons,11330,NC,1,9,1
+62,Washington,Huskies,19869,WA,1,14,1
+63,Washington State,Cougars,19841,WA,1,9,1
+64,West Virginia,Mountaineers,20811,WV,1,11,1
+65,Wisconsin,Badgers,20264,WI,1,20,1
+66,Air Force,Falcons,2122,CO,2,6,1
+67,Akron,Zips,13953,OH,2,12,1
+68,Alabama - Birmingham,Blazers,134,AL,2,12,1
+69,Appalachian State,Mountaineers,10795,NC,2,15,1
+70,Arkansas State,Red Wolves,727,AR,2,15,1
+71,Army,Black Knights,13893,NY,2,6,1
+72,Ball State,Cardinals,5714,IN,2,6,1
+73,Boise State,Broncos,4222,ID,2,32,1
+74,Bowling Green,Falcons,14030,OH,2,6,1
+75,Brigham Young,Cougars,18787,UT,2,35,1
+76,Buffalo,Bulls,12881,NY,2,9,1
+77,Central Florida,Knights,2874,FL,2,35,1
+78,Central Michigan,Chippewas,8707,MI,2,15,1
+79,Charlotte,49ers,10832,NC,2,6,1
+80,Cincinnati,Bearcats,14086,OH,2,35,1
+81,Coastal Carolina,Chanticleers,16701,SC,2,11,1
+82,Colorado State,Rams,2166,CO,2,23,1
+83,Connecticut,Huskies,2508,CT,2,26,1
+84,East Carolina,Pirates,10958,NC,2,15,1
+85,Eastern Michigan,Eagles,8969,MI,2,12,1
+86,Florida Atlantic,Owls,2627,FL,2,6,1
+87,Florida International,Panthers,2830,FL,2,6,1
+88,Fresno State,Bulldogs,1424,CA,2,35,1
+89,Georgia Southern,Eagles,3425,GA,2,6,1
+90,Georgia State,Panthers,3023,GA,2,6,1
+91,Hawai'i,Rainbow Warriors,3529,HI,2,23,1
+92,Houston,Cougars,18061,TX,2,18,1
+93,Idaho,Vandals,4315,ID,3,14,1
+94,Kent State,Golden Flashes,14279,OH,2,18,1
+95,Louisiana,Ragin' Cajuns,6996,LA,2,18,1
+96,Louisiana - Monroe,Warhawks,7037,LA,2,9,1
+97,Louisiana Tech,Bulldogs,7109,LA,2,21,1
+98,Marshall,Thundering Herd,20737,WV,2,29,1
+99,Massachusetts,Minutemen,7182,MA,2,11,1
+100,Memphis,Tigers,17418,TN,2,29,1
+101,Miami (OH),Red Hawks,14486,OH,2,11,1
+102,Middle Tennessee State,Blue Raiders,17444,TN,2,9,1
+103,Navy,Midshipmen,7603,MD,2,6,1
+104,Nevada,Wolf Pack,12724,NV,2,15,1
+105,Nevada - Las Vegas,Rebels,12710,NV,2,12,1
+106,New Mexico,Lobos,12512,NM,2,15,1
+107,New Mexico State,Aggies,12598,NM,2,6,1
+108,North Texas,Mean Green,17874,TX,2,11,1
+109,Northern Illinois,Huskies,4615,IL,2,18,1
+110,Ohio,Bobcats,13979,OH,2,9,1
+111,Old Dominion,Monarchs,19211,VA,2,6,1
+112,Rice,Owls,18061,TX,2,15,1
+113,San Diego State,Aztecs,1861,CA,2,35,1
+114,San Jose State,Spartans,1868,CA,2,21,1
+115,South Alabama,Jaguars,371,AL,2,6,1
+116,South Florida,Bulls,2957,FL,2,21,1
+117,Southern Methodist,Mustangs,17861,TX,2,15,1
+118,Southern Mississippi,Golden Eagles,10352,MS,2,26,1
+119,Temple,Owls,16242,PA,2,21,1
+120,Texas - El Paso,Miners,17914,TX,2,15,1
+121,Texas - San Antonio,Roadrunners,18456,TX,2,6,1
+122,Texas State,Bobcats,18462,TX,2,9,1
+123,Toledo,Rockets,14647,OH,2,21,1
+124,Troy,Trojans,497,AL,2,18,1
+125,Tulane,Green Wave,7053,LA,2,15,1
+126,Tulsa,Golden Hurricane,15105,OK,2,11,1
+127,Utah State,Aggies,18742,UT,2,15,1
+128,Western Kentucky,Hilltoppers,6355,KY,2,9,1
+129,Western Michigan,Broncos,8593,MI,2,11,1
+130,Wyoming,Cowboys,21013,WY,2,15,1
+131,Abilene Christian,Wildcats,17616,TX,3,11,1
+132,Alabama A&M,Bulldogs,310,AL,3,8,1
+133,Alabama State,Hornets,374,AL,3,11,1
+134,Albany,Great Danes,12750,NY,3,4,1
+135,Alcorn State,Braves,10391,MS,3,10,1
+136,Arkansas - Pine Bluff,Golden Lions,829,AR,3,11,1
+137,Austin Peay State,Governors,17226,TN,3,4,1
+138,Bethune - Cookman,Wildcats,2678,FL,3,13,1
+139,Brown,Bears,16626,RI,3,10,1
+140,Bryant,Bulldogs,16630,RI,3,3,1
+141,Bucknell,Bison,15990,PA,3,4,1
+142,Butler,Bulldogs,5601,IN,3,3,1
+143,California - Davis,Aggies,1343,CA,3,10,1
+144,California Polytechnic,Mustangs,1874,CA,3,4,1
+145,Campbell,Fighting Camels,10848,NC,3,3,1
+146,Central Arkansas,Bears,612,AR,3,3,1
+147,Central Connecticut State,Blue Devils,2439,CT,3,3,1
+148,Charleston Southern,Buccaneers,16841,SC,3,4,1
+149,Colgate,Raiders,13205,NY,3,3,1
+150,Columbia,Lions,13493,NY,3,6,1
+151,Cornell,Big Red,13284,NY,3,8,1
+152,Dartmouth,Big Green,11893,NH,3,4,1
+153,Davidson,Wildcats,10878,NC,3,3,1
+154,Dayton,Flyers,14128,OH,3,3,1
+155,Delaware,Fightin' Blue Hens,2587,DE,3,18,1
+156,Delaware State,Hornets,2563,DE,3,6,1
+157,Drake,Bulldogs,3727,IA,3,4,1
+158,Duquesne,Dukes,16249,PA,3,6,1
+159,East Tennessee State,Buccaneers,17366,TN,3,4,1
+160,Eastern Illinois,Panthers,4545,IL,3,10,1
+161,Eastern Kentucky,Colonels,6692,KY,3,14,1
+162,Eastern Washington,Eagles,19646,WA,3,14,1
+163,Elon,Phoenix,10903,NC,3,4,1
+164,Florida A&M,Rattlers,2956,FL,3,13,1
+165,Fordham,Rams,12873,NY,3,6,1
+166,Furman,Paladins,16753,SC,3,10,1
+167,Gardner - Webb,Runnin' Bulldogs,11097,NC,3,4,1
+168,Georgetown,Hoyas,2553,DC,3,3,1
+169,Grambling State,Tigers,6947,LA,3,13,1
+170,Hampton,Pirates,19081,VA,3,18,1
+171,Harvard,Crimson,7230,MA,3,16,1
+172,Holy Cross,Crusaders,7591,MA,3,4,1
+173,Houston Baptist,Huskies,18061,TX,3,3,1
+174,Howard,Bison,2553,DC,3,14,1
+175,Idaho State,Bengals,4341,ID,3,11,1
+176,Illinois State,Redbirds,5022,IL,3,13,1
+177,Incarnate Word,Cardinals,18456,TX,3,4,1
+178,Indiana State,Sycamores,5857,IN,3,4,1
+179,Jackson State,Tigers,10370,MS,3,11,1
+180,Jacksonville,Dolphins,2767,FL,9,0,1
+181,Jacksonville State,Gamecocks,317,AL,3,6,1
+182,James Madison,Dukes,19084,VA,3,11,1
+183,Kennesaw State,Owls,3240,GA,3,3,1
+184,Lafayette,Leopards,15712,PA,3,4,1
+185,Lamar,Cardinals,17679,TX,3,3,1
+186,Lehigh,Mountain Hawks,15501,PA,3,4,1
+187,Liberty,Flames,19148,VA,2,9,1
+188,Maine,Black Bears,8124,ME,3,20,1
+189,Marist,Red Foxes,13616,NY,3,4,1
+190,McNeese State,Cowboys,6999,LA,3,11,1
+191,Mercer,Bears,3277,GA,3,3,1
+192,Mississippi Valley State,Delta Devils,10368,MS,3,4,1
+193,Missouri State,Bears,10146,MO,3,8,1
+194,Monmouth (NJ),Hawks,12489,NJ,3,8,1
+195,Montana,Grizzlies,10682,MT,3,27,1
+196,Montana State,Bobcats,10593,MT,3,8,1
+197,Morehead State,Eagles,6618,KY,3,3,1
+198,Morgan State,Bears,7609,MD,3,6,1
+199,Murray State,Racers,6633,KY,3,6,1
+200,New Hampshire,Wildcats,11858,NH,3,11,1
+201,Nicholls State,Colonels,7147,LA,3,6,1
+202,Norfolk State,Spartans,19211,VA,3,4,1
+203,North Carolina A&T,Aggies,10957,NC,3,10,1
+204,North Carolina Central,Eagles,10889,NC,3,4,1
+205,North Dakota,Fighting Hawks,11393,ND,3,8,1
+206,North Dakota State,Bison,11381,ND,3,16,1
+207,Northern Arizona,Lumberjacks,981,AZ,3,8,1
+208,Northern Colorado,Bears,2187,CO,3,14,1
+209,Northern Iowa,Panthers,3668,IA,3,27,1
+210,Northwestern State,Demons,7050,LA,3,16,1
+211,Pennsylvania,Quakers,16242,PA,3,6,1
+212,Portland State,Vikings,15337,OR,3,11,1
+213,Prairie View A&M,Panthers,18380,TX,3,4,1
+214,Presbyterian,Blue Hose,16697,SC,3,4,1
+215,Princeton,Tigers,12384,NJ,3,8,1
+216,Rhode Island,Rams,16610,RI,3,4,1
+217,Richmond,Spiders,19269,VA,3,16,1
+218,Robert Morris (PA),Colonials,15631,PA,3,6,1
+219,Sacramento State (CA),Hornets,1848,CA,3,8,1
+220,Sacred Heart,Pioneers,2398,CT,3,4,1
+221,Saint Francis (PA),Red Flash,16007,PA,3,3,1
+222,Sam Houston State,Bearkats,18070,TX,3,10,1
+223,Samford,Bulldogs,134,AL,3,8,1
+224,San Diego,Toreros,1861,CA,3,4,1
+225,South Carolina State,Bulldogs,16847,SC,3,16,1
+226,South Dakota,Coyotes,17121,SD,3,10,1
+227,South Dakota State,Jackrabbits,16972,SD,3,13,1
+228,Southeast Missouri State,Redhawks,9679,MO,3,8,1
+229,Southeastern Louisiana,Lions,6961,LA,3,4,1
+230,Southern,Jaguars,6838,LA,3,8,1
+231,Southern Illinois,Salukis,4521,IL,3,11,1
+232,Southern Utah,Thunderbirds,18673,UT,3,6,1
+233,Stephen F. Austin State,Lumberjacks,18280,TX,3,11,1
+234,Stetson,Hatters,2683,FL,3,3,1
+235,Stony Brook,Seawolves,13789,NY,3,4,1
+236,Chattanooga,Mocs,17220,TN,3,11,1
+237,Tennessee - Martin,Skyhawks,17406,TN,3,6,1
+238,Tennessee State,Tigers,17445,TN,3,18,1
+239,Tennessee Tech,Golden Eagles,17236,TN,3,4,1
+240,Texas Southern,Tigers,18061,TX,3,6,1
+241,The Citadel,Bulldogs,16688,SC,3,6,1
+242,Towson,Tigers,7879,MD,3,8,1
+243,Valparaiso,Valpos,5873,IN,3,3,1
+244,Villanova,Wildcats,16500,PA,3,13,1
+245,Virginia Military Institute,Keydets,19134,VA,3,3,1
+246,Wagner,Seahawks,13782,NY,3,4,1
+247,Weber State,Wildcats,18774,UT,3,11,1
+248,Western Carolina,Catamounts,10873,NC,3,8,1
+249,Western Illinois,Leathernecks,4911,IL,3,27,1
+250,William and Mary,Tribe,19387,VA,3,16,1
+251,Wofford,Terriers,16902,SC,3,4,1
+252,Yale,Bulldogs,2443,CT,3,6,1
+253,Youngstown State,Penguins,14737,OH,3,6,1
+254,Adams State,Grizzlies,2080,CO,4,3,2
+255,Albany State,Golden Rams,3007,GA,4,3,2
+256,Alderson Broaddus,Battlers,20851,WV,4,2,2
+257,American International,Yellow Jackets,7513,MA,4,2,2
+258,Angelo State,Rams,18455,TX,4,4,2
+259,Arkansas - Monticello,Boll Weevils,785,AR,4,4,2
+260,Arkansas Tech,Wonder Boys,858,AR,4,2,2
+261,Ashland,Eagles,13975,OH,4,6,2
+262,Assumption,Greyhounds,7591,MA,4,4,2
+263,Augustana (SD),Vikings,17107,SD,4,12,2
+264,Azusa Pacific,Cougars,1186,CA,9,0,2
+265,Bemidji State,Beavers,9018,MN,4,3,2
+266,Benedict,Tigers,16700,SC,4,2,2
+267,Bentley,Falcons,7541,MA,4,8,2
+268,Black Hills State,Yellow Jackets,17109,SD,4,2,2
+269,Bloomsburg,Huskies,15511,PA,4,14,2
+270,Bowie State,Bulldogs,7622,MD,4,5,2
+271,California (PA),Vulcans,15554,PA,4,16,2
+272,Carson - Newman,Eagles,17363,TN,4,2,2
+273,Catawba,Indians,11206,NC,4,2,2
+274,Central Missouri,Mules,10203,MO,4,16,2
+275,Central Oklahoma,Bronchos,14860,OK,4,14,2
+276,Central State,Marauders,14715,OH,4,5,2
+277,Central Washington,Wildcats,19687,WA,4,10,2
+278,Chadron State,Eagles,11549,NE,4,10,2
+279,Charleston (WV),Golden Eagles,20626,WV,4,2,2
+280,Cheyney,Wolves,15584,PA,9,0,5
+281,Chowan,Hawks,11111,NC,4,3,2
+282,Clarion,Golden Eagles,15591,PA,4,9,2
+283,Clark Atlanta,Panthers,3023,GA,4,4,2
+284,Colorado Mesa,Mavericks,2185,CO,4,2,2
+285,Colorado School of Mines,Orediggers,2182,CO,4,2,2
+286,Colorado State - Pueblo,ThunderWolves,2280,CO,4,9,2
+287,Concord,Mountain Lions,20574,WV,4,2,2
+288,Concordia (Saint Paul MN),Golden Bears,9468,MN,4,3,2
+289,Davenport,Panthers,8508,MI,4,2,2
+290,Delta State,Statesmen,10289,MS,4,3,2
+291,Dixie State,Trailblazers,18796,UT,3,1,1
+292,East Central (OK),Tigers,14740,OK,4,5,2
+293,East Stroudsburg,Warriors,15709,PA,4,2,2
+294,Eastern New Mexico,Greyhounds,12633,NM,4,3,2
+295,Edinboro,Fighting Scots,15714,PA,4,2,2
+296,Elizabeth City State,Vikings,10896,NC,4,2,2
+297,Emporia State,Hornets,6026,KS,4,5,2
+298,Fairmont State,Falcons,20673,WV,4,2,2
+299,Fayetteville State,Broncos,10919,NC,4,2,2
+300,Ferris State,Bulldogs,8302,MI,4,4,2
+301,Findlay,Oilers,14173,OH,4,4,2
+302,Florida Tech,Panthers,2825,FL,9,0,2
+303,Fort Hays State,Tigers,6071,KS,4,2,2
+304,Fort Lewis,Skyhawks,2146,CO,4,2,2
+305,Fort Valley State,Wildcats,3180,GA,4,22,2
+306,Gannon,Golden Knights,15737,PA,4,2,2
+307,Glenville State,Pioneers,20710,WV,4,2,2
+308,Grand Valley State,Lakers,8251,MI,4,26,2
+309,Harding,Bisons,865,AR,4,5,2
+310,Henderson State,Reddies,546,AR,4,5,2
+311,Hillsdale,Chargers,8552,MI,4,12,2
+312,Humboldt State,Lumberjacks,1171,CA,9,0,2
+313,Indiana (PA),Crimson Hawks,15910,PA,4,14,2
+314,Indianapolis,Greyhounds,5601,IN,4,2,2
+315,Johnson C. Smith,Golden Bulls,10832,NC,4,2,2
+316,Kentucky State,Thorobreds,6474,KY,4,6,2
+317,Kentucky Wesleyan,Panthers,6652,KY,4,2,2
+318,Kutztown,Golden Bears,15953,PA,4,4,2
+319,Lake Erie,Storm,14487,OH,4,2,2
+320,Lane,Dragons,17360,TN,4,10,2
+321,Lenoir - Rhyne,Bears,10981,NC,4,3,2
+322,Limestone,Saints,16741,SC,4,2,2
+323,Lincoln (MO),Blue Tigers,9886,MO,4,2,2
+324,Lincoln (PA),Lions,16216,PA,4,2,2
+325,Lindenwood,Lions,10107,MO,4,6,2
+326,Livingstone,Blue Bears,11206,NC,4,2,2
+327,Lock Haven (PA),Bald Eagles,16003,PA,4,2,2
+328,Long Island - Post,Pioneers,13191,NY,10,0,9
+329,Malone,Pioneers,14065,OH,9,0,2
+330,Mars Hill,Lions,11072,NC,4,5,2
+331,Mary,Marauders,11353,ND,4,2,2
+332,McKendree,Bearcats,4876,IL,4,2,2
+333,Mercyhurst,Lakers,15737,PA,4,2,2
+334,Merrimack,Warriors,7415,MA,3,1,1
+335,Michigan Tech,Huskies,8562,MI,4,12,2
+336,Midwestern State,Mustangs,18631,TX,4,16,2
+337,Miles,Golden Bears,233,AL,4,2,2
+338,Millersville,Marauders,16083,PA,4,2,2
+339,Minnesota - Crookston,Golden Eagles,9104,MN,9,0,2
+340,Minnesota - Duluth,Bulldogs,9129,MN,4,3,2
+341,Minnesota State - Mankato,Mavericks,9316,MN,4,6,2
+342,Minnesota State - Moorhead,Dragons,9351,MN,4,2,2
+343,Minot State,Beavers,11436,ND,4,2,2
+344,Mississippi College,Choctaws,10290,MS,4,5,2
+345,Missouri Science and Tech,Miners,10099,MO,4,2,2
+346,Missouri Southern State,Lions,9889,MO,4,22,2
+347,Missouri Western State,Griffons,10111,MO,4,15,2
+348,Morehouse,Maroon Tigers,3023,GA,4,4,2
+349,Nebraska - Kearney,Lopers,11650,NE,4,2,2
+350,New Haven,Chargers,2534,CT,4,3,2
+351,New Mexico Highlands,Cowboys,12599,NM,4,2,2
+352,Newberry,Wolves,16836,SC,4,12,2
+353,North Alabama,Lions,243,AL,3,5,1
+354,North Carolina - Pembroke,Braves,11143,NC,4,2,2
+355,North Greenville,Crusaders,16917,SC,4,3,2
+356,Northeastern State,RiverHawks,15090,OK,4,4,2
+357,Northern Michigan,Wildcats,8662,MI,4,2,2
+358,Northern State,Wolves,16946,SD,4,3,2
+359,Northwest Missouri State,Bearcats,9965,MO,4,20,2
+360,Northwestern Oklahoma State,Rangers,14748,OK,4,14,2
+361,Northwood,Timberwolves,8688,MI,4,8,2
+362,Notre Dame College,Falcons,14092,OH,4,2,2
+363,Ohio Dominican,Panthers,14102,OH,4,2,2
+364,Oklahoma Baptist,Bison,15066,OK,4,2,2
+365,Ouachita Baptist,Tigers,546,AR,4,5,2
+366,Pace,Setters,13594,NY,4,2,2
+367,Pittsburg State (KS),Gorillas,6208,KS,4,20,2
+368,Quincy,Hawks,5109,IL,4,2,2
+369,Saginaw Valley State,Cardinals,8284,MI,4,26,2
+370,Saint Anselm,Hawks,11880,NH,4,2,2
+371,Saint Augustine's,Falcons,11173,NC,4,5,2
+372,Saint Cloud State,Huskies,9462,MN,9,0,2
+373,Savannah State,Tigers,3406,GA,4,6,2
+374,Seton Hill,Griffins,15835,PA,4,2,2
+375,Shaw,Bears,11173,NC,4,2,2
+376,Shepherd,Rams,20903,WV,4,5,2
+377,Shippensburg,Red Raiders,16372,PA,4,22,2
+378,Shorter,Hawks,3392,GA,4,2,2
+379,Sioux Falls,Cougars,17107,SD,4,2,2
+380,Slippery Rock,The Rock,16385,PA,4,5,2
+381,South Dakota Mines,Hardrockers,17095,SD,4,2,2
+382,Southeastern Oklahoma State,Savage Storm,14855,OK,4,2,2
+383,Southern Arkansas,Muleriders,761,AR,4,12,2
+384,Southern Connecticut State,Fighting Owls,2443,CT,4,15,2
+385,Southern Nazarene,Crimson Storm,14766,OK,4,2,2
+386,Southwest Baptist,Bearcats,9637,MO,4,2,2
+387,Southwest Minnesota State,Mustangs,9324,MN,4,2,2
+388,Southwestern Oklahoma State,Bulldogs,15132,OK,4,2,2
+389,Stonehill,Skyhawks,7423,MA,4,2,2
+390,Tarleton State,Texans,18526,TX,3,4,1
+391,Texas - Permian Basin,Falcons,18309,TX,4,2,2
+392,Texas A&M - Commerce,Lions,17824,TX,4,8,2
+393,Texas A&M - Kingsville,Javelinas,18122,TX,4,30,2
+394,Tiffin,Dragons,14642,OH,4,15,2
+395,Truman State,Bulldogs,9902,MO,4,2,2
+396,Tusculum,Pioneers,17320,TN,4,5,2
+397,Tuskegee,Golden Tigers,501,AL,4,26,2
+398,Upper Iowa,Peacocks,3781,IA,4,2,2
+399,Urbana,Blue Knights,14657,OH,10,0,9
+400,Valdosta State,Blazers,3472,GA,4,18,2
+401,Virginia - Wise,Cavaliers,19394,VA,4,2,2
+402,Virginia State,Trojans,19235,VA,4,2,2
+403,Virginia Union,Panthers,19269,VA,4,5,2
+404,Walsh,Cavaliers,14065,OH,4,4,2
+405,Washburn,Ichabods,6270,KS,4,16,2
+406,Wayne State (MI),Warriors,8418,MI,4,5,2
+407,Wayne State (NE),Wildcats,11795,NE,4,5,2
+408,West Alabama,Tigers,343,AL,4,8,2
+409,West Chester,Golden Rams,16531,PA,4,4,2
+410,West Florida,Argonauts,2896,FL,4,2,2
+411,West Georgia,Wolves,3078,GA,4,4,2
+412,West Liberty,Hilltoppers,20954,WV,4,2,2
+413,West Texas A&M,Buffaloes,17770,TX,4,30,2
+414,West Virginia State,Yellow Jackets,20659,WV,4,2,2
+415,West Virginia Wesleyan,Bobcats,20608,WV,4,2,2
+416,Western New Mexico,Mustangs,12661,NM,4,4,2
+417,Western Oregon,Wolves,15304,OR,4,6,2
+418,Western Colorado,Mountaineers,2191,CO,4,2,2
+419,Wheeling,Cardinals,20960,WV,4,2,2
+420,William Jewell,Cardinals,9934,MO,4,2,2
+421,Wingate,Bulldogs,11328,NC,4,8,2
+422,Winona State,Warriors,9562,MN,4,2,2
+423,Winston–Salem State,Rams,11330,NC,4,14,2
+424,Adrian,Bulldogs,8240,MI,5,4,3
+425,Albion,Britons,8244,MI,5,5,3
+426,Albright,Lions,16281,PA,5,4,3
+427,Alfred,Saxons,12756,NY,5,4,3
+428,Alfred State,Pioneers,12756,NY,5,4,3
+429,Allegheny,Gators,16056,PA,5,4,3
+430,Alma,Scots,8253,MI,5,4,3
+431,Amherst,Mammoths,7182,MA,5,4,3
+432,Anderson,Ravens,5372,IN,5,4,3
+433,Anna Maria,AMCATS,7446,MA,5,4,3
+434,Augsburg,Auggies,9342,MN,5,4,3
+435,Augustana (IL),Vikings,5141,IL,5,4,3
+436,Aurora,Spartans,4434,IL,5,4,3
+437,Austin,Kangaroos,18495,TX,5,4,3
+438,Averett,Cougars,18979,VA,5,4,3
+439,Baldwin Wallace,Yellow Jackets,14007,OH,5,4,3
+440,Bates,Bobcats,8062,ME,5,4,3
+441,Becker,Hawks,7353,MA,10,0,9
+442,Belhaven,Blazers,10370,MS,5,6,3
+443,Beloit,Buccaneers,19994,WI,5,5,3
+444,Benedictine (IL),Eagles,4890,IL,5,4,3
+445,Berry,Vikings,3319,GA,5,4,3
+446,Bethany (WV),Bison,20593,WV,5,4,3
+447,Bethel (MN),Royals,9468,MN,5,4,3
+448,Birmingham - Southern,Panthers,134,AL,5,4,3
+449,Bluffton,Beavers,14026,OH,5,4,3
+450,Bowdoin,Polar Bears,7950,ME,5,4,3
+451,Brevard,Tornados,10799,NC,5,4,3
+452,Bridgewater,Eagles,18890,VA,5,4,3
+453,Bridgewater State,Bears,7221,MA,5,4,3
+454,Brockport,Golden Eagles,12871,NY,5,5,3
+455,Buena Vista,Beavers,4128,IA,5,4,3
+456,Buffalo State,Bengals,12881,NY,5,4,3
+457,California Lutheran,Kingsmen,1980,CA,5,4,3
+458,Capital,Crusaders,14102,OH,5,4,3
+459,Carleton (MN),Knights,9380,MN,5,4,3
+460,Carnegie Mellon,Tartans,16249,PA,5,4,3
+461,Carroll (WI),Pioneers,20519,WI,5,4,3
+462,Carthage,Red Men,20227,WI,5,4,3
+463,Case Western Reserve,Spartans,14092,OH,5,4,3
+464,Castleton,Spartans,19426,VT,5,4,3
+465,Catholic,Cardinals,2553,DC,5,4,3
+466,Central,Dutch,4033,IA,5,4,3
+467,Centre,Colonels,6421,KY,5,5,3
+468,Chapman,Panthers,1724,CA,5,4,3
+469,Chicago,Maroons,4552,IL,5,4,3
+470,Christopher Newport,Captains,19206,VA,5,4,3
+471,Claremont - Mudd - Scripps,Stags,1296,CA,5,4,3
+472,Coast Guard,Bears,2444,CT,5,4,3
+473,Coe,Kohawks,3669,IA,5,6,3
+474,Colby,White Mules,8219,ME,5,4,3
+475,Concordia (IL),Cougars,5128,IL,5,4,3
+476,Concordia (Moorhead MN),Cobbers,9351,MN,5,4,3
+477,Concordia (WI),Falcons,20290,WI,5,4,3
+478,Cornell (IA),Rams,3978,IA,5,4,3
+479,Cortland State,Red Dragons,13007,NY,5,5,3
+480,Crown,Storm,9459,MN,5,4,3
+481,Curry,Colonels,7393,MA,5,4,3
+482,Defiance,YellowJackets,14131,OH,5,4,3
+483,Delaware Valley,Aggies,15682,PA,5,4,3
+484,Denison,Big Red,14213,OH,5,4,3
+485,DePauw,Tigers,5561,IN,5,4,3
+486,Dickinson,Red Devils,15561,PA,5,4,3
+487,Dubuque,Spartans,3738,IA,5,4,3
+488,Earlham,Quakers,5793,IN,9,0,3
+489,East Texas Baptist,Tigers,18218,TX,5,4,3
+490,Elmhurst,Bluejays,4664,IL,5,4,3
+491,Emory and Henry,Wasps,19167,VA,4,2,2
+492,Endicott,Gulls,7210,MA,5,4,3
+493,Eureka,Red Devils,4675,IL,5,4,3
+494,Fairleigh Dickinson - Florham,Devils,12253,NJ,5,4,3
+495,Ferrum,Panthers,19026,VA,5,4,3
+496,Finlandia,Lions,8524,MI,5,4,3
+497,Fitchburg State,Falcons,7295,MA,5,4,3
+498,Framingham State,Rams,7299,MA,5,4,3
+499,Franklin,Grizzlies,5538,IN,5,4,3
+500,Franklin and Marshall,Diplomats,15962,PA,5,4,3
+501,Frostburg State,Bobcats,7708,MD,4,2,2
+502,Gallaudet,Bison,2553,DC,5,4,3
+503,Geneva,Golden Tornadoes,15480,PA,5,4,3
+504,George Fox,Bruins,15315,OR,5,4,3
+505,Gettysburg,Bullets,15801,PA,5,4,3
+506,Greensboro,Pride,10957,NC,5,4,3
+507,Greenville,Panthers,4765,IL,5,4,3
+508,Grinnell,Pioneers,3816,IA,5,4,3
+509,Grove City,Wolverines,15839,PA,5,5,3
+510,Guilford,Quakers,10957,NC,5,4,3
+511,Gustavus Adolphus,Gusties,9470,MN,5,4,3
+512,Hamilton,Continentals,12968,NY,5,4,3
+513,Hamline,Pipers,9468,MN,5,4,3
+514,Hampden - Sydney,Tigers,19024,VA,5,4,3
+515,Hanover,Panthers,5576,IN,5,4,3
+516,Hardin - Simmons,Cowboys,17616,TX,5,4,3
+517,Hartwick,Hawks,13536,NY,5,4,3
+518,Heidelberg,Student Princes,14642,OH,5,5,3
+519,Hendrix,Warriors,612,AR,5,4,3
+520,Hiram,Terriers,14244,OH,5,4,3
+521,Hobart,Statesmen,13156,NY,5,5,3
+522,Hope,Flying Dutchmen,8553,MI,5,4,3
+523,Howard Payne,Yellow Jackets,17739,TX,5,4,3
+524,Huntingdon,Hawks,374,AL,5,4,3
+525,Husson,Eagles,7921,ME,5,4,3
+526,Illinois College,Blueboys,4834,IL,5,4,3
+527,Illinois Wesleyan,Titans,4471,IL,5,4,3
+528,Iowa Wesleyan,Tigers,3977,IA,5,4,3
+529,Ithaca,Bombers,13284,NY,5,4,3
+530,John Carroll,Blue Streaks,14092,OH,5,6,3
+531,Johns Hopkins,Blue Jays,7609,MD,5,4,3
+532,Juniata,Eagles,15901,PA,5,4,3
+533,Kalamazoo,Hornets,8593,MI,5,4,3
+534,Kean,Cougars,12465,NJ,5,4,3
+535,Kenyon,Lords,14196,OH,5,4,3
+536,King's,Monarchs,16553,PA,5,4,3
+537,Knox,Prairie Fire,4716,IL,5,4,3
+538,La Verne,Leopards,1542,CA,5,4,3
+539,LaGrange,Panthers,3248,GA,5,4,3
+540,Lake Forest,Foresters,4867,IL,5,4,3
+541,Lakeland,Muskies,20442,WI,5,4,3
+542,Lawrence,Vikings,19961,WI,5,4,3
+543,Lebanon Valley,Flying Dutchmen,15448,PA,5,4,3
+544,Lewis and Clark,Pioneers,15337,OR,5,4,3
+545,Linfield,Wildcats,15297,OR,5,4,3
+546,Loras,Duhawks,3738,IA,5,4,3
+547,Louisiana College,Wildcats,7077,LA,6,4,4
+548,Luther,Norse,3720,IA,5,4,3
+549,Lycoming,Warriors,16555,PA,5,4,3
+550,Macalester,Scots,9468,MN,5,4,3
+551,MacMurray,Highlanders,4834,IL,10,0,9
+552,Maine Maritime,Mariners,7965,ME,5,4,3
+553,Manchester,Spartans,5737,IN,5,4,3
+554,Maranatha Baptist,Sabercats,20518,WI,9,0,3
+555,Marietta,Pioneers,14349,OH,5,4,3
+556,Martin Luther,Knights,9373,MN,5,4,3
+557,Mary Hardin - Baylor,Crusaders,17688,TX,5,6,3
+558,Maryville (TN),Scots,17407,TN,5,4,3
+559,Massachusetts - Dartmouth,Corsairs,7421,MA,5,4,3
+560,Massachusetts Maritime,Buccaneers,7228,MA,5,4,3
+561,McDaniel,Green Terror,7896,MD,5,4,3
+562,McMurry,War Hawks,17616,TX,5,4,3
+563,Merchant Marine,Mariners,13184,NY,5,4,3
+564,Methodist,Monarchs,10919,NC,5,4,3
+565,Middlebury,Panthers,19492,VT,5,4,3
+566,Millikin,Big Blue,4612,IL,5,4,3
+567,Millsaps,Majors,10370,MS,5,4,3
+568,Minnesota - Morris,Cougars,9355,MN,5,4,3
+569,Misericordia,Cougars,15653,PA,5,4,3
+570,MIT,Engineers,7230,MA,5,4,3
+571,Monmouth (IL),Fighting Scots,4971,IL,5,5,3
+572,Montclair State,Red Hawks,12295,NJ,5,5,3
+573,Moravian,Greyhounds,15501,PA,5,4,3
+574,Mount Ida,Mustangs,7407,MA,10,0,9
+575,Mount Saint Joseph,Lions,14086,OH,5,4,3
+576,Mount Union,Purple Raiders,13957,OH,5,6,3
+577,Muhlenberg,Mules,15439,PA,5,4,3
+578,Muskingum,Fighting Muskies,14422,OH,5,4,3
+579,Nebraska Wesleyan,Prairie Wolves,11659,NE,5,4,3
+580,College of New Jersey,Lions,12463,NJ,5,4,3
+581,Nichols,Bison,7269,MA,5,4,3
+582,North Carolina Wesleyan,Battling Bishops,11189,NC,5,4,3
+583,North Central (IL),Cardinals,5000,IL,5,4,3
+584,North Park,Vikings,4552,IL,5,4,3
+585,Northwestern (MN),Eagles,9468,MN,5,4,3
+586,Norwich,Cadets,19511,VT,5,4,3
+587,Oberlin,Yeomen,14472,OH,5,4,3
+588,Occidental,Tigers,1594,CA,9,0,3
+589,Ohio Northern,Polar Bears,13949,OH,5,6,3
+590,Ohio Wesleyan,Battling Bishops,14132,OH,5,4,3
+591,Olivet,Comets,8741,MI,5,4,3
+592,Otterbein,Cardinals,14706,OH,5,4,3
+593,Pacific (OR),Boxers,15236,OR,5,4,3
+594,Pacific Lutheran,Lutes,19895,WA,5,4,3
+595,Plymouth State,Panthers,11970,NH,5,4,3
+596,Pomona - Pitzer,Sagehens,1296,CA,5,4,3
+597,Puget Sound,Loggers,19895,WA,5,4,3
+598,Randolph - Macon,Yellow Jackets,18848,VA,5,4,3
+599,Redlands,Bulldogs,1815,CA,5,4,3
+600,Rhodes,Lynx,17418,TN,5,4,3
+601,Ripon,Red Hawks,20415,WI,5,4,3
+602,Rochester (NY),Yellowjackets,13656,NY,5,4,3
+603,Rockford,Regents,5142,IL,5,4,3
+604,Rose - Hulman,Engineers,5857,IN,5,4,3
+605,Rowan,Profs,12168,NJ,5,5,3
+606,RPI,Engineers,13816,NY,5,5,3
+607,Saint John Fisher,Cardinals,13590,NY,5,4,3
+608,Saint John's (MN),Johnnies,9094,MN,5,4,3
+609,Saint Lawrence,Saints,12911,NY,5,4,3
+610,Saint Norbert,Green Knights,20089,WI,5,4,3
+611,Saint Olaf,Oles,9380,MN,5,4,3
+612,Saint Scholastica,Saints,9129,MN,5,4,3
+613,Saint Thomas (MN),Tommies,9468,MN,3,1,1
+614,Saint Vincent,Bearcats,15971,PA,5,4,3
+615,Salisbury,Seagulls,7851,MD,5,5,3
+616,Salve Regina,Seahawks,16617,RI,5,4,3
+617,Sewanee,Tigers,17531,TN,5,4,3
+618,Shenandoah,Hornets,19390,VA,5,4,3
+619,Simpson,Storm,3851,IA,5,4,3
+620,Southern Virginia,Knights,18901,VA,5,4,3
+621,Southwestern (TX),Pirates,17982,TX,5,4,3
+622,Springfield,Pride,7513,MA,5,4,3
+623,Stevenson,Mustangs,7804,MD,5,4,3
+624,Sul Ross State,Lobos,17627,TX,5,4,3
+625,SUNY - Maritime,Privateers,12873,NY,5,4,3
+626,SUNY - Morrisville,Mustangs,13462,NY,5,4,3
+627,Susquehanna,River Hawks,16353,PA,5,4,3
+628,Texas Lutheran,Bulldogs,18486,TX,5,4,3
+629,Thiel,Tomcats,15837,PA,5,4,3
+630,Thomas More,Saints,6470,KY,6,4,4
+631,Trine,Thunder,5374,IN,5,4,3
+632,Trinity (CT),Bantams,2412,CT,5,4,3
+633,Trinity (TX),Tigers,18456,TX,5,5,3
+634,Tufts,Jumbos,7380,MA,5,4,3
+635,Union (NY),Dutchmen,13709,NY,5,4,3
+636,Ursinus,Bears,15613,PA,5,4,3
+637,Utica,Pioneers,13829,NY,5,4,3
+638,Wabash,Little Giants,5471,IN,5,4,3
+639,Wartburg,Knights,4176,IA,5,4,3
+640,Washington and Jefferson,Presidents,16514,PA,5,4,3
+641,Washington and Lee,Generals,19134,VA,5,4,3
+642,Washington (MO),Bears,10112,MO,5,4,3
+643,Waynesburg,Yellow Jackets,16524,PA,5,4,3
+644,Wesley,Wolverines,2563,DE,10,0,9
+645,Wesleyan,Cardinals,2431,CT,5,4,3
+646,Western Connecticut,Colonials,2377,CT,5,4,3
+647,Western New England,Golden Bears,7513,MA,5,4,3
+648,Westfield State,Owls,7572,MA,5,4,3
+649,Westminster (MO),Blue Jays,9805,MO,5,4,3
+650,Westminster (PA),Titans,16172,PA,5,4,3
+651,Wheaton (IL),Thunder,5331,IL,5,5,3
+652,Whittier,Poets,2049,CA,5,4,3
+653,Whitworth,Pirates,19884,WA,5,5,3
+654,Widener,Pride,15581,PA,5,5,3
+655,Wilkes,Colonels,16553,PA,5,4,3
+656,Willamette,Bearcats,15355,OR,5,4,3
+657,William Paterson,Pioneers,12483,NJ,5,4,3
+658,Williams,Ephs,7583,MA,5,5,3
+659,Wilmington (OH),Quakers,14724,OH,5,4,3
+660,Wisconsin - Eau Claire,Blugolds,20110,WI,5,4,3
+661,Wisconsin - La Crosse,Eagles,20236,WI,5,6,3
+662,Wisconsin - Oshkosh,Titans,20357,WI,5,4,3
+663,Wisconsin - Platteville,Pioneers,20376,WI,5,4,3
+664,Wisconsin - River Falls,Falcons,20416,WI,5,4,3
+665,Wisconsin - Stevens Point,Pointers,20469,WI,5,6,3
+666,Wisconsin - Stout,Blue Devils,20289,WI,5,6,3
+667,Wisconsin - Whitewater,Warhawks,20539,WI,5,6,3
+668,Wisconsin Lutheran,Warriors,20299,WI,5,4,3
+669,Wittenberg,Tigers,14612,OH,5,4,3
+670,Wooster,Fighting Scots,14732,OH,5,4,3
+671,Worcester Poly,Engineers,7591,MA,5,4,3
+672,Worcester State,Lancers,7591,MA,5,4,3
+673,Arizona Christian,Firestorm,1056,AZ,6,3,4
+674,Ave Maria,Gyrenes,2847,FL,6,3,4
+675,Avila,Eagles,9892,MO,6,3,4
+676,Bacone,Warriors,14990,OK,9,0,4
+677,Baker,Wildcats,5947,KS,6,4,4
+678,Benedictine (KS),Ravens,5940,KS,6,3,4
+679,Bethany (KS),Terrible Swedes,6130,KS,6,3,4
+680,Bethel (KS),Threshers,6175,KS,6,3,4
+681,Bethel (TN),Wildcats,17414,TN,6,4,4
+682,Bluefield,Rams,18880,VA,6,3,4
+683,Briar Cliff,Chargers,4110,IA,6,3,4
+684,Campbellsville,Tigers,6379,KY,6,3,4
+685,Carroll (MT),Fighting Saints,10655,MT,6,4,4
+686,Central Methodist,Eagles,9785,MO,6,3,4
+687,Cincinnati Christian,Eagles,14086,OH,10,0,9
+688,Clarke,Pride,3738,IA,6,3,4
+689,Concordia (MI),Cardinals,8257,MI,6,3,4
+690,Concordia (NE),Bulldogs,11754,NE,6,3,4
+691,Culver - Stockton,Wildcats,9677,MO,6,3,4
+692,Cumberland,Bulldogs,17384,TN,6,3,4
+693,Cumberlands,Patriots,6801,KY,6,3,4
+694,Dakota State,Trojans,17058,SD,6,3,4
+695,Dakota Wesleyan,Tigers,17069,SD,6,3,4
+696,Dickinson State,Blue Hawks,11369,ND,6,3,4
+697,Doane,Tigers,11566,NE,6,3,4
+698,Dordt,Defenders,4109,IA,6,3,4
+699,Eastern Oregon,Mountaineers,15281,OR,6,3,4
+700,Edward Waters,Tigers,2767,FL,4,1,2
+701,Evangel,Crusaders,10146,MO,6,4,4
+702,Faulkner,Eagles,374,AL,6,3,4
+703,Friends,Falcons,6301,KS,6,3,4
+704,Georgetown (KY),Tigers,6483,KY,6,3,4
+705,Graceland,Yellowjackets,3886,IA,6,4,4
+706,Grand View,Vikings,3727,IA,6,3,4
+707,Hastings,Broncos,11627,NE,6,4,4
+708,Idaho College,Coyotes,4227,ID,6,3,4
+709,Indiana Wesleyan,Wildcats,5666,IN,6,3,4
+710,Jamestown,Jimmies,11409,ND,6,3,4
+711,Kansas Wesleyan,Coyotes,6239,KS,6,3,4
+712,Keiser,Seahawks,2980,FL,6,3,4
+713,Kentucky Christian,Knights,6498,KY,6,3,4
+714,Langston,Lions,14950,OK,6,4,4
+715,Lawrence Tech,Blue Devils,8877,MI,6,3,4
+716,Lindenwood - Belleville,Lynx,4453,IL,10,0,9
+717,Lindsey Wilson,Blue Raiders,6403,KY,6,3,4
+718,Lyon,Scots,555,AR,6,3,4
+719,Marian (IN),Knights,5601,IN,6,3,4
+720,Mayville State,Comets,11430,ND,6,3,4
+721,McPherson,Bulldogs,6152,KS,6,3,4
+722,MidAmerica Nazarene,Pioneers,6184,KS,6,3,4
+723,Midland,Warriors,11606,NE,6,3,4
+724,Missouri Baptist,Spartans,10112,MO,6,3,4
+725,Missouri Valley,Vikings,9960,MO,6,3,4
+726,Montana State - Northern,Lights,10652,MT,6,3,4
+727,Montana Tech,Orediggers,10600,MT,6,3,4
+728,Montana Western,Bulldogs,10621,MT,6,3,4
+729,Morningside,Mustangs,4110,IA,6,3,4
+730,Northwestern (IA),Red Raiders,4014,IA,6,4,4
+731,Oklahoma Panhandle State,Aggies,14895,OK,6,3,4
+732,Olivet Nazarene,Tigers,4479,IL,6,3,4
+733,Ottawa (KS),Braves,6193,KS,6,4,4
+734,Peru State,Bobcats,11722,NE,6,3,4
+735,Pikeville,Bears,6672,KY,6,3,4
+736,Point,Skyhawks,3492,GA,6,3,4
+737,Presentation,Saints,16946,SD,6,3,4
+738,Reinhardt,Eagles,3478,GA,6,3,4
+739,Robert Morris (IL),Eagles,4552,IL,10,0,9
+740,Rocky Mountain,Battlin' Bears,10588,MT,6,4,4
+741,Saint Ambrose,Fighting Bees,3715,IA,6,3,4
+742,Saint Andrews,Knights,11035,NC,6,3,4
+743,Saint Francis (IL),Fighting Saints,4838,IL,6,3,4
+744,Saint Francis (IN),Cougars,5530,IN,6,3,4
+745,Saint Mary (KS),Spires,6118,KS,6,3,4
+746,Saint Xavier,Cougars,4552,IL,6,3,4
+747,Siena Heights,Saints,8240,MI,6,3,4
+748,Southeastern,Fire,2793,FL,6,3,4
+749,Southern Oregon,Raiders,15158,OR,6,3,4
+750,Southwestern (KS),Moundbuilders,6305,KS,6,3,4
+751,Southwestern Assemblies of God,Lions,18612,TX,6,3,4
+752,Sterling,Warriors,6259,KS,6,3,4
+753,Tabor,Bluejays,6078,KS,6,3,4
+754,Taylor,Trojans,5870,IN,6,3,4
+755,Texas College,Steers,18585,TX,6,3,4
+756,Texas Wesleyan,Rams,17954,TX,6,3,4
+757,Trinity International,Trojans,4614,IL,6,4,4
+758,Union (KY),Bulldogs,6326,KY,6,4,4
+759,Valley City State,Vikings,11481,ND,6,3,4
+760,Waldorf,Warriors,3786,IA,6,3,4
+761,Warner,Royals,2791,FL,6,3,4
+762,Wayland Baptist,Pioneers,18356,TX,6,3,4
+763,Webber International,Warriors,2615,FL,6,3,4
+764,William Penn,Statesmen,4018,IA,6,4,4
+765,Allan Hancock,Bulldogs,1895,CA,7,1,5
+766,American River,Beavers,1848,CA,7,1,5
+767,Antelope Valley,Marauders,1560,CA,7,1,5
+768,Arizona Western,Matadors,1138,AZ,9,0,5
+769,Arkansas Baptist,Buffaloes,750,AR,7,3,5
+770,ASA (NY),Avengers,13493,NY,7,3,5
+771,Bakersfield City,Renegades,1188,CA,7,1,5
+772,Blinn,Buccaneers,17728,TX,7,3,5
+773,Butler (KS),Grizzlies,6019,KS,7,3,5
+774,Butte,Roadrunners,1733,CA,7,3,5
+775,Cabrillo,Seahawks,1168,CA,7,1,5
+776,Canyons,Cougars,1891,CA,7,1,5
+777,Central Lakes,Raiders,9033,MN,7,3,5
+778,Cerritos,Falcons,1707,CA,7,1,5
+779,Chabot,Gladiators,1472,CA,7,1,5
+780,Chaffey,Panthers,1807,CA,7,1,5
+781,Cisco,Wranglers,17802,TX,7,3,5
+782,Citrus,Fighting Owls,1439,CA,7,1,5
+783,Coahoma,Tigers,10288,MS,7,3,5
+784,Coffeyville,Red Ravens,5992,KS,7,3,5
+785,Compton,Tartars,1313,CA,7,1,5
+786,Contra Costa,Comets,1880,CA,7,1,5
+787,Copiah - Lincoln,Wolfpack,10563,MS,7,3,5
+788,Dakota College,Lumberjacks,11354,ND,9,0,5
+789,De Anza,Dons,1336,CA,7,1,5
+790,Dean,Bulldogs,7300,MA,5,2,3
+791,Desert,Roadrunners,1742,CA,7,1,5
+792,Diablo Valley,Vikings,1784,CA,7,1,5
+793,Dodge City,Conquistadors,6012,KS,7,3,5
+794,DuPage,Chaparrals,4738,IL,7,3,5
+795,East Central (MS),Warriors,10308,MS,7,3,5
+796,East Los Angeles,Huskies,1665,CA,7,1,5
+797,East Mississippi,Lions,10501,MS,7,3,5
+798,Eastern Arizona,Gila Monsters,1111,AZ,9,0,5
+799,El Camino,Warriors,1986,CA,7,1,5
+800,Ellsworth,Panthers,3855,IA,7,3,5
+801,Erie,Kats,12881,NY,7,3,5
+802,Feather River,Golden Eagles,1802,CA,7,1,5
+803,Fond du Lac,Thunder,9089,MN,7,3,5
+804,Foothill,Owls,1593,CA,7,1,5
+805,Fort Scott,Greyhounds,6036,KS,7,3,5
+806,Fresno City,Rams,1424,CA,7,1,5
+807,Fullerton College,Hornets,1426,CA,7,1,5
+808,Garden City,Broncbusters,6044,KS,7,4,5
+809,Gavilan,Rams,1436,CA,7,1,5
+810,Georgia Military,Bulldogs,3301,GA,7,3,5
+811,Glendale (AZ),Gauchos,993,AZ,9,0,5
+812,Glendale (CA),Vaqueros,1438,CA,7,1,5
+813,Globe Tech,Knights,13493,NY,10,0,9
+814,Golden West,Rustlers,1494,CA,7,1,5
+815,Grossmont,Griffins,1371,CA,7,1,5
+816,Hartnell,Panthers,1851,CA,7,1,5
+817,Highland,Scotties,6076,KS,7,3,5
+818,Hinds,Eagles,10480,MS,7,3,5
+819,Holmes,Bulldogs,10341,MS,7,3,5
+820,Hudson Valley,Vikings,13816,NY,7,3,5
+821,Hutchinson,Blue Dragons,6090,KS,7,3,5
+822,Independence,Pirates,6091,KS,7,3,5
+823,Iowa Central,Tritons,3788,IA,7,3,5
+824,Iowa Western,Reivers,3705,IA,7,3,5
+825,Itasca,Vikings,9198,MN,7,3,5
+826,Itawamba,Indians,10335,MS,7,5,5
+827,Jones County,Bobcats,10320,MS,7,3,5
+828,Kilgore,Rangers,18118,TX,7,3,5
+829,Lackawanna,Falcons,16352,PA,7,3,5
+830,Laney,Eagles,1715,CA,7,1,5
+831,Long Beach City,Vikings,1589,CA,7,1,5
+832,Los Angeles Harbor,Seahawks,2055,CA,7,1,5
+833,Los Angeles Pierce,Brahma Bulls,2068,CA,7,1,5
+834,Los Angeles Southwest,Cougars,1594,CA,7,1,5
+835,Los Angeles Valley,Monarchs,2016,CA,7,1,5
+836,Los Medanos,Mustangs,1776,CA,7,1,5
+837,Louisburg,Hurricanes,11053,NC,7,3,5
+838,Mendocino,Eagles,2005,CA,9,0,5
+839,Merced,Blue Devils,1642,CA,7,1,5
+840,Mesa,Thunderbirds,1033,AZ,9,0,5
+841,Mesabi Range,Norse,9529,MN,7,3,5
+842,Minnesota State,Spartans,9162,MN,7,3,5
+843,Minnesota West,Bluejays,9566,MN,7,3,5
+844,Mississippi Delta,Trojans,10424,MS,7,4,5
+845,Mississippi Gulf Coast,Bulldogs,10458,MS,7,3,5
+846,Modesto,Pirates,1655,CA,7,1,5
+847,Monroe,Mustangs,13490,NY,7,3,5
+848,Monterey Peninsula,Lobos,1664,CA,7,1,5
+849,Moorpark,Raiders,1667,CA,7,1,5
+850,Mount San Antonio,Mounties,2025,CA,7,3,5
+851,Mount San Jacinto,Eagles,1866,CA,7,1,5
+852,Nassau,Lions,13150,NY,7,3,5
+853,Navarro,Bulldogs,17836,TX,7,3,5
+854,New Mexico Military Institute,Broncos,12644,NM,7,3,5
+855,North Dakota State Science,Wildcats,11483,ND,7,3,5
+856,North Iowa Area,Trojans,3939,IA,9,0,5
+857,Northeast Mississippi,Tigers,10263,MS,7,3,5
+858,Northeastern Oklahoma A&M,Golden Norsemen,14977,OK,7,3,5
+859,Northland (MN),Pioneers,9512,MN,9,0,5
+860,Northwest Mississippi,Rangers,10503,MS,7,3,5
+861,Orange Coast,Pirates,1323,CA,7,1,5
+862,Palomar,Comets,1875,CA,7,1,5
+863,Pasadena City,Lancers,1752,CA,7,1,5
+864,Pearl River,Wildcats,10469,MS,7,3,5
+865,Phoenix College,Bears,1056,AZ,9,0,5
+866,Pima,Aztecs,1121,AZ,9,0,5
+867,Redwoods,Corsairs,1392,CA,7,1,5
+868,Reedley,Tigers,1820,CA,7,1,5
+869,Ridgewater,Warriors,9557,MN,9,0,5
+870,Riverside City,Tigers,1836,CA,7,1,5
+871,Rochester (MN),Yellowjackets,9439,MN,7,3,5
+872,Sacramento City,Panthers,1848,CA,7,1,5
+873,Saddleback,Gauchos,1654,CA,7,1,5
+874,San Bernardino Valley,Wolverines,1857,CA,7,1,5
+875,San Diego Mesa,Olympians,1861,CA,7,1,5
+876,San Francisco City,Rams,1864,CA,7,1,5
+877,San Joaquin Delta,Mustangs,1951,CA,7,1,5
+878,San Jose City,Jaguars,1868,CA,7,1,5
+879,San Mateo,Bulldogs,1878,CA,7,1,5
+880,Santa Ana,Dons,1888,CA,7,1,5
+881,Santa Barbara City,Vaqueros,1889,CA,7,1,5
+882,Santa Monica,Corsairs,1896,CA,7,1,5
+883,Santa Rosa,Bear Cubs,1898,CA,7,1,5
+884,Scottsdale,Fighting Artichokes,1090,AZ,9,0,5
+885,Sequoias,Giants,2021,CA,7,1,5
+886,Shasta,Knights,1814,CA,7,1,5
+887,Sierra,Wolverines,1837,CA,7,1,5
+888,Siskiyous,Eagles,2033,CA,7,1,5
+889,Snow,Badgers,18695,UT,7,3,5
+890,Southwest Mississippi,Bears,10526,MS,7,3,5
+891,Southwestern (CA),Jaguars,1294,CA,7,1,5
+892,Trinity Valley,Cardinals,17654,TX,7,3,5
+893,Tyler,Apaches,18585,TX,7,3,5
+894,Ventura,Pirates,2018,CA,7,1,5
+895,Vermilion,Ironmen,9145,MN,7,3,5
+896,Victor Valley,Rams,2019,CA,7,1,5
+897,West Hills,Falcons,1305,CA,7,1,5
+898,West Los Angeles,Wildcats,1335,CA,7,1,5
+899,Yuba,49ers,1626,CA,7,1,5
+900,Acadia,Axemen,30644,NS,8,5,8
+901,Alberta,Golden Bears,30053,AB,8,5,8
+902,Bishop's,Gaiters,31165,QC,8,5,8
+903,British Columbia,Thunderbirds,30288,BC,8,5,8
+904,Calgary,Dinos,30026,AB,8,8,8
+905,Carleton (ON),Ravens,30830,ON,8,5,8
+906,Concordia (QC),Stingers,31058,QC,8,6,8
+907,Guelph,Gryphons,30759,ON,8,5,8
+908,Laval,Rouge et Or,31086,QC,8,5,8
+909,Manitoba,Bisons,30388,MB,8,20,8
+910,McGill,Redmen  ,31058,QC,8,24,8
+911,McMaster,Marauders,30761,ON,8,6,8
+912,Montréal,Carabins,31058,QC,8,6,8
+913,Mount Allison,Mounties,30460,NB,8,5,8
+914,Ottawa (ON),Gee-Gees,30830,ON,8,5,8
+915,Queen's (ON),Golden Gaels,30775,ON,8,5,8
+916,Regina,Rams,31298,SK,8,28,8
+917,Saint Francis Xavier,X-Men,30605,NS,8,6,8
+918,Saint Mary's (NS),Huskies,30619,NS,8,5,8
+919,Saskatchewan,Huskies,31307,SK,8,5,8
+920,Sherbrooke,Vert et Or,31165,QC,8,5,8
+921,Simon Fraser,Clan,30162,BC,8,6,2
+922,Toronto,Varsity Blues,30898,ON,8,5,8
+923,Waterloo,Warriors,30905,ON,8,5,8
+924,Western Ontario,Mustangs,30790,ON,8,8,8
+925,Wilfrid Laurier,Golden Hawks,30905,ON,8,5,8
+926,Windsor,Lancers,30913,ON,8,5,8
+927,York (ON),Lions,30898,ON,8,5,8
+928,American University,Eagles,2553,DC,9,0,1
+929,Arkansas - Little Rock,Trojans,750,AR,9,0,1
+930,Boston University,Terriers,7215,MA,9,0,1
+931,Bradley,Braves,5079,IL,9,0,1
+932,Cal State - Fullerton,Titans,1426,CA,9,0,1
+933,Long Beach State,Beach,1589,CA,9,0,1
+934,Cal State - Northridge,Matadors,1594,CA,9,0,1
+935,California - Riverside,Highlanders,1836,CA,9,0,1
+936,California - Santa Barbara,Gauchos,1889,CA,9,0,1
+937,Canisius,Golden Griffins,12881,NY,9,0,1
+938,Charleston (SC),Cougars,16688,SC,9,0,1
+939,Creighton,Bluejays,11705,NE,9,0,1
+940,Denver,Pioneers,2139,CO,9,0,1
+941,DePaul,Blue Demons,4552,IL,9,0,1
+942,Detroit Mercy,Titans,8418,MI,9,0,1
+943,Drexel,Dragons,16242,PA,9,0,1
+944,Evansville,Purple Aces,5514,IN,9,0,1
+945,Fairfield,Stags,2398,CT,9,0,1
+946,George Washington,Colonials,2553,DC,9,0,1
+947,Gonzaga,Bulldogs,19884,WA,9,0,1
+948,High Point,Panthers,10983,NC,9,0,1
+949,Hofstra,Pride,13228,NY,9,0,1
+950,Illinois - Chicago,Flames,4552,IL,9,0,1
+951,Iona,Gaels,13490,NY,9,0,1
+952,La Salle,Explorers,16242,PA,9,0,1
+953,Long Island,Sharks,13191,NY,3,3,1
+954,Loyola Marymount,Lions,1594,CA,9,0,1
+955,Loyola (IL),Ramblers,4552,IL,9,0,1
+956,Loyola (MD),Greyhounds,7609,MD,9,0,1
+957,Manhattan,Jaspers,13493,NY,9,0,1
+958,Marquette,Golden Eagles,20299,WI,9,0,1
+959,Maryland - Eastern Shore,Hawks,7827,MD,9,0,1
+960,Mount Saint Mary's,Mountaineers,7695,MD,9,0,1
+961,City College of New York,Beavers,13493,NY,9,0,3
+962,New York University,Violets,13493,NY,9,0,3
+963,Niagara,Purple Eagles,13347,NY,9,0,1
+964,North Carolina - Asheville,Bulldogs,10755,NC,9,0,1
+965,Northeastern,Huskies,7215,MA,9,0,1
+966,Pacific (CA),Tigers,1951,CA,9,0,1
+967,Pepperdine,Waves,1613,CA,9,0,1
+968,Portland,Pilots,15337,OR,9,0,1
+969,Providence,Black Friars,16626,RI,9,0,1
+970,Rider,Broncs,12233,NJ,9,0,1
+971,Saint Bonaventure,Bonnies,13687,NY,9,0,1
+972,Saint Francis (NY),Terriers,12876,NY,9,0,1
+973,Saint John's (NY),Red Storm,13629,NY,9,0,1
+974,Saint Joseph's (PA),Hawks,16242,PA,9,0,1
+975,Saint Louis,Billikens,10112,MO,9,0,1
+976,Saint Mary's (CA),Gaels,1668,CA,9,0,1
+977,Saint Peter's,Peacocks,12213,NJ,9,0,1
+978,San Francisco,Dons,1864,CA,9,0,1
+979,Santa Clara,Broncos,1890,CA,9,0,1
+980,Seton Hall,Pirates,12436,NJ,9,0,1
+981,Siena,Saints,12750,NY,9,0,1
+982,Texas A&M - Corpus Christi,Islanders,17834,TX,9,0,1
+983,Texas - Arlington,Mavericks,17648,TX,9,0,1
+984,Texas - Rio Grande Valley,Vaqueros,17911,TX,9,0,1
+985,Vermont,Catamounts,19422,VT,9,0,1
+986,Wichita State,Shockers,6301,KS,9,0,1
+987,Wisconsin - Milwaukee,Panthers,20299,WI,9,0,1
+988,Xavier,Musketeers,14086,OH,9,0,1
+989,Lambuth,Eagles,17360,TN,10,0,9
+990,Menlo,Oaks,1179,CA,9,0,4
+991,Morris Brown,Wolverines,3023,GA,9,0,9
+992,Nebraska - Omaha,Mavericks,11705,NE,9,0,1
+993,Saint Paul's,Tigers,19131,VA,10,0,9
+994,Western Washington,Vikings,19616,WA,9,0,2
+995,Allen,Yellow Jackets,16700,SC,4,1,2
+996,Ottawa (AZ),Spirit,1106,AZ,6,3,4
+997,Virginia Commonwealth,Rams,19269,VA,9,0,1
+998,California - Irvine,Anteaters,1509,CA,9,0,1
+999,Stillman,Tigers,499,AL,9,0,4
+1000,Chico State,Wildcats,1289,CA,9,0,2
+1001,Cal State - East Bay,Pioneers,1472,CA,9,0,2
+1002,Cameron,Aggies,14952,OK,9,0,2
+1003,Colorado College,Tigers,2122,CO,9,0,3
+1004,Dana,Vikings,11530,NE,10,0,9
+1005,Fisk,Bulldogs,17445,TN,9,0,5
+1006,Cal State - Los Angeles,Golden Eagles,1594,CA,9,0,2
+1007,Milton,Wildcats,20298,WI,10,0,9
+1008,Mount Senario,Fighting Saints,20240,WI,10,0,9
+1009,Northeastern Illinois,Golden Eagles,4552,IL,9,0,9
+1010,Principia,Panthers,4667,IL,9,0,3
+1011,Saint Joseph's (IN),Pumas,5790,IN,10,0,9
+1012,San Francisco State,Gators,1864,CA,9,0,2
+1013,Tampa,Spartans,2957,FL,9,0,2
+1014,U.S. International,Gulls,1861,CA,10,0,9
+1015,Upsala,Vikings,12123,NJ,10,0,9
+1016,Walla Walla,Warriors,19921,WA,9,0,5
+1017,West Virginia Tech,Golden Bears,20585,WV,9,0,5
+1018,Wisconsin - Superior,Yellowjackets,20482,WI,9,0,3
+1019,Yankton,Greyhounds,17146,SD,10,0,9
+1020,Cal State - Bakersfield,Roadrunners,1188,CA,9,0,1
+1021,Seattle,Redhawks,19869,WA,9,0,1
+1022,Academy of Art,Urban Knights,1864,CA,9,0,2
+1023,Adelphi,Panthers,13150,NY,9,0,2
+1024,Alabama - Huntsville,Chargers,310,AL,9,0,2
+1025,Alaska - Anchorage,Seawolves,5,AK,9,0,2
+1026,Alaska - Fairbanks,Nanooks,25,AK,9,0,2
+1027,Albertus Magnus,Falcons,2443,CT,9,0,3
+1028,Alvernia,Golden Wolves,16281,PA,5,2,3
+1029,Anderson,Trojans,16647,SC,9,0,2
+1030,Arcadia,Knights,15817,PA,9,0,3
+1031,Arkansas - Fort Smith,Lions,661,AR,9,0,2
+1032,ASA (FL),Silver Storm,2830,FL,7,1,5
+1033,Auburn - Montgomery,Warhawks,374,AL,9,0,2
+1034,Augusta,Jaguars,3026,GA,9,0,2
+1035,Babson,Beavers,7549,MA,9,0,3
+1036,Bard,Raptors,13637,NY,9,0,3
+1037,Barry,Buccaneers,2830,FL,9,0,2
+1038,Barton,Bulldogs,11326,NC,4,1,2
+1039,Baruch,Bearcats,13493,NY,9,0,3
+1040,Bay Path,Wildcats,7361,MA,9,0,3
+1041,Bellarmine,Knights,6582,KY,9,0,1
+1042,Belmont,Bruins,17445,TN,9,0,1
+1043,Belmont Abbey,Crusaders,10778,NC,9,0,2
+1044,Berea,Mountaineers,6341,KY,9,0,3
+1045,Bethany Lutheran,Vikings,9316,MN,9,0,3
+1046,Binghamton,Bearcats,13843,NY,9,0,1
+1047,Biola,Eagles,1538,CA,9,0,2
+1048,Blackburn,Beavers,4522,IL,9,0,3
+1049,Bloomfield,Bears,12059,NJ,9,0,2
+1050,Bluefield State,Big Blue,20599,WV,4,1,2
+1051,Bob Jones,Bruins,16753,SC,9,0,3
+1052,Brandeis,Judges,7541,MA,9,0,3
+1053,Bridgeport,Purple Knights,2355,CT,9,0,2
+1054,Brooklyn,Bulldogs,12876,NY,9,0,3
+1055,Bryn Athyn,Lions,15543,PA,9,0,3
+1056,Cabrini,Cavaliers,16522,PA,9,0,3
+1057,Cairn,Highlanders,15966,PA,9,0,3
+1058,Cal State - Dominguez Hills,Toros,1273,CA,9,0,2
+1059,Cal State - Monterey Bay,Otters,1907,CA,9,0,2
+1060,Cal State - San Bernardino,Coyotes,1857,CA,9,0,2
+1061,Cal State - San Marcos,Cougars,1875,CA,9,0,2
+1062,Caldwell,Cougars,12078,NJ,9,0,2
+1063,California - San Diego,Tritons,1861,CA,9,0,1
+1064,California - Santa Cruz,Banana Slugs,1892,CA,9,0,3
+1065,California Baptist,Lancers,1836,CA,9,0,1
+1066,California Polytechnic - Pomona,Broncos,1790,CA,9,0,2
+1067,California Tech,Beavers,1752,CA,9,0,3
+1068,Calvin,Knights,8508,MI,9,0,3
+1069,Cazenovia,Wildcats,12928,NY,9,0,3
+1070,Cedarville,Yellow Jackets,14073,OH,9,0,2
+1071,Centenary (LA),Gents,7124,LA,9,0,3
+1072,Centenary (NJ),Cyclones,12178,NJ,9,0,3
+1073,Chaminade,Silverswords,3529,HI,9,0,2
+1074,Chatham,Cougars,16249,PA,9,0,3
+1075,Chestnut Hill,Griffins,16242,PA,9,0,2
+1076,Chicago State,Cougars,4552,IL,9,0,1
+1077,Christian Brothers,Buccaneers,17418,TN,9,0,2
+1078,Claflin,Panthers,16847,SC,9,0,2
+1079,Clark,Cougars,7591,MA,9,0,3
+1080,Clarks Summit,Defenders,15593,PA,9,0,3
+1081,Clarkson,Golden Knights,13614,NY,9,0,3
+1082,Clayton State,Lakers,3315,GA,9,0,2
+1083,Cleveland State,Vikings,14092,OH,9,0,1
+1084,Coker,Cobras,16762,SC,9,0,2
+1085,Colby - Sawyer,Chargers,11946,NH,9,0,3
+1086,Colorado - Colorado Springs,Mountain Lions,2122,CO,9,0,2
+1087,Colorado Christian,Cougars,2139,CO,9,0,2
+1088,Columbus State,Cougars,3105,GA,9,0,2
+1089,Concordia (CA),Eagles,1509,CA,9,0,2
+1090,Concordia (TX),Tornados,17657,TX,9,0,3
+1091,Connecticut College,Camels,2444,CT,9,0,3
+1092,Converse,Valkyries,16902,SC,9,0,2
+1093,Coppin State,Eagles,7609,MD,9,0,1
+1094,Covenant,Scots,3267,GA,9,0,3
+1095,Daemen,Wildcats,12881,NY,9,0,2
+1096,Dallas,Crusaders,18084,TX,9,0,3
+1097,Dallas Baptist,Patriots,17861,TX,9,0,2
+1098,Davis and Elkins,Senators,20668,WV,9,0,2
+1099,Denver - Metropolitan State,Roadrunners,2139,CO,9,0,2
+1100,DeSales,Bulldogs,15570,PA,9,0,3
+1101,District of Columbia,Firebirds,2553,DC,9,0,2
+1102,Dominican (CA),Penguins,1883,CA,9,0,2
+1103,Dominican (IL),Stars,5128,IL,9,0,3
+1104,Dominican (NY),Chargers,13538,NY,9,0,2
+1105,Drew,Rangers,12253,NJ,9,0,3
+1106,Drury,Panthers,10146,MO,9,0,2
+1107,Eastern,Eagles,16522,PA,9,0,3
+1108,Eastern Connecticut State,Warriors,2541,CT,9,0,3
+1109,Eastern Mennonite,Royals,19084,VA,9,0,3
+1110,Eastern Nazarene,Lions,7459,MA,9,0,3
+1111,Eckerd,Tritons,2927,FL,9,0,2
+1112,Edgewood,Eagles,20264,WI,9,0,3
+1113,Elizabethtown,Blue Jays,15721,PA,9,0,3
+1114,Elmira,Soaring Eagles,13095,NY,9,0,3
+1115,Elms,Blazers,7247,MA,9,0,3
+1116,Embry - Riddle,Eagles,2678,FL,9,0,2
+1117,Emerson,Lions,7215,MA,9,0,3
+1118,Emmanuel (GA),Lions,3396,GA,9,0,2
+1119,Emmanuel (MA),Saints,7215,MA,9,0,3
+1120,Emory,Eagles,3023,GA,9,0,3
+1121,Erskine,Flying Fleet,16754,SC,4,1,2
+1122,Fairleigh Dickinson,Knights,12454,NJ,9,0,1
+1123,Farmingdale State,Rams,13108,NY,9,0,3
+1124,Felician,Golden Falcons,12412,NJ,9,0,2
+1125,Flagler,Saints,2923,FL,9,0,2
+1126,Florida Gulf Coast,Eagles,2712,FL,9,0,1
+1127,Florida Memorial,Lions,2832,FL,6,2,4
+1128,Florida Southern,Moccasins,2793,FL,9,0,2
+1129,Fontbonne,Griffins,10112,MO,9,0,3
+1130,Francis Marion,Patriots,16733,SC,9,0,2
+1131,Franciscan of Steubenville,Barons,14614,OH,9,0,3
+1132,Franklin Pierce,Ravens,11973,NH,4,1,2
+1133,Fresno Pacific,Sunbirds,1424,CA,9,0,2
+1134,George Mason,Patriots,19018,VA,9,0,1
+1135,Georgia College,Bobcats,3301,GA,9,0,2
+1136,Georgia Southwestern State,Hurricanes,3013,GA,9,0,2
+1137,Georgian Court,Lions,12226,NJ,9,0,2
+1138,Goldey - Beacom,Lightning,2596,DE,9,0,2
+1139,Gordon,Fighting Scots,7553,MA,9,0,3
+1140,Goucher,Gophers,7879,MD,9,0,3
+1141,Grand Canyon,Antelopes,1056,AZ,9,0,1
+1142,Gwynedd Mercy,Griffins,15841,PA,9,0,3
+1143,Hartford,Hawks,2533,CT,9,0,3
+1144,Haverford,Fords,15860,PA,9,0,3
+1145,Hawai'i - Hilo,Vulcans,3526,HI,9,0,2
+1146,Hawai'i Pacific,Sharks,3529,HI,9,0,2
+1147,Hilbert,Hawks,13203,NY,9,0,3
+1148,Holy Family,Tigers,16242,PA,9,0,2
+1149,Holy Names,Hawks,1715,CA,9,0,2
+1150,Hood,Blazers,7705,MD,9,0,3
+1151,Houghton,Highlanders,13261,NY,9,0,3
+1152,Hunter,Hawks,13493,NY,9,0,3
+1153,Illinois - Springfield,Prairie Stars,5217,IL,9,0,2
+1154,Illinois Tech,Scarlet Hawks,4552,IL,9,0,3
+1155,Immaculata,Mighty Macs,16021,PA,9,0,3
+1156,Indiana - Purdue - Indianapolis,Jaguars,5601,IN,9,0,1
+1157,John Jay Criminal Justice,Bloodhounds,13493,NY,9,0,3
+1158,Johnson and Wales,Wildcats,16626,RI,9,0,3
+1159,Judson,Eagles,4657,IL,6,2,4
+1160,Keene State,Owls,11909,NH,9,0,3
+1161,Keuka,Wolves,13310,NY,9,0,3
+1162,King,Tornado,17195,TN,9,0,2
+1163,La Roche,Redhawks,16249,PA,9,0,3
+1164,Lake Superior State,Lakers,8852,MI,9,0,2
+1165,Lancaster Bible,Chargers,15962,PA,9,0,3
+1166,Lander,Bearcats,16754,SC,9,0,2
+1167,Lasell,Lasers,7407,MA,9,0,3
+1168,Le Moyne,Dolphins,13802,NY,9,0,2
+1169,Lee,Flames,17227,TN,9,0,2
+1170,Lees - McRae,Bobcats,10768,NC,9,0,2
+1171,Lehman,Lightning,12873,NY,9,0,3
+1172,LeMoyne - Owen,Magicians,17418,TN,9,0,2
+1173,Lesley,Lynx,7215,MA,9,0,3
+1174,LeTourneau,Yellow Jackets,18187,TX,9,0,3
+1175,Lewis,Flyers,5146,IL,9,0,2
+1176,Lincoln Memorial,Railsplitters,17331,TN,9,0,2
+1177,Lipscomb,Bisons,17445,TN,9,0,1
+1178,Longwood,Lancers,19024,VA,9,0,1
+1179,Lubbock Christian,Chaparrals,18196,TX,9,0,2
+1180,Lynchburg,Hornets,19148,VA,9,0,3
+1181,Lynn,Fighting Knights,2627,FL,9,0,2
+1182,Madonna,Crusaders,8636,MI,6,2,4
+1183,Maine - Farmington,Beavers,8006,ME,9,0,3
+1184,Maine - Presque Isle,Owls,8147,ME,9,0,3
+1185,Manhattanville,Valiants,13624,NY,9,0,3
+1186,Mansfield,Mountaineers,16026,PA,9,0,2
+1187,Marian (WI),Sabres,20140,WI,9,0,3
+1188,Mary Baldwin,Fighting Squirrels,19326,VA,9,0,3
+1189,Mary Washington,Eagles,19043,VA,9,0,3
+1190,Maryland - Baltimore County,Retrievers,7638,MD,9,0,1
+1191,Marymount,Saints,18843,VA,9,0,3
+1192,Maryville (MO),Saints,10112,MO,9,0,2
+1193,Marywood,Pacers,16352,PA,9,0,3
+1194,Massachusetts - Boston,Beacons,7215,MA,9,0,3
+1195,Massachusetts - Lowell,River Hawks,7362,MA,9,0,1
+1196,Massachusetts Liberal Arts,Trailblazers,7414,MA,9,0,3
+1197,Medaille,Mavericks,12881,NY,9,0,3
+1198,Medgar Evers,Cougars,12876,NY,9,0,3
+1199,Mercy,Mavericks,13042,NY,9,0,2
+1200,Messiah,Falcons,15824,PA,9,0,3
+1201,Mills,Cyclones,1715,CA,9,0,3
+1202,Milwaukee Engineering,Raiders,20299,WI,9,0,3
+1203,Missouri - Kansas City,Roos,9892,MO,9,0,1
+1204,Missouri - Saint Louis,Tritons,10112,MO,9,0,2
+1205,Mitchell,Mariners,2444,CT,9,0,3
+1206,Molloy,Lions,13662,NY,9,0,2
+1207,Montana State - Billings,Yellowjackets,10588,MT,9,0,2
+1208,Montevallo,Falcons,373,AL,9,0,2
+1209,Mount Aloysius,Mounties,15646,PA,9,0,3
+1210,Mount Marty,Lancers,17146,SD,6,2,4
+1211,Mount Olive,Trojans,11107,NC,9,0,2
+1212,Mount Saint Mary,Knights,13497,NY,9,0,3
+1213,Mount Saint Vincent,Dolphins,12873,NY,9,0,3
+1214,Nazareth,Golden Flyers,13590,NY,9,0,3
+1215,Neumann,Knights,15456,PA,9,0,3
+1216,New England (ME),Nor'easters,7930,ME,5,2,3
+1217,New England (NH),Pilgrims,11897,NH,9,0,3
+1218,New Jersey City,Gothic Knights,12213,NJ,9,0,3
+1219,New Orleans,Privateers,7053,LA,9,0,1
+1220,New York Tech,Bears,13531,NY,9,0,2
+1221,Newman,Jets,6301,KS,9,0,2
+1222,NJIT,Highlanders,12321,NJ,9,0,1
+1223,North Carolina - Greensboro,Spartans,10957,NC,9,0,1
+1224,North Carolina - Wilmington,Seahawks,11325,NC,9,0,1
+1225,North Central (MN),Rams,9342,MN,9,0,3
+1226,North Florida,Ospreys,2767,FL,9,0,1
+1227,North Georgia,Nighthawks,3123,GA,9,0,2
+1228,Northern Kentucky,Norse,6641,KY,9,0,1
+1229,Northern Vermont - Johnson,Badgers,19483,VT,9,0,3
+1230,Northern Vermont - Lyndon,Hornets,19489,VT,9,0,3
+1231,Northland (WI),Lumberjacks,19970,WI,9,0,3
+1232,Northwest Nazarene,Nighthawks,4322,ID,9,0,2
+1233,Nova Southeastern,Sharks,2709,FL,9,0,2
+1234,Nyack,Warriors,13520,NY,9,0,2
+1235,Oakland,Golden Grizzlies,8820,MI,9,0,1
+1236,Oglethorpe,Stormy Petrels,3023,GA,9,0,3
+1237,Oklahoma Christian,Eagles,15007,OK,9,0,2
+1238,Oral Roberts,Golden Eagles,15105,OK,9,0,1
+1239,Ozarks,Eagles,605,AR,9,0,3
+1240,Paine,Lions,3026,GA,9,0,2
+1241,Palm Beach Atlantic,Sailfish,2980,FL,9,0,2
+1242,Penn State - Abington,Nittany Lions,15424,PA,9,0,3
+1243,Penn State - Altoona,Lions,15442,PA,9,0,3
+1244,Penn State - Berks,Nittany Lions,16281,PA,9,0,3
+1245,Penn State - Erie,Lions,15737,PA,9,0,3
+1246,Penn State - Harrisburg,Lions,15850,PA,9,0,3
+1247,Pennsylvania Tech,Wildcats,16555,PA,9,0,3
+1248,Pfeiffer,Falcons,11179,NC,9,0,3
+1249,Piedmont,Lions,3135,GA,9,0,3
+1250,Pine Manor,Gators,7246,MA,9,0,3
+1251,Pittsburgh - Bradford,Panthers,15527,PA,9,0,3
+1252,Pittsburgh - Greensburg,Bobcats,15835,PA,9,0,3
+1253,Pittsburgh - Johnstown,Mountain Cats,15930,PA,9,0,2
+1254,Point Loma Nazarene,Sea Lions,1861,CA,9,0,2
+1255,Post,Eagles,2526,CT,9,0,2
+1256,Pratt Institute,Cannoneers,12876,NY,9,0,3
+1257,Purdue - Fort Wayne,Mastodons,5530,IN,9,0,1
+1258,Purdue - Northwest,Pride,5574,IN,9,0,2
+1259,Queens (NC),Royals,10832,NC,9,0,2
+1260,Queens (NY),Knights,13629,NY,9,0,2
+1261,Quinnipiac,Bobcats,2410,CT,9,0,1
+1262,Radford,Highlanders,19254,VA,9,0,1
+1263,Ramapo,Roadrunners,12255,NJ,9,0,3
+1264,Randolph,WildCats,19148,VA,9,0,3
+1265,Regis (CO),Rangers,2139,CO,9,0,2
+1266,Regis (MA),Pride,7575,MA,9,0,3
+1267,Rhode Island College,Anchormen,16626,RI,9,0,3
+1268,Rivier,Raiders,11939,NH,9,0,3
+1269,Roanoke,Maroons,19292,VA,9,0,3
+1270,Roberts Wesleyan,Redhawks,13508,NY,9,0,2
+1271,Rochester Institute of Technology,Tigers,13656,NY,9,0,3
+1272,Rockhurst,Hawks,9892,MO,9,0,2
+1273,Roger Williams,Hawks,16590,RI,9,0,3
+1274,Rogers State,Hillcats,14819,OK,9,0,2
+1275,Rollins,Tars,2990,FL,9,0,2
+1276,Roosevelt,Lakers,4552,IL,6,2,4
+1277,Rosemont,Ravens,15544,PA,9,0,3
+1278,Russell Sage,Gators,12750,NY,9,0,3
+1279,Rutgers - Camden,Scarlet Raptors,12080,NJ,9,0,3
+1280,Rutgers - Newark,Scarlet Raiders,12321,NJ,9,0,3
+1281,Saint Benedict,Blazers,9466,MN,9,0,3
+1282,Saint Edward's,Hilltoppers,17657,TX,9,0,2
+1283,Saint Elizabeth,Screaming Eagles,12302,NJ,9,0,3
+1284,Saint Joseph (CT),Blue Jays,2533,CT,9,0,3
+1285,Saint Joseph's (Brooklyn NY),Bears,12876,NY,9,0,3
+1286,Saint Joseph's (Long Island NY),Golden Eagles,13561,NY,9,0,3
+1287,Saint Joseph's (ME),Monks,8189,ME,9,0,3
+1288,Saint Leo,Lions,2928,FL,9,0,2
+1289,Saint Martin's,Saints,19746,WA,9,0,2
+1290,Saint Mary's (MD),Seahawks,7849,MD,9,0,3
+1291,Saint Mary's (MN),Cardinals,9562,MN,9,0,3
+1292,Saint Mary's (TX),Rattlers,18456,TX,9,0,2
+1293,Saint Michael's,Purple Knights,19433,VT,9,0,2
+1294,Saint Rose,Golden Knights,12750,NY,9,0,2
+1295,Saint Thomas (FL),Bobcats,2832,FL,6,2,4
+1296,Saint Thomas (TX),Celts,18061,TX,9,0,3
+1297,Saint Thomas Aquinas,Spartans,13766,NY,9,0,2
+1298,Salem,Tigers,20893,WV,9,0,2
+1299,Salem State,Vikings,7479,MA,9,0,3
+1300,Sarah Lawrence,Gryphons,13943,NY,9,0,3
+1301,Schreiner,Mountaineers,18117,TX,9,0,3
+1302,Scranton,Royals,16352,PA,9,0,3
+1303,Seattle Pacific,Falcons,19869,WA,9,0,2
+1304,Skidmore,Thoroughbreds,13701,NY,9,0,3
+1305,Sonoma State,Seawolves,1839,CA,9,0,2
+1306,South Carolina - Aiken,Pacers,16644,SC,9,0,2
+1307,South Carolina Upstate,Spartans,16902,SC,9,0,1
+1308,Southern Illinois - Edwardsville,Cougars,4651,IL,9,0,1
+1309,Southern Indiana,Screaming Eagles,5514,IN,9,0,2
+1310,Southern Maine,Huskies,8145,ME,9,0,3
+1311,Southern New Hampshire,Penmen,11926,NH,9,0,2
+1312,Southern Wesleyan,Warriors,16685,SC,9,0,2
+1313,Spalding,Golden Eagles,6582,KY,9,0,3
+1314,Spring Hill,Badgers,371,AL,9,0,2
+1315,Stanislaus State,Warriors,2000,CA,9,0,2
+1316,Stevens Tech,Ducks,12203,NJ,9,0,3
+1317,Stockton,Ospreys,12376,NJ,9,0,3
+1318,Suffolk,Rams,7215,MA,9,0,3
+1319,SUNY - Canton,Kangaroos,12911,NY,9,0,3
+1320,SUNY - Cobleskill,Fighting Tigers,12973,NY,9,0,3
+1321,SUNY - Delhi,Broncos,13032,NY,9,0,3
+1322,SUNY - Fredonia,Blue Devils,13137,NY,9,0,3
+1323,SUNY - Geneseo,Knights,13155,NY,9,0,3
+1324,SUNY - New Paltz,Hawks,13489,NY,9,0,3
+1325,SUNY - Old Westbury,Panthers,13531,NY,9,0,3
+1326,SUNY - Oneonta,Red Dragons,13536,NY,9,0,3
+1327,SUNY - Oswego,Lakers,13544,NY,9,0,3
+1328,SUNY - Plattsburgh,Cardinals,13592,NY,9,0,3
+1329,SUNY - Potsdam,Bears,13614,NY,9,0,3
+1330,SUNY - Purchase,Panthers,13624,NY,9,0,3
+1331,SUNY Polytechnic,Wildcats,13394,NY,9,0,3
+1332,Swarthmore,Garnet,16433,PA,9,0,3
+1333,Texas - Dallas,Comets,17861,TX,9,0,3
+1334,Texas A&M International,Dustdevils,18152,TX,9,0,2
+1335,Thomas,Terriers,8219,ME,9,0,3
+1336,Thomas Jefferson,Rams,16242,PA,9,0,2
+1337,Transylvania,Pioneers,6573,KY,9,0,3
+1338,Trevecca Nazarene,Trojans,17445,TN,9,0,2
+1339,Union (TN),Bulldogs,17360,TN,9,0,2
+1340,University of the Sciences,Devils,16242,PA,9,0,2
+1341,Utah Valley,Wolverines,18777,UT,9,0,1
+1342,Valley Forge,Patriots,16244,PA,9,0,3
+1343,Vassar,Brewers,13616,NY,9,0,3
+1344,Virginia Wesleyan,Marlins,19369,VA,9,0,3
+1345,Warren Wilson,Owls,11261,NC,9,0,3
+1346,Washington (MD),Shoremen,7648,MD,9,0,3
+1347,Webster,Gorloks,10112,MO,9,0,3
+1348,Wells,Express,12796,NY,9,0,3
+1349,Wentworth Tech,Leopards,7215,MA,9,0,3
+1350,Westminster (UT),Griffins,18799,UT,9,0,2
+1351,Wheaton (MA),Lyons,7434,MA,9,0,3
+1352,Whitman,Blues,19921,WA,9,0,3
+1353,William Peace,Pacers,11173,NC,9,0,3
+1354,William Smith,Herons,13156,NY,9,0,3
+1355,Wilmington (DE),Wildcats,2586,DE,9,0,2
+1356,Wilson,Phoenix,15576,PA,9,0,3
+1357,Winthrop,Eagles,16875,SC,9,0,1
+1358,Wisconsin - Green Bay,Phoenix,20173,WI,9,0,1
+1359,Wisconsin - Parkside,Rangers,20227,WI,9,0,2
+1360,Wright State,Raiders,14166,OH,9,0,1
+1361,Yeshiva,Maccabees,13493,NY,9,0,3
+1362,York (NY),Cardinals,13629,NY,9,0,3
+1363,York (PA),Spartans,16577,PA,9,0,3
+1364,Young Harris,Mountain Lions,3512,GA,9,0,2

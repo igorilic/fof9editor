@@ -1,0 +1,17 @@
+This is the overview for using a custom player file with Front Office Football Nine. An example set of files is provided.
+
+This is an advanced customization feature that allows much greater control over your universe. No customer support is available for working with these files.
+
+Files included:
+
+xxxx refers to a identifier you give your custom player file. It can be anything. In the custom_example folder off of the installation, the identifier for the sample set is example.
+
+xxxx_info.csv: An overview of your league. The SCHEDULEID header must match the SCHEDULEID of an entry in the installation's league_info.csv for the type of league you are creating. While this, too, can be customized, each entry in league_info.csv requires full schedule support.
+
+xxxx_players.csv: The players for your league. Players who are available when the league starts are given a BASE_YEAR that matches the BASE_YEAR in the xxxx_info.csv file. When a draft class is created during simulation, the game will look for entries in this file to add as draftable players for that season.
+
+xxxx_quarterbacks.csv: The quarterbacks for your league. This works the same way the xxxx_players.csv file works. You can still select the historic quarterbacks option when using this file.
+
+xxxx_coaches: Coaches for your league. These only apply to the initiation of your league. Future coaches can't be created in this manner.
+
+When beginning a new universe and loading a set of custom player files, choose the xxxx_info.csv file.

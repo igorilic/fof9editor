@@ -1,0 +1,67 @@
+historic_quarterbacks.csv
+
+Information about historic quarterback file provided with Front Office Football Nine. The game will use this quarterback file to generate historic quarterbacks when starting a new universe with that option enabled.
+
+This feature was added with the understanding that no professional football player has endorsed Front Office Football in any way, in accordance with the federal Lanham Act.
+
+Be careful when editing or creating the historic quarterback file. Not all values are thoroughly checked when starting a new universe, and a mistake could result in an unstable universe.
+
+If player ratings deviate from the distribution of ratings provided here, the universe could easily produce statistical performances that are very different from the default quarterback file.
+
+Note that quarterbacks can have entries in both the quarterbacks file for a year and the historic quarterbacks file, though there are no quarterbacks active in 2023 in the historic quarterbacks file as of the time of Front Office Football Nine's initial release. The game will do its best not to duplicate player names using this file.
+
+Fields
+
+PLAYERID - The interal identifier given this quarterback in the initial universe. This must be unique within the universe and must be 1 or greater. Historic quarterbacks should have a player ID from 1 to 499, and the quarterback entries should be sorted, lowest to highest ID.
+LASTNAME - The last name of the quarterback. This should be no longer than 18 characters.
+FIRSTNAME - The first name of the quarterback. This should be no longer than 16 characters.
+TEAM - The team the quarterback is usually assigned to when there's no initial draft in the game and the option is selected to have historic quarterbacks assigned to original teams. Use the ID for the team as found for the year of the quarterback file in team_info.csv.
+UNIFORM - The quarterback's preferred uniform number with his initial team, when there's no initial draft. This should range from 0-99.
+HEIGHT - The quarterback's height. This can be the number of inches (72 is six feet tall). Or, if the value is more than 99, it can be the number of inches, with the last digit indicating eighths of an inch (745 would be 6' 2 5/8"). You can mix these ranges in one player file.
+HANDSIZE - The quarterback's hand size, in inches and eighths of an inch (93 is 9 3/8").
+ARMLENGTH - The quarterback's arm length, in inches and eighths of an inch.
+WEIGHT - The quarterback's weight, in pounds.
+BIRTHMONTH - The month of the quarterback's birthdate, a value from 1 to 12.
+BIRTHDAY - The day of the quarterback's birthdate, a value from 1 to 31.
+BIRTHYEAR - The year of the quarterback's birthdate. Note that when using the historic quarterback option, the birth year is modified automatically based on the generated experience level.
+BIRTHCITY - This is a text field not read by the game, but helps when working with a quarterback file.
+CITYID - The ID of the city of the quarterback's birth. This must match an ID of a city in cities.csv.
+COLLEGE - This is a text field not read by the game, but helps when working with a quarterback file.
+COLLEGEID - The ID of the college the quarterback attended. This must match an ID of a college in colleges.csv (0 for No College).
+YEARENTRY - The year a quarterback would have been part of a draft class, even if he wasn't drafted. Unusual values in this field could cause instabilty in areas where past draft results can be viewed.
+ROUNDDRAFTED - The round of the draft when a quarterback was selected. This should be 0 if a quarterback was undrafted.
+SELECTIONDRAFTED - The overall selection of the draft when a quarterback was selected. This should be 0 if a quarterback was undrafted.
+SUPPLEMENTAL - This should be 0 if a quarterback was selected (or went undrafted) in the amateur draft. It should be 1 if he was selected during the league's supplemental draft. Front Office Football Nine does not include a supplemental draft of its own.
+ORIGINALTEAM - Either the team that drafted the quarterback, or, if the quarterback was undrafted, the team that first signed him (even if he never played for that team). Use the ID for the team as found for the year of the player file in team_info.csv. Use 0 if the quarterback was not drafted or signed to any team within a year of first being available.
+OVERALLRATING - A value from 0-10, indicating the overall potential ability of this quarterback. The game uses this value to create ratings. The ratings may differ significantly from universe to universe. There is a random element to new player ratings. The "X-Factor" in the new universe wizard determines the range of that random element. This is the most critical value in the player file. If you change how this value is distributed among players, it will considerably change the statistical performances you'll see in games and AI-controlled teams will struggle to manage rosters properly.
+0 - The quarterback is of replacement quality. Expect low ratings across the board.
+1 - The quarterback is of backup quality. Ratings are generally low.
+2 - The quarterback is of starting quality. Ratings can vary.
+3 - The quarterback is usually one of the better starters in the league.
+4-7 - Increasingly rare - quarterbacks are often All-Star level.
+8 - The quarterback is often the best in the league.
+9 - The quarterback is a generational talent.
+10 - The quarterback is below replacement quality, and will only be placed on a team at the start of a new universe if he's needed to fill a roster.
+
+Player Attributes
+
+These fields must range from 0-250. Be careful, as the distribution of quarterback ratings can change how the game plays, considerably. These quarterbacks tend to be better than average starters in the league and universes played beginning with this option tend to have a little more offense than average.
+
+Note that unlike other player files, historic quarterbacks are given specific ratings in this file.
+
+TOUCH - Quarterback's ability to throw accurate screen and short passes.
+QUALITY - Quarterback's ability to throw accurate mid-range passes.
+ARM_STRENGTH - Quarterback's ability to throw accurate long passes.
+SCRAMBLE - Quarterback's desire to run the ball when unable to find an open receiver.
+DECISIONS - Quarterback's ability to make good decisions under pressure, which lowers interceptions and results in better choices on option plays and better success rates with quarterback sneaks.
+ACCURACY - Quarterback's pin-point throwing accuracy, which helps with completing passes.
+TIMING - Quarterback's ability to throw in front of a runner, resulting in more yards after the catch.
+SENSE_RUSH - Quarterback's ability to sense the pass rush and avoid getting sacked.
+READ_DEFENSE - Quarterback's ability to read the defense, resulting in better use of secondary routes and recognition of better choices on option plays.
+TWO_MINUTE - Quarterback's ability to effectively run the offense during hurry-up situations, under greater time pressures.
+FOOTWORK - Quarterback's natural throwing rhythm, which leads to better future development.
+IMPROVISATION - Quarterback's ability to quickly deal with pressure, resulting in greater efficiency when not sacked.
+CONFIDENCE - Quarterback's desire to complete longer throws, which can result in more interceptions, but also fewer missed opportunities.
+SKILL_SPEED - Quarterback's raw speed in pads, resulting in more breakaway runs.
+HOLE_RECOGNITION - Quarterback's (as ball carrier) ability to find the best possible path for gaining rushing yardage.
+SECURE_HANDLING - Quarterback's ability to hold on to the ball after contact.

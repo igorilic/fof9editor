@@ -1,0 +1,48 @@
+x_y_z_schedule.csv
+
+Information required to create new schedules in the game. A schedule should give each team the same number of games during the season and provide a measure of balance between team schedules. A league structure requires a corresponding schedule, an entry in the League Information table and entries in the Default Teams table matching each team.
+
+The convention for naming a schedule is x_y_z, where x is the total number of teams in the league, y is the number of divisions and z is the number of regular-season games. The only structure requirement is that there must be two conferences with the same number of divisions. That way, the league year can end with a championship game. Teams are limited to eight divisions and eight teams per division, so no league can be larger than 64 teams.
+
+Be careful if you decide to create a schedule file. Even the smallest mistake can make a league unstable or have teams playing multiple times in one week or different amounts of games. An error might not reveal itself until you've invested a lot of time in a universe.
+
+Fields
+
+ROTATION - The number added to the rotation base in the League Information table. When constructing a new schedule for a season, the game takes the year and subtracts the rotation base. That number, mod the number of rotations, determines the Rotation used for that particular season. For example, if the year is 2022 and the rotation base is 2002 and the number of rotations is 12, the schedule for 2022 is based on Rotation 8. The rotation number ranges from 1 to the total number of rotations in the schedule.
+SEASON - A flag set to 0 for exhibition games and 1 for regular-season games.
+STANDINGS - A flag set to 0 if the game is scheduled based on the team index and 1 if the game is scheduled based on the previous year's standings (also the team index if this is a new career). When using the team index, team 1 for a division has the lowest index in the team list.
+WEEK - The week during the season, with 1 indicating the start of the exhibition season.
+HOMEDIV - The division index of the home team, with 1 indicating the first division in the first of two conferences.
+HOMETEAM - The team index (or position in the standings) of the home team, also 1-based.
+VISDIV - The division index of the visiting team, with 1 indicating the first division in the first of two conferences.
+VISTEAM - The team index (or position in the standings) of the visiting team, also 1-based.
+
+NOTE: Schedule files must be sorted, lowest to highest, based on the ROTATION field, and then based on the WEEK field.
+
+Schedule Information
+
+Multiple rotations allow the game to balance schedules over several seasons. For instance, if a league has eight divisions (four in each conference) and teams play varying amounts of games within their own division, within divisions in their own conference and divisions in the other conference, it requires a rotation of 12 (3 other same-conference divisions times 4 other-conference divisions) schedules to provide ideal balance. That number drops to 6 with six divisions and 2 with four divisions.
+
+While rotations provide that balance, the game does not require it and working schedules can be created using only one rotation.
+
+In the game, matchups based on the team index and matchups based on the standings cannot be scheduled in the same week, since it could easily result in the same team playing twice in one week. In general, it's easier to construct a schedule using only games of one of these two types, but mixing the types (the 17-game professional league schedules have 14 games based on team index and three based on the previous season's standings) provides additional flexibility, especially with larger leagues.
+
+
+xxxx_schedule.csv
+
+Information about the default schedule file provided with Front Office Football Nine. The xxxx in the file name corresponds to the year a universe started with that player file begins. The game will use this schedule file when starting a new universe.
+
+Fields
+
+SEASON - A flag set to 0 for exhibition games and 1 for regular-season games.
+WEEK - The week during the current season. 1 must be used to designate the start of the exhibition season. The regular season will continue that iteration. Playoff games are not scheduled using this file.
+MONTH - The calendar month (1-12) when the game is played.
+DAY - The calendar day (1-31) when the game is played. Note that all games in Front Office Football Nine must be scheduled to be played on a Sunday.
+YEAR - The calendar year when the game is played.
+HOME - The index for the home team. Use the ID for the team as found for the year of the player file in team_info.csv.
+VISITOR - The index for the visiting team. Use the ID for the team as found for the year of the player file in team_info.csv.
+LOCATION - The city where the game will be played. This must match an ID of a city in cities.csv. If this value is 0, the game will use the home team's home city. If you use a city that is not in a metro area modeled in metro_areas.csv (like Frankfort, Germany), the game will assume the stadium is domed.
+
+NOTE: Single-Year schedule files must be sorted, lowest to highest, based on the WEEK field.
+
+This file is only used to create a new schedule for a league at the start of a new universe when a player file is also loaded.

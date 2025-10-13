@@ -1,0 +1,14 @@
+regions.csv
+
+Information about regions. This concept varies from country to country, so its use in the game is limited. In the US, this is the state, with codes 1-99 reserved (census codes are used). In Canada, this is the province, with 100-149 reserved. In the UK, this is the traditional concept of countries within the UK, with 150-153 reserved.
+
+Regions provide the flag-type icons used in some lists. These are connected to files based on the two-letter abbreviation for the region.
+
+Fields
+
+REGIONID - Index of the region. This is how other data types in the game refer to the region. The value 0 represents an unknown region.
+NAME - Name of the region.
+ABBREV - Abbreviation for the region.
+LATITUDE - Approximate Latitude of the center of the region (multiplied by 1000).
+LONGITUDE - Approximate Longitude of the center of the region (multiplied by 1000).
+FOOTBALL - Used to calculate a weight for assigning home towns, but only within the US.

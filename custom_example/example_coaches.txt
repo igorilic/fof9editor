@@ -1,0 +1,37 @@
+example_coaches.csv
+
+Information about the coaches in your custom player files. The xxxx is the identifier you give your custom player files. It can be anything. In the custom_example folder off of the installation, the identifier for the sample set is example.
+
+This file should be named with the same identifier as the xxxx_info.csv file. All files must be stored in the custom_example folder off of your game installation. You might need to change this folder's file permissions in order to create files for it.
+
+If there is no xxxx_coaches files or it doesn't have enough coaches for the league, new coaches will be created. This file is not required.
+
+Fields
+
+LASTNAME - The last name of the coach. This should be no longer than 18 characters.
+FIRSTNAME - The first name of the coach. This should be no longer than 16 characters.
+BIRTHMONTH - The month of the coach's birthdate, a value from 1 to 12.
+BIRTHDAY - The day of the coach's birthdate, a value from 1 to 31.
+BIRTHYEAR - The year of the coach's birthdate. This should be consistent with the year of the coaches file.
+BIRTHCITY - This is a text field not read by the game, but helps when working with a coach file.
+CITYID - The ID of the city of the coach's birth. This must match an ID of a city in cities.csv.
+COLLEGE - This is a text field not read by the game, but helps when working with a coach file.
+COLLEGEID - The ID of the college the coach attended. This must match an ID of a college in colleges.csv (0 for No College).
+TEAM - The team the coach is originally assigned to when there's no initial draft in the game. Use the ID for the team as found for the year of the coaches file in team_info.csv. Use 0 if the coach was unemployed at the start of that year.
+POSITION - The coach's current job. Use 0 for head coach, 1 for offensive coordinator, 2 for defensive coordinator, 3 for assistant coach, 4 for strength coach and 12 for unemployed.
+POSITIONGROUP - The coach's primary position group. Players in this group get a little more expertise from coaches. Use 3 for quarterbacks, 4 for running backs, 5 for tight ends, 6 for wide receivers, 7 for offensive linemen, 8 for defensive linemen, 9 for linebackers, 10 for secondary and 11 for strength coaches.
+OFFENSIVESTYLE - For coaches specializing in offensive position groups, their optimal style of offense. While they can create plays for any style, they offer a little more expertise installing plays that are better suited for their preferred style. Use the following code.
+0 - Not an offensive coach.
+1 - Smashmouth (run oriented)
+2 - Balanced Offense
+3 - West Coast Offense (passes that generate yards after catch)
+4 - Air Coryell (longer passes)
+5 - Erhardt-Perkins (more running back and tight end receptions)
+6 - Spread (more passing and multiple-receiver sets)
+DEFENSIVESTYLE - For coaches specializing in defensive position groups, their preferred defensive front. A team will always use the defensive front preferred by their defensive coordinator.
+0 - Not a defensive coach
+1 - True 34 Defense
+2 - 34 Eagle Defense
+3 - 43 Under Defense
+4 - 43 Over Defense
+PAYSCALE - A coach's salary level, with 100 as the league average. This should range from 50-300.

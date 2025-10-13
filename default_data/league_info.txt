@@ -1,0 +1,37 @@
+league_info.csv
+
+Information about supported league structures. This is the list used when filling in the options for league structures when starting a new universe. That structure cannot be changed once selected. There should be a corresponding schedule for each option, as well as a set of teams defined in the Default Teams table. If those do not exist and are correctly formatted, trying to start a new universe with that option will fail.
+
+Fields
+
+SCHEDULEID - Name of the schedule for the league structure. This is in the form x_y_z, where x is the total number of teams in the league, y is the number of divisions and z is the number of regular-season games. However, that is just a naming convention and other values could be used as long as they are consistently used for the file name of the schedule itself as well as entries in the Default Teams table.
+TEAMS - Total number of teams in the league.
+DIVISIONS - Total number of divisions in the league. This must be divisible by 2, as all league have two conferences with an equal number of divisions. The maximum supported by the game is 8.
+PLAYOFFTEAMS - The total number of teams reaching the playoffs. This must be divisible by 2, and it must be less than the total number of teams in the league.
+GAMES - The number of regular-season games played by teams.
+WEEKS - The number of weeks in the regular season. This must be at least the number of week in the regular season.
+EXGAMES - The number of exhibition games played by teams.
+EXWEEKS - The number of weeks in the exhibition season.
+CONF1 - The name of the first conference.
+CONF1ABBR - The abbreviation used for the first conference.
+CONF2 - The name of the second conference.
+CONF1ABBR - The abbreviation used for the second conference.
+DIV1 - The name of the first division in the first conference.
+DIV1TEAMS - The number of teams in the first division in the first conference.
+DIV2, DIV3, ... DIV8 - The name of each division. Each division in the first conference is named before the first division in the second conference. A blank field is used for DIV5, for example, if there are only 4 divisions.
+DIV2TEAMS, DIV3TEAMS, ... DIV8TEAMS - The number of teams in each division. A 0 is used for DIV5TEAMS, for example, if there are only 4 divisions.
+CHAMPIONSHIP - The name of the championship game for the league.
+SALARYCAP - The amount of the salary cap, in units of $100,000, used in the first year of the first season.
+MINIMUM - The minimum yearly salary, in units of $10,000, for rookies.
+SALARY1 - The minimum yearly salary, in units of $10,000, for players with 1 year of experience in the league.
+SALARY2 - The minimum yearly salary, in units of $10,000, for players with 2 years of experience in the league.
+SALARY3 - The minimum yearly salary, in units of $10,000, for players with 3 years of experience in the league.
+SALARY45 - The minimum yearly salary, in units of $10,000, for players with 4-5 years of experience in the league.
+SALARY789 - The minimum yearly salary, in units of $10,000, for players with 7-9 years of experience in the league.
+SALARY10 - The minimum yearly salary, in units of $10,000, for players with 10 years or more of experience in the league.
+ROTATION - The number of rotations in the schedule for the league. Each rotation has a full slate of exhibition and regular-season games. Starting with rotation 1, each rotation is used, in turn, for a new season. After the first full set of rotations, the set is used again, reversing the home teams.
+ROTATIONBASE - The year in which rotation 1 is used. So, for example, if the game is putting together the 2022 schedule and the rotation base is 2002, the rotation (2022-2001 / mod 12) or 9 is used. But since (2022-2001 / mod 24) is 12 or more, the home teams are reversed when using rotation 9.  
+
+When making changes to this table, make sure everything is tested before investing a lot of time in a new league. Once a league is started, these values cannot be changed and any problem with the schedule or other values may cause problems with the league.
+
+Important: The ratio of the minimum salary levels to the salary cap should be preserved, as the game makes heavy use of this ratio.

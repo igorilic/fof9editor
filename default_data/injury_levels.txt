@@ -1,0 +1,29 @@
+injury_levels.csv
+
+Information about injury generation within the game.
+
+Fields
+
+CATEGORY - The nature of the injury. 1 is to a bone, 2 is to a muscle, 3 is to a tendon, 4 is to a ligament, 5 is concussion-related, 6 is for other on-field-related injuries, 7 is for chronic conditions, and 8 is for illnesses.
+LEVEL - The level of the injury, within the category, increasing in severity. The value 0 is for information relating to all levels within the category.
+FREQUENCY - When level is 0, this is a percentage, where 100 is normal and 200 is twice normal, for example. When level is more than 0, this is a weight applying to all levels within the category.
+
+Injury Generation
+
+The first piece of the algorithm relates to the overall injury frequency setting chosen when beginning a new career. This defaults to 100, which is a setting that should generate about half of the time lost to injury as you'd see in professional football. In pro football, the average player misses about 1/5 of his team's games from injury.
+
+The 1-6 categories work as follows: the 0-level entry is a weight used to choose which of the six categories of injury the player experienced. Modifications are made based on a player's susceptibility to particular injuries.
+
+A level is then chosen for the injury, also based on weights taken from this table. If category 1 is chosen, then 1 - level 1, 2, 3 and 4 are used as weights to determine the level of the injury.
+
+Next, the frequencies for each injury within the chosen category and level are used as weights (again modified by susceptibility) to determine the exact injury suffered.
+
+At the time of the injury, the duration is estimated using high and low weeks. Then, on the Tuesday following that week's games, it's determined whether surgery is necessary and the injury may be adjusted.
+
+The category-7, level 0 entry in the table is used as a percentage (100 is normal) to determine if players experience a chronic condition. This can happen during the Tuesday evaluation, which takes place year-round.
+
+The category-8, level 0 entry in the table is used as a percentage (100 is normal) to determine if players and/or teams experience illnesses. This check also takes place during the Tuesday evaluation, though not during the off-season.
+
+Important Note
+
+Changes to this table can have a dramatic effect on injuries. As such, certain percentages may be capped at times to avoid results that might make the game unplayable. Be very careful when making changes. The game attempts to maintain some of the elements of this table internally (like categories and levels) outside of what's here.

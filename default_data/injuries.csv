@@ -1,0 +1,144 @@
+INJURYID,NAME,SECTION,TYPE,CATEGORY,LEVEL,AREA,CONDITION,LOW,HIGH,FREQUENCY,EFFECTIVE,OUT,EFFQ,OUTQ,PERMANENT,RISK,SURGERY,SURLOW,SURHIGH,SURPERM,INCREASE
+1,Broken Ankle,Ankle,1,1,3,5,0,6,9,10,40,80,45,80,0,5,20,4,7,5,0
+2,Broken Arm,Arm,1,1,3,0,0,6,9,5,40,80,35,85,0,3,8,3,6,0,0
+3,Broken Cheekbone,Face,1,1,3,0,0,3,4,2,90,0,90,0,0,0,0,0,0,0,0
+4,Broken Clavicle,Shoulder,1,1,3,0,0,6,9,10,54,78,54,78,0,3,4,2,5,0,0
+5,Broken Finger,Hand,1,1,3,0,0,2,3,70,95,0,80,0,0,0,8,2,5,0,0
+6,Bruised Foot,Foot,1,1,1,6,0,1,3,30,88,0,90,0,0,5,0,0,0,0,7
+7,Stress Fracture in Foot,Foot,1,1,2,6,0,3,6,5,40,75,45,70,0,12,0,0,0,0,8
+8,Broken Foot,Foot,1,1,3,6,0,4,12,12,65,80,65,75,0,2,15,3,6,0,0
+9,Broken Forearm,Arm,1,1,3,0,0,5,9,10,40,82,40,80,0,2,8,3,6,0,0
+10,Compound Forearm Fracture,Arm,1,1,4,0,0,20,40,2,17,80,17,80,10,3,100,0,0,10,0
+11,Broken Hand,Hand,1,1,3,0,0,3,6,15,90,0,75,85,0,2,15,2,5,0,0
+12,Hip Pointer,Hip,1,1,1,0,0,3,7,5,77,0,77,0,0,5,0,0,0,0,0
+13,Dislocated Hip,Hip,1,1,2,0,0,6,8,4,35,85,35,85,0,3,0,0,0,0,0
+14,Broken Hip,Hip,1,1,3,0,0,9,12,2,30,85,30,85,5,3,30,3,6,15,0
+15,Broken Jaw,Face,1,1,3,0,0,4,7,3,40,80,40,80,0,3,0,0,0,0,0
+16,Bruised Knee,Knee,1,1,1,0,0,1,2,30,95,0,95,0,0,0,0,0,0,0,0
+17,Dislocated Knee,Knee,1,1,2,4,0,5,11,2,45,80,50,80,0,3,4,4,7,0,0
+18,Broken Kneecap,Knee,1,1,3,0,0,6,9,5,60,84,65,84,0,2,2,2,5,0,0
+19,Broken Nose,Face,1,1,3,0,0,2,3,12,95,0,95,0,0,0,4,1,2,0,0
+20,Bruised Ribcage,Ribcage,1,1,1,0,0,2,4,80,90,0,90,0,0,0,0,0,0,0,0
+21,Broken Ribs,Ribcage,1,1,3,0,0,5,8,5,60,75,60,75,0,3,0,0,0,0,0
+22,Bruised Shinbone,Leg,1,1,1,0,0,1,3,30,88,0,90,0,0,0,0,0,0,0,23
+23,Stress Fracture in Leg,Leg,1,1,2,5,0,7,9,5,30,60,35,60,0,12,0,0,0,0,24
+24,Broken Shinbone,Leg,1,1,3,5,0,7,10,6,33,82,35,80,0,2,4,3,6,0,0
+25,Compound Shinbone Fracture,Leg,1,1,4,5,0,25,55,3,10,85,10,85,35,3,100,0,0,35,0
+26,Bruised Shoulder,Shoulder,1,1,1,0,0,1,2,50,95,0,90,0,0,0,0,0,0,0,0
+27,Dislocated Shoulder,Shoulder,1,1,2,3,0,4,11,7,40,80,40,85,0,5,2,4,7,0,0
+28,Broken Shoulder,Shoulder,1,1,3,3,0,7,12,5,35,85,30,80,0,6,15,4,7,0,0
+29,Bruised Thigh,Thigh,1,1,1,0,0,1,3,30,80,0,85,0,0,0,0,0,0,0,0
+30,Broken Thigh Bone,Thigh,1,1,3,0,0,9,12,5,15,75,15,75,0,2,10,3,6,0,0
+31,Compound Thigh Fracture,Thigh,1,1,4,4,0,32,62,2,10,88,10,88,35,3,100,0,0,35,0
+32,Bruised Thumb,Hand,1,1,1,0,0,1,2,10,95,0,85,0,0,0,0,0,0,0,0
+33,Broken Thumb,Hand,1,1,3,0,0,2,6,8,85,0,75,85,0,2,8,3,6,0,0
+34,Broken Toe,Foot,1,1,3,0,0,3,4,40,85,0,88,0,0,0,8,2,5,0,0
+35,Broken Wrist,Hand,1,1,3,0,0,5,8,5,70,80,65,85,0,2,8,4,7,0,0
+36,Bruised Heel,Foot,1,1,1,0,0,1,3,30,85,0,88,0,0,1,0,0,0,0,0
+37,Bruised Sternum,Chest,1,1,1,0,0,2,8,35,90,0,90,0,0,0,0,0,0,0,0
+38,Strained Abdominal Muscle,Abdomen,1,2,1,0,0,2,5,30,70,0,70,0,0,2,0,0,0,0,39
+39,Partial Abdominal Muscle Tear,Abdomen,1,2,2,0,0,3,7,5,65,0,65,0,0,3,0,0,0,0,40
+40,Abdominal Muscle Tear,Abdomen,1,2,3,0,0,7,11,2,45,70,45,75,0,5,4,3,7,6,41
+41,Major Abdominal Muscle Tear,Abdomen,1,2,4,0,0,15,35,1,30,85,30,88,0,5,100,0,0,0,0
+42,Strained Adductor Muscle,Thigh,1,2,1,0,0,2,8,8,72,85,72,85,0,7,0,0,0,0,43
+43,Partial Adductor Muscle Tear,Thigh,1,2,2,0,0,3,9,5,60,85,60,88,0,7,0,0,0,0,44
+44,Adductor Muscle Tear,Thigh,1,2,3,0,0,12,25,3,40,85,40,88,0,10,10,4,8,12,45
+45,Major Adductor Muscle Tear,Thigh,1,2,4,0,0,15,30,1,35,90,30,90,10,10,100,0,0,10,0
+46,Strained Back Muscle,Back,1,2,1,0,0,4,6,10,55,80,55,80,0,4,0,0,0,0,47
+47,Partial Back Muscle Tear,Back,1,2,2,1,0,5,9,5,40,75,40,75,0,5,0,0,0,0,48
+48,Back Muscle Tear,Back,1,2,3,1,0,22,50,2,20,82,20,82,10,8,5,12,15,12,49
+49,Major Back Muscle Tear,Back,1,2,4,1,0,20,35,1,20,90,20,90,40,10,100,0,0,40,0
+50,Strained Biceps,Arm,1,2,1,0,0,3,5,10,90,0,85,0,0,5,0,0,0,0,51
+51,Partial Biceps Tear,Arm,1,2,2,0,0,4,8,5,60,80,55,85,0,5,0,0,0,0,52
+52,Biceps Tear,Arm,1,2,3,0,0,15,25,2,40,85,35,88,0,6,5,3,7,8,53
+53,Major Biceps Tear,Arm,1,2,4,0,0,20,40,1,25,88,25,90,5,10,100,0,0,5,0
+54,Strained Calf Muscle,Leg,1,2,1,0,0,2,5,40,78,0,80,0,0,7,0,0,0,0,55
+55,Partial Calf Muscle Tear,Leg,1,2,2,0,0,3,7,15,50,75,55,72,0,5,0,0,0,0,56
+56,Calf Muscle Tear,Leg,1,2,3,0,0,6,12,3,50,82,55,80,0,6,5,5,9,8,57
+57,Major Calf Muscle Tear,Leg,1,2,4,0,0,15,30,3,35,90,35,88,5,10,100,0,0,5,0
+58,Strained Deltoid,Back,1,2,1,0,0,2,5,10,80,0,75,0,0,7,0,0,0,0,59
+59,Partial Deltoid Tear,Back,1,2,2,3,0,5,8,5,45,80,45,82,0,8,0,0,0,0,60
+60,Deltoid Tear,Back,1,2,3,0,0,20,55,1,15,82,15,85,10,10,8,8,12,12,61
+61,Major Deltoid Tear,Back,1,2,4,0,0,25,60,1,10,92,10,92,15,10,100,0,0,15,0
+62,Strained Hamstring,Thigh,1,2,1,0,0,4,8,55,80,0,85,0,0,7,0,0,0,0,63
+63,Partial Hamstring Tear,Thigh,1,2,2,0,1,6,10,5,45,80,50,78,0,8,0,0,0,0,64
+64,Hamstring Tear,Thigh,1,2,3,0,0,10,20,10,40,85,45,85,0,10,4,7,10,15,65
+65,Major Hamstring Tear,Thigh,1,2,4,0,0,25,45,3,20,90,20,88,15,15,100,0,0,15,0
+66,Strained Neck Muscle,Neck,1,2,1,0,0,3,5,20,90,0,85,0,0,2,0,0,0,0,67
+67,Partial Neck Muscle Tear,Neck,1,2,2,0,0,3,7,3,75,0,70,78,0,4,0,0,0,0,68
+68,Neck Muscle Tear,Neck,1,2,3,0,0,15,25,1,45,75,40,85,5,6,5,10,15,10,69
+69,Major Neck Muscle Tear,Neck,1,2,4,0,0,30,55,1,25,88,20,90,25,15,100,0,0,25,0
+70,Strained Quadriceps,Thigh,1,2,1,0,0,3,5,25,90,0,90,0,0,4,0,0,0,0,71
+71,Partial Quadriceps Tear,Thigh,1,2,2,0,0,5,9,3,55,80,60,78,0,5,0,0,0,0,72
+72,Quadriceps Tear,Thigh,1,2,3,0,0,20,45,1,15,85,20,80,5,6,4,6,9,8,73
+73,Major Quadriceps Tear,Thigh,1,2,4,0,0,35,55,1,10,88,15,88,15,10,100,0,0,15,0
+74,Strained Rotator Cuff,Shoulder,1,2,1,0,0,3,5,30,90,0,80,0,0,5,0,0,0,0,75
+75,Partial Rotator Cuff Tear,Shoulder,1,2,2,3,0,5,9,10,45,78,40,85,0,6,0,0,0,0,76
+76,Rotator Cuff Tear,Shoulder,1,2,3,3,0,10,30,1,30,82,25,85,0,10,8,8,12,12,77
+77,Major Rotator Cuff Tear,Shoulder,1,2,4,3,0,20,45,1,25,85,20,90,10,10,100,0,0,10,0
+78,Strained Triceps,Arm,1,2,1,0,0,3,5,25,80,0,75,0,0,4,0,0,0,0,79
+79,Partial Triceps Tear,Arm,1,2,2,0,0,4,8,5,60,83,55,85,0,5,0,0,0,0,80
+80,Triceps Tear,Arm,1,2,3,0,0,15,30,1,30,80,25,88,0,6,5,5,9,8,81
+81,Major Triceps Tear,Arm,1,2,4,0,0,25,50,1,20,88,15,90,5,10,100,0,0,5,0
+82,Pulled Groin,Groin,1,2,2,0,0,2,5,40,75,0,78,0,0,5,0,0,0,0,83
+83,Torn Groin Muscle,Groin,1,2,3,0,0,8,12,2,40,80,45,80,0,8,4,4,8,0,0
+84,Strained Achilles Tendon,Ankle,1,3,1,5,0,2,5,25,77,0,82,0,0,7,0,0,0,0,85
+85,Partial Achilles Tendon Tear,Ankle,1,3,2,5,0,8,15,12,45,85,50,82,0,10,0,0,0,0,86
+86,Achilles Tendon Tear,Ankle,1,3,3,5,0,20,35,5,20,90,20,88,30,12,10,6,12,35,87
+87,Major Achilles Tendon Tear,Ankle,1,3,4,5,0,30,50,2,10,92,10,90,40,15,100,0,0,0,0
+88,Partial Elbow Tendon Tear,Elbow,1,3,2,2,0,3,8,10,78,0,70,0,0,4,0,0,0,0,89
+89,Elbow Tendon Tear,Elbow,1,3,3,2,0,20,50,2,20,82,20,88,15,6,10,6,12,20,0
+90,Partial Patellar Tendon Tear,Knee,1,3,2,4,0,2,6,15,70,0,78,0,0,6,0,0,0,0,91
+91,Patellar Tendon Tear,Knee,1,3,3,4,0,25,65,2,15,85,20,80,15,6,10,6,12,20,0
+92,Partial Wrist Tendon Tear,Hand,1,3,2,0,0,2,6,8,80,0,70,0,0,2,0,0,0,0,93
+93,Wrist Tendon Tear,Hand,1,3,3,0,0,6,11,2,50,78,40,85,0,2,5,5,10,0,0
+94,Sprained ACL in Knee,Knee,1,4,1,4,0,3,5,70,78,0,85,0,0,5,0,0,0,0,95
+95,Torn ACL in Knee,Knee,1,4,2,4,0,15,30,8,20,85,20,80,15,5,25,8,15,20,96
+96,Major ACL Tear in Knee,Knee,1,4,3,4,0,35,65,3,10,90,10,85,30,5,100,0,0,0,0
+97,Sprained Ankle,Ankle,1,4,1,0,0,1,3,150,88,0,90,0,0,3,0,0,0,0,98
+98,Torn Ankle Ligament,Ankle,1,4,2,5,0,15,30,2,45,85,45,80,2,5,20,8,15,5,99
+99,Major Ankle Ligament Tear,Ankle,1,4,3,5,0,20,30,1,30,82,35,80,5,5,100,0,0,0,0
+100,Sprained Elbow Ligament,Elbow,1,4,1,0,0,3,4,75,70,80,65,80,0,2,0,0,0,0,101
+101,Torn Elbow Ligament,Elbow,1,4,2,2,0,8,12,4,65,80,45,85,0,3,15,6,10,0,102
+102,Major Elbow Ligament Tear,Elbow,1,4,3,2,0,15,30,1,30,80,20,90,0,5,100,0,0,0,0
+103,Sprained Foot,Foot,1,4,1,6,0,3,5,30,80,90,80,0,0,5,0,0,0,0,104
+104,Torn Foot Ligament,Foot,1,4,2,6,0,10,15,5,40,88,40,82,5,6,15,8,15,10,105
+105,Major Foot Ligament Tear,Foot,1,4,3,6,0,25,60,1,10,90,10,85,15,8,100,0,0,0,0
+106,High Ankle Sprain,Ankle,1,4,1,0,0,4,20,7,60,80,65,80,0,5,0,0,0,0,0
+107,Torn Lower Leg Ligament,Leg,1,4,2,0,0,12,20,2,45,85,50,80,0,3,10,5,9,0,108
+108,Major Leg Ligament Tear,Leg,1,4,3,0,0,20,30,1,15,85,15,80,0,3,100,0,0,0,0
+109,Sprained LCL in Knee,Knee,1,4,1,4,0,4,10,25,80,0,85,0,0,5,0,0,0,0,110
+110,Torn LCL in Knee,Knee,1,4,2,4,0,12,20,2,30,80,30,75,15,5,25,6,12,20,111
+111,Major LCL Tear in Knee,Knee,1,4,3,4,0,25,60,1,10,90,10,85,30,5,100,0,0,0,0
+112,Sprained MCL in Knee,Knee,1,4,1,4,0,5,10,100,75,0,80,0,0,5,0,0,0,0,113
+113,Torn MCL in Knee,Knee,1,4,2,4,0,12,25,7,25,85,25,80,15,5,20,6,15,20,114
+114,Major MCL Tear in Knee,Knee,1,4,3,4,0,25,55,3,10,90,10,85,25,5,100,0,0,0,0
+115,Sprained PCL in Knee,Knee,1,4,1,4,0,4,12,20,80,0,85,0,0,5,0,0,0,0,116
+116,Torn PCL in Knee,Knee,1,4,2,4,0,15,25,2,30,82,30,78,5,5,25,6,12,10,117
+117,Major PCL Tear in Knee,Knee,1,4,3,4,0,25,55,1,10,90,10,85,25,5,100,0,0,0,0
+118,Sprained Thumb,Hand,1,4,1,0,0,2,5,60,90,0,75,0,0,3,0,0,0,0,119
+119,Torn Thumb Ligament,Hand,1,4,2,0,0,5,10,3,80,0,45,80,0,3,15,4,8,0,120
+120,Major Thumb Ligament Tear,Hand,1,4,3,0,0,15,25,1,30,75,15,85,0,3,100,0,0,0,0
+121,Sprained Wrist,Hand,1,4,1,0,0,3,6,10,70,80,60,80,0,3,0,0,0,0,122
+122,Torn Wrist Ligament,Hand,1,4,2,0,0,7,11,2,65,80,40,75,0,3,10,5,9,0,123
+123,Major Wrist Ligament Tear,Hand,1,4,3,0,0,15,25,1,25,75,15,85,0,3,100,0,0,0,0
+124,Headaches,Head,1,5,1,0,0,1,2,10,60,0,60,0,0,3,0,0,0,0,125
+125,Concussion,Head,1,5,2,0,0,2,12,70,25,77,25,77,0,10,0,0,0,0,126
+126,Severe Concussion,Head,1,5,3,0,0,20,50,5,10,90,10,90,10,15,0,0,0,0,127
+127,Repetitive Concussion Syndrome,Head,1,5,4,0,0,100,150,1,0,100,0,100,100,0,0,0,0,0,0
+128,Elbow Bursitis,Elbow,1,6,1,2,0,2,6,10,85,0,75,0,0,4,0,0,0,0,0
+129,Inguinal Hernia,Groin,1,6,1,0,0,20,35,1,10,90,10,90,0,8,100,0,0,0,0
+130,Knee Bursitis,Knee,1,6,1,4,0,2,3,30,90,0,92,0,0,5,0,0,0,0,0
+131,Plantar Fasciitis,Foot,1,6,1,6,0,8,25,1,50,80,60,75,0,8,0,0,0,0,0
+132,Torn Knee Cartilage,Knee,1,6,1,4,0,4,8,10,55,75,65,75,0,8,50,6,10,0,0
+133,Turf Toe,Foot,1,6,1,0,0,1,15,20,65,0,75,0,0,0,0,0,0,0,0
+134,Arthritis,Condition,2,7,1,0,1,0,0,1,65,0,65,0,0,0,0,0,0,0,0
+135,Hypertrophic Cardiomyopathy,Condition,2,7,1,0,1,0,0,1,0,100,0,100,0,0,0,0,0,0,0
+136,Impaired Vision,Condition,2,7,1,0,1,1,1,1,0,100,0,100,0,0,0,0,0,0,0
+137,Severe Depression,Condition,2,7,1,0,1,1,1,1,0,100,0,100,0,0,0,0,0,0,0
+138,Appendectomy,Condition,2,8,1,0,0,3,5,3,40,90,40,90,0,2,0,0,0,0,0
+139,Bad Cold,Condition,2,8,1,0,0,1,1,45,95,0,95,0,0,0,0,0,0,0,0
+140,Food Poisoning,Illness,3,8,1,0,0,1,1,1,0,90,0,90,0,0,0,0,0,0,0
+141,Influenza,Illness,3,8,1,0,0,1,2,15,90,0,90,0,0,0,0,0,0,0,0
+142,Mononucleosis,Illness,3,8,1,0,0,3,5,1,55,0,55,0,0,0,0,0,0,0,0
+143,Viral Infection,Condition,2,8,1,0,0,1,2,20,85,0,85,0,0,0,0,0,0,0,0

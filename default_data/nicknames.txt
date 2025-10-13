@@ -1,0 +1,8 @@
+nicknames.csv
+
+A list of nicknames that can be used for teams that don't have assigned nicknames during the league setup process.
+
+Fields
+
+NICKNAME - A nickname for a new team. Editing this list is simply a matter of adding or deleting an entry. The game tries not to duplicate nicknames within a league.
+FREQUENCY - A weight for that particular nickname.

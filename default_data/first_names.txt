@@ -1,0 +1,18 @@
+first_names.csv
+
+Lists of names that can be used for player and staff first names.
+
+Fields
+
+FIRSTNAME - A first name. Editing this list is simply a matter of adding or deleting an entry.
+FREQUENCY - A weight for that particular first name. Higher weights mean that the name has a greater chance of being chosen for a person.
+
+There are four of these lists.
+
+first_names_1.csv is used for 99% of first names.
+first_names_2.csv is used for about 0.8% of first names and consists of unusual names and/or unusual spellings.
+first_names_3.csv is used for about 0.2% of first names and consists of nicknames.
+first_names_4.csv is used for a very small percentage of kickers and staff members and consists of female first names.
+
+The weight in these files is set to 1 for every name. This can be adjusted if different distributions are desired.
+

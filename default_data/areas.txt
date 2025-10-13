@@ -1,0 +1,12 @@
+areas.csv
+
+Information about defined areas within countries. In the US, counties are used with codes 2000-99999 reserved (1000 * state census code + county census code). Every county in the US is included, with some overlap in Virigina with their city as county concept. In Canada, provinces are used (100-149). In the UK, regions are used, and refer to a county, major city area, combination of counties, or combination of census districts.
+
+Fields
+
+AREAID - Area identifier.
+NAME - Name of the area.
+LATITUDE - Approximate Latitude of the center of the area (multiplied by 1000).
+LONGITUDE - Approximate Longitude of the center of the area (multiplied by 1000).
+
+This data is not shown in the game, but could be used to connect cities to larger areas at some point.
