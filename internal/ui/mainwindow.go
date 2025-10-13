@@ -125,6 +125,19 @@ func (mw *MainWindow) setupMenuBar() {
 	loadCSVMenu := fyne.NewMenuItem("Load CSV", nil)
 	loadCSVMenu.ChildMenu = fyne.NewMenu("", loadPlayersItem, loadCoachesItem, loadTeamsItem)
 
+	// Save individual CSV files submenu
+	savePlayersItem := fyne.NewMenuItem("Players CSV...", func() {
+		mw.savePlayersCSV()
+	})
+	saveCoachesItem := fyne.NewMenuItem("Coaches CSV...", func() {
+		mw.saveCoachesCSV()
+	})
+	saveTeamsItem := fyne.NewMenuItem("Teams CSV...", func() {
+		mw.saveTeamsCSV()
+	})
+	saveCSVMenu := fyne.NewMenuItem("Save CSV", nil)
+	saveCSVMenu.ChildMenu = fyne.NewMenu("", savePlayersItem, saveCoachesItem, saveTeamsItem)
+
 	saveItem := fyne.NewMenuItem("Save", func() {
 		mw.saveLeague()
 	})
@@ -135,7 +148,7 @@ func (mw *MainWindow) setupMenuBar() {
 		mw.app.Quit()
 	})
 
-	fileMenu := fyne.NewMenu("File", newItem, openItem, loadCSVMenu, fyne.NewMenuItemSeparator(), saveItem, saveAsItem, fyne.NewMenuItemSeparator(), exitItem)
+	fileMenu := fyne.NewMenu("File", newItem, openItem, loadCSVMenu, saveCSVMenu, fyne.NewMenuItemSeparator(), saveItem, saveAsItem, fyne.NewMenuItemSeparator(), exitItem)
 
 	// Edit menu
 	undoItem := fyne.NewMenuItem("Undo", func() {
@@ -813,4 +826,106 @@ func (mw *MainWindow) showNewProjectDialog() {
 	))
 
 	d.Show()
+}
+
+// savePlayersCSV saves players to a CSV file
+func (mw *MainWindow) savePlayersCSV() {
+	players := mw.state.GetPlayers()
+	if len(players) == 0 {
+		dialog.ShowInformation("No Data", "No players to save.", mw.window)
+		return
+	}
+
+	dialog.ShowFileSave(func(writer fyne.URIWriteCloser, err error) {
+		if err != nil {
+			dialog.ShowError(err, mw.window)
+			return
+		}
+		if writer == nil {
+			return
+		}
+		defer writer.Close()
+
+		filePath := writer.URI().Path()
+
+		// Save players to CSV
+		if err := data.SavePlayers(filePath, players); err != nil {
+			dialog.ShowError(fmt.Errorf("failed to save players: %w", err), mw.window)
+			return
+		}
+
+		// Mark as clean
+		mw.state.MarkClean()
+		mw.statusBar.SetSavedStatus(false)
+
+		dialog.ShowInformation("Success", fmt.Sprintf("Saved %d players to %s", len(players), filepath.Base(filePath)), mw.window)
+	}, mw.window)
+}
+
+// saveCoachesCSV saves coaches to a CSV file
+func (mw *MainWindow) saveCoachesCSV() {
+	coaches := mw.state.GetCoaches()
+	if len(coaches) == 0 {
+		dialog.ShowInformation("No Data", "No coaches to save.", mw.window)
+		return
+	}
+
+	dialog.ShowFileSave(func(writer fyne.URIWriteCloser, err error) {
+		if err != nil {
+			dialog.ShowError(err, mw.window)
+			return
+		}
+		if writer == nil {
+			return
+		}
+		defer writer.Close()
+
+		filePath := writer.URI().Path()
+
+		// Save coaches to CSV
+		if err := data.SaveCoaches(filePath, coaches); err != nil {
+			dialog.ShowError(fmt.Errorf("failed to save coaches: %w", err), mw.window)
+			return
+		}
+
+		// Mark as clean
+		mw.state.MarkClean()
+		mw.statusBar.SetSavedStatus(false)
+
+		dialog.ShowInformation("Success", fmt.Sprintf("Saved %d coaches to %s", len(coaches), filepath.Base(filePath)), mw.window)
+	}, mw.window)
+}
+
+// saveTeamsCSV saves teams to a CSV file
+func (mw *MainWindow) saveTeamsCSV() {
+	teams := mw.state.GetTeams()
+	if len(teams) == 0 {
+		dialog.ShowInformation("No Data", "No teams to save.", mw.window)
+		return
+	}
+
+	dialog.ShowFileSave(func(writer fyne.URIWriteCloser, err error) {
+		if err != nil {
+			dialog.ShowError(err, mw.window)
+			return
+		}
+		if writer == nil {
+			return
+		}
+		defer writer.Close()
+
+		filePath := writer.URI().Path()
+
+		// Save teams to CSV
+		if err := data.SaveTeams(filePath, teams); err != nil {
+			dialog.ShowError(fmt.Errorf("failed to save teams: %w", err), mw.window)
+			return
+		}
+
+		// Mark as clean
+		mw.state.MarkClean()
+		mw.statusBar.SetSavedStatus(false)
+
+		dialog.ShowInformation("Success", fmt.Sprintf("Saved %d teams to %s", len(teams), filepath.Base(filePath)), mw.window)
+	}, mw.window)
 }
