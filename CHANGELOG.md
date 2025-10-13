@@ -8,26 +8,41 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Initial project setup with Go and Fyne UI framework
-- Core data models for Project, Player, Coach, Team, and LeagueInfo
-- Comprehensive test suite (20 tests, all passing)
-- GitHub Actions CI/CD pipeline for automated builds and releases
-- Project specification and implementation plan documentation
+- Version management infrastructure with build-time injection
+- `--version` CLI flag to display version information
+- Version display in window title
+- Pull request template with changelog checklist
+- Changelog verification in CI pipeline
 
-### Infrastructure
-- Makefile for build automation
-- GitHub Actions workflows for build, test, and release
-- Automated Windows executable generation for releases
+### Changed
+- Window title now shows version number (e.g., "FOF9 Editor v0.1.0")
 
 ## [0.1.0] - TBD (First Release)
 
 ### Added
-- Basic application window (Hello World)
-- Complete data models matching FOF9 game format
+- Initial project setup with Go 1.21 and Fyne v2.6.3 UI framework
+- Core data models for Project, Player, Coach, Team, and LeagueInfo
+- Complete data structures matching FOF9 game format (90+ player fields)
 - CSV struct tags for all models
 - Helper methods for data manipulation
+- Basic application window
+- Comprehensive test suite (23 tests, all passing)
+- GitHub Actions CI/CD pipeline for automated builds and releases
+- Project specification and implementation plan documentation
+- Release and versioning plan
+
+### Infrastructure
+- Makefile for build automation with version injection
+- GitHub Actions workflows for build, test, and release
+- Automated Windows executable generation for releases
+- Version information displayed in builds
 
 ### Notes
 - This is a development release
 - Core features are in progress
 - Not yet ready for production use
+
+---
+
+[Unreleased]: https://github.com/igorilic/fof9editor/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/igorilic/fof9editor/releases/tag/v0.1.0
