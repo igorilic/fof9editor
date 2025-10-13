@@ -5,11 +5,10 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/igorilic/fof9editor/internal/ui"
 	"github.com/igorilic/fof9editor/internal/version"
 
-	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
-	"fyne.io/fyne/v2/widget"
 )
 
 var showVersion = flag.Bool("version", false, "Show version information")
@@ -23,10 +22,7 @@ func main() {
 	}
 
 	myApp := app.New()
-	myWindow := myApp.NewWindow(fmt.Sprintf("FOF9 Editor v%s", version.GetShortVersion()))
+	mainWindow := ui.NewMainWindow(myApp)
 
-	myWindow.SetContent(widget.NewLabel("Hello from FOF9 Editor"))
-	myWindow.Resize(fyne.NewSize(800, 600))
-
-	myWindow.ShowAndRun()
+	mainWindow.ShowAndRun()
 }
