@@ -11,6 +11,8 @@ import (
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/dialog"
 	"fyne.io/fyne/v2/widget"
+	"github.com/igorilic/fof9editor/internal/data"
+	"github.com/igorilic/fof9editor/internal/models"
 	"github.com/igorilic/fof9editor/internal/state"
 	"github.com/igorilic/fof9editor/internal/version"
 )
@@ -104,11 +106,25 @@ func (mw *MainWindow) setupWindow() {
 func (mw *MainWindow) setupMenuBar() {
 	// File menu
 	newItem := fyne.NewMenuItem("New Project...", func() {
-		// Placeholder for Phase 9 (New League Wizard)
+		mw.newProject()
 	})
 	openItem := fyne.NewMenuItem("Open Project...", func() {
 		mw.openLeague()
 	})
+
+	// Load individual CSV files submenu
+	loadPlayersItem := fyne.NewMenuItem("Players CSV...", func() {
+		mw.loadPlayersCSV()
+	})
+	loadCoachesItem := fyne.NewMenuItem("Coaches CSV...", func() {
+		mw.loadCoachesCSV()
+	})
+	loadTeamsItem := fyne.NewMenuItem("Teams CSV...", func() {
+		mw.loadTeamsCSV()
+	})
+	loadCSVMenu := fyne.NewMenuItem("Load CSV", nil)
+	loadCSVMenu.ChildMenu = fyne.NewMenu("", loadPlayersItem, loadCoachesItem, loadTeamsItem)
+
 	saveItem := fyne.NewMenuItem("Save", func() {
 		mw.saveLeague()
 	})
@@ -119,7 +135,7 @@ func (mw *MainWindow) setupMenuBar() {
 		mw.app.Quit()
 	})
 
-	fileMenu := fyne.NewMenu("File", newItem, openItem, fyne.NewMenuItemSeparator(), saveItem, saveAsItem, fyne.NewMenuItemSeparator(), exitItem)
+	fileMenu := fyne.NewMenu("File", newItem, openItem, loadCSVMenu, fyne.NewMenuItemSeparator(), saveItem, saveAsItem, fyne.NewMenuItemSeparator(), exitItem)
 
 	// Edit menu
 	undoItem := fyne.NewMenuItem("Undo", func() {
@@ -593,4 +609,208 @@ func (mw *MainWindow) handleWindowClose() {
 
 	// No unsaved changes, close immediately
 	mw.window.Close()
+}
+
+// loadPlayersCSV loads players from a CSV file
+func (mw *MainWindow) loadPlayersCSV() {
+	dialog.ShowFileOpen(func(reader fyne.URIReadCloser, err error) {
+		if err != nil {
+			dialog.ShowError(err, mw.window)
+			return
+		}
+		if reader == nil {
+			return
+		}
+		defer reader.Close()
+
+		filePath := reader.URI().Path()
+
+		// Load players from CSV
+		players, err := data.LoadPlayers(filePath)
+		if err != nil {
+			dialog.ShowError(fmt.Errorf("failed to load players: %w", err), mw.window)
+			return
+		}
+
+		// Update state
+		mw.state.SetPlayers(players)
+
+		// Update UI
+		mw.sidebar.SetSelectedSection("Players")
+		mw.updateContentArea("Players")
+		mw.statusBar.SetProjectStatus("Players CSV Loaded")
+
+		dialog.ShowInformation("Success", fmt.Sprintf("Loaded %d players", len(players)), mw.window)
+	}, mw.window)
+}
+
+// loadCoachesCSV loads coaches from a CSV file
+func (mw *MainWindow) loadCoachesCSV() {
+	dialog.ShowFileOpen(func(reader fyne.URIReadCloser, err error) {
+		if err != nil {
+			dialog.ShowError(err, mw.window)
+			return
+		}
+		if reader == nil {
+			return
+		}
+		defer reader.Close()
+
+		filePath := reader.URI().Path()
+
+		// Load coaches from CSV
+		coaches, err := data.LoadCoaches(filePath)
+		if err != nil {
+			dialog.ShowError(fmt.Errorf("failed to load coaches: %w", err), mw.window)
+			return
+		}
+
+		// Update state
+		mw.state.SetCoaches(coaches)
+
+		// Update UI
+		mw.sidebar.SetSelectedSection("Coaches")
+		mw.updateContentArea("Coaches")
+		mw.statusBar.SetProjectStatus("Coaches CSV Loaded")
+
+		dialog.ShowInformation("Success", fmt.Sprintf("Loaded %d coaches", len(coaches)), mw.window)
+	}, mw.window)
+}
+
+// loadTeamsCSV loads teams from a CSV file
+func (mw *MainWindow) loadTeamsCSV() {
+	dialog.ShowFileOpen(func(reader fyne.URIReadCloser, err error) {
+		if err != nil {
+			dialog.ShowError(err, mw.window)
+			return
+		}
+		if reader == nil {
+			return
+		}
+		defer reader.Close()
+
+		filePath := reader.URI().Path()
+
+		// Load teams from CSV
+		teams, err := data.LoadTeams(filePath)
+		if err != nil {
+			dialog.ShowError(fmt.Errorf("failed to load teams: %w", err), mw.window)
+			return
+		}
+
+		// Update state
+		mw.state.SetTeams(teams)
+
+		// Update UI
+		mw.sidebar.SetSelectedSection("Teams")
+		mw.updateContentArea("Teams")
+		mw.statusBar.SetProjectStatus("Teams CSV Loaded")
+
+		dialog.ShowInformation("Success", fmt.Sprintf("Loaded %d teams", len(teams)), mw.window)
+	}, mw.window)
+}
+
+// newProject creates a new project
+func (mw *MainWindow) newProject() {
+	// Check for unsaved changes
+	if mw.state.IsDirtyState() {
+		dialog.ShowConfirm("Unsaved Changes", "You have unsaved changes. Do you want to save before creating a new project?",
+			func(save bool) {
+				if save {
+					mw.saveLeague()
+				}
+				mw.showNewProjectDialog()
+			}, mw.window)
+		return
+	}
+
+	mw.showNewProjectDialog()
+}
+
+// showNewProjectDialog shows the new project creation dialog
+func (mw *MainWindow) showNewProjectDialog() {
+	// Create form for new project
+	leagueNameEntry := widget.NewEntry()
+	leagueNameEntry.SetPlaceHolder("My League")
+
+	baseYearEntry := widget.NewEntry()
+	baseYearEntry.SetPlaceHolder("2024")
+	baseYearEntry.SetText("2024")
+
+	content := container.NewVBox(
+		widget.NewLabel("Create New Project"),
+		widget.NewSeparator(),
+		widget.NewLabel("League Name:"),
+		leagueNameEntry,
+		widget.NewLabel("Base Year:"),
+		baseYearEntry,
+	)
+
+	// Create dialog
+	d := dialog.NewCustom("New Project", "Cancel", content, mw.window)
+
+	// Add Create button
+	createButton := widget.NewButton("Create", func() {
+		leagueName := leagueNameEntry.Text
+		if leagueName == "" {
+			dialog.ShowError(fmt.Errorf("league name is required"), mw.window)
+			return
+		}
+
+		baseYear := 2024
+		if baseYearEntry.Text != "" {
+			if _, err := fmt.Sscanf(baseYearEntry.Text, "%d", &baseYear); err != nil {
+				dialog.ShowError(fmt.Errorf("invalid base year"), mw.window)
+				return
+			}
+		}
+
+		d.Hide()
+
+		// Show file save dialog for project location
+		dialog.ShowFileSave(func(writer fyne.URIWriteCloser, err error) {
+			if err != nil {
+				dialog.ShowError(err, mw.window)
+				return
+			}
+			if writer == nil {
+				return
+			}
+			defer writer.Close()
+
+			projectPath := writer.URI().Path()
+			if filepath.Ext(projectPath) != ".fof9proj" {
+				projectPath += ".fof9proj"
+			}
+
+			// Create new project
+			project := models.NewProject(leagueName, leagueName, filepath.Dir(projectPath), baseYear)
+
+			// Save project
+			mw.state.SetProject(project)
+			mw.state.ProjectPath = projectPath
+
+			if err := mw.state.SaveProject(); err != nil {
+				dialog.ShowError(fmt.Errorf("failed to create project: %w", err), mw.window)
+				return
+			}
+
+			// Update UI
+			mw.UpdateTitle(leagueName)
+			mw.statusBar.SetProjectStatus(leagueName)
+			mw.state.MarkClean()
+
+			dialog.ShowInformation("Success", fmt.Sprintf("Created project: %s", leagueName), mw.window)
+		}, mw.window)
+	})
+	createButton.Importance = widget.HighImportance
+
+	// Add button to dialog
+	content.Add(widget.NewSeparator())
+	content.Add(container.NewHBox(
+		widget.NewButton("Cancel", func() { d.Hide() }),
+		createButton,
+	))
+
+	d.Show()
 }
