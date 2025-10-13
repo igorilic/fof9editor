@@ -77,6 +77,82 @@ func (mw *MainWindow) setupWindow() {
 	)
 
 	mw.window.SetContent(mainLayout)
+
+	// Setup menu bar
+	mw.setupMenuBar()
+}
+
+// setupMenuBar creates and configures the application menu bar
+func (mw *MainWindow) setupMenuBar() {
+	// File menu
+	newItem := fyne.NewMenuItem("New Project...", func() {
+		// Placeholder for Phase 9 (New League Wizard)
+	})
+	openItem := fyne.NewMenuItem("Open Project...", func() {
+		// Placeholder for Phase 8 (File Operations)
+	})
+	saveItem := fyne.NewMenuItem("Save", func() {
+		// Placeholder for Phase 8 (File Operations)
+	})
+	saveAsItem := fyne.NewMenuItem("Save As...", func() {
+		// Placeholder for Phase 8 (File Operations)
+	})
+	exitItem := fyne.NewMenuItem("Exit", func() {
+		mw.app.Quit()
+	})
+
+	fileMenu := fyne.NewMenu("File", newItem, openItem, fyne.NewMenuItemSeparator(), saveItem, saveAsItem, fyne.NewMenuItemSeparator(), exitItem)
+
+	// Edit menu
+	undoItem := fyne.NewMenuItem("Undo", func() {
+		// Placeholder for future implementation
+	})
+	undoItem.Disabled = true
+
+	redoItem := fyne.NewMenuItem("Redo", func() {
+		// Placeholder for future implementation
+	})
+	redoItem.Disabled = true
+
+	editMenu := fyne.NewMenu("Edit", undoItem, redoItem)
+
+	// View menu
+	refreshItem := fyne.NewMenuItem("Refresh", func() {
+		mw.RefreshLayout()
+	})
+
+	viewMenu := fyne.NewMenu("View", refreshItem)
+
+	// Help menu
+	aboutItem := fyne.NewMenuItem("About", func() {
+		mw.showAboutDialog()
+	})
+
+	helpMenu := fyne.NewMenu("Help", aboutItem)
+
+	// Set main menu
+	mainMenu := fyne.NewMainMenu(fileMenu, editMenu, viewMenu, helpMenu)
+	mw.window.SetMainMenu(mainMenu)
+}
+
+// showAboutDialog displays the about dialog
+func (mw *MainWindow) showAboutDialog() {
+	// Import version package at the top of the file
+	aboutText := fmt.Sprintf("FOF9 Editor\n\nVersion: %s\n\nA modern editor for Front Office Football Nine league files.", version.GetShortVersion())
+	dialog := widget.NewLabel(aboutText)
+	dialog.Wrapping = fyne.TextWrapWord
+
+	// Create a simple about window
+	aboutWindow := mw.app.NewWindow("About FOF9 Editor")
+	aboutWindow.SetContent(container.NewVBox(
+		dialog,
+		widget.NewSeparator(),
+		container.NewCenter(widget.NewButton("Close", func() {
+			aboutWindow.Close()
+		})),
+	))
+	aboutWindow.Resize(fyne.NewSize(400, 200))
+	aboutWindow.Show()
 }
 
 // onSectionChange handles section navigation changes

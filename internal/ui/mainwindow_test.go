@@ -235,3 +235,66 @@ func TestMainWindow_RefreshLayout(t *testing.T) {
 		t.Error("Sidebar should not be nil after refresh")
 	}
 }
+
+func TestMainWindow_MenuBar(t *testing.T) {
+	app := test.NewApp()
+	defer app.Quit()
+
+	mw := NewMainWindow(app)
+
+	// Verify menu bar is set
+	mainMenu := mw.window.MainMenu()
+	if mainMenu == nil {
+		t.Fatal("Main menu should not be nil")
+	}
+
+	// Verify expected menus exist
+	if len(mainMenu.Items) < 4 {
+		t.Errorf("Expected at least 4 menus, got %d", len(mainMenu.Items))
+	}
+
+	// Verify menu names
+	expectedMenus := []string{"File", "Edit", "View", "Help"}
+	for i, expected := range expectedMenus {
+		if i >= len(mainMenu.Items) {
+			t.Errorf("Missing menu: %s", expected)
+			continue
+		}
+		if mainMenu.Items[i].Label != expected {
+			t.Errorf("Menu %d: expected '%s', got '%s'", i, expected, mainMenu.Items[i].Label)
+		}
+	}
+}
+
+func TestMainWindow_FileMenu(t *testing.T) {
+	app := test.NewApp()
+	defer app.Quit()
+
+	mw := NewMainWindow(app)
+
+	mainMenu := mw.window.MainMenu()
+	if mainMenu == nil || len(mainMenu.Items) == 0 {
+		t.Fatal("Main menu not initialized")
+	}
+
+	fileMenu := mainMenu.Items[0]
+	if fileMenu.Label != "File" {
+		t.Errorf("Expected 'File' menu, got '%s'", fileMenu.Label)
+	}
+
+	// Verify File menu has expected items
+	if len(fileMenu.Items) < 5 {
+		t.Errorf("Expected at least 5 items in File menu, got %d", len(fileMenu.Items))
+	}
+}
+
+func TestMainWindow_ShowAboutDialog(t *testing.T) {
+	app := test.NewApp()
+	defer app.Quit()
+
+	mw := NewMainWindow(app)
+
+	// Should not panic
+	mw.showAboutDialog()
+	// Can't easily verify dialog content in tests, but we can verify no crash
+}
