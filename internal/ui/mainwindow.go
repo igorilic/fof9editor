@@ -22,6 +22,7 @@ type MainWindow struct {
 	statusBar    *StatusBar
 	sidebar      *Sidebar
 	themeManager *ThemeManager
+	playerList   *PlayerList
 }
 
 // NewMainWindow creates a new main window
@@ -33,6 +34,7 @@ func NewMainWindow(app fyne.App) *MainWindow {
 		app:          app,
 		state:        state.GetInstance(),
 		themeManager: NewThemeManager(app),
+		playerList:   NewPlayerList(),
 	}
 
 	mw.setupWindow()
@@ -172,22 +174,34 @@ func (mw *MainWindow) onSectionChange(section string) {
 
 // updateContentArea updates the main content area based on the current section
 func (mw *MainWindow) updateContentArea(section string) {
-	// Create section-specific placeholder
-	title := widget.NewLabel(fmt.Sprintf("%s", section))
-	title.TextStyle = fyne.TextStyle{Bold: true}
+	switch section {
+	case "Players":
+		// Load players from state and display in list
+		players := mw.state.GetPlayers()
+		mw.playerList.SetPlayers(players)
+		mw.content.Objects = []fyne.CanvasObject{mw.playerList.GetContainer()}
+		mw.statusBar.SetRecordCount("Players", len(players))
 
-	message := widget.NewLabel("Data loading and editing will be implemented in Phase 4-5")
-	message.Wrapping = fyne.TextWrapWord
+	default:
+		// Create section-specific placeholder for other sections
+		title := widget.NewLabel(fmt.Sprintf("%s", section))
+		title.TextStyle = fyne.TextStyle{Bold: true}
 
-	content := container.NewVBox(
-		title,
-		widget.NewSeparator(),
-		message,
-	)
+		message := widget.NewLabel("Data loading and editing will be implemented in later steps")
+		message.Wrapping = fyne.TextWrapWord
 
-	mw.content.Objects = []fyne.CanvasObject{
-		container.NewCenter(content),
+		content := container.NewVBox(
+			title,
+			widget.NewSeparator(),
+			message,
+		)
+
+		mw.content.Objects = []fyne.CanvasObject{
+			container.NewCenter(content),
+		}
+		mw.statusBar.SetRecordCount("", 0)
 	}
+
 	mw.content.Refresh()
 }
 

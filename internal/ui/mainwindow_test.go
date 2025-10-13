@@ -365,3 +365,21 @@ func TestMainWindow_ViewMenuTheme(t *testing.T) {
 		t.Errorf("Expected at least 2 items in View menu, got %d", len(viewMenu.Items))
 	}
 }
+
+func TestMainWindow_PlayerList(t *testing.T) {
+	app := test.NewApp()
+	defer app.Quit()
+
+	mw := NewMainWindow(app)
+
+	// Verify player list is created
+	if mw.playerList == nil {
+		t.Fatal("Player list should not be nil")
+	}
+
+	// Set Players section
+	mw.sidebar.SetSelectedSection("Players")
+
+	// Verify status bar shows player count (should be 0 initially)
+	// Can't easily verify UI state, but we can check no panic
+}
