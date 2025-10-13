@@ -80,6 +80,15 @@ func (w *CSVWriter) WriteAll(headers []string, records []map[string]string) erro
 	}
 
 	// Atomically replace the original file
+	// On Windows, we need to remove the existing file first if it exists
+	if _, err := os.Stat(w.filepath); err == nil {
+		// File exists, remove it first
+		if err := os.Remove(w.filepath); err != nil {
+			os.Remove(tmpFile)
+			return fmt.Errorf("failed to remove existing file %s: %w", w.filepath, err)
+		}
+	}
+
 	if err := os.Rename(tmpFile, w.filepath); err != nil {
 		os.Remove(tmpFile)
 		return fmt.Errorf("failed to rename temp file to %s: %w", w.filepath, err)
@@ -146,6 +155,15 @@ func (w *CSVWriter) WriteAllFromSlice(headers []string, rows [][]string) error {
 	}
 
 	// Atomically replace the original file
+	// On Windows, we need to remove the existing file first if it exists
+	if _, err := os.Stat(w.filepath); err == nil {
+		// File exists, remove it first
+		if err := os.Remove(w.filepath); err != nil {
+			os.Remove(tmpFile)
+			return fmt.Errorf("failed to remove existing file %s: %w", w.filepath, err)
+		}
+	}
+
 	if err := os.Rename(tmpFile, w.filepath); err != nil {
 		os.Remove(tmpFile)
 		return fmt.Errorf("failed to rename temp file to %s: %w", w.filepath, err)
