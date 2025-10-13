@@ -12,10 +12,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `--version` CLI flag to display version information
 - Version display in window title
 - Pull request template with changelog checklist
-- Changelog verification in CI pipeline
+- Changelog verification in CI pipeline for PRs
+- Pre-release workflow for alpha/beta/rc releases
+- Release helper scripts (prepare-release.sh, create-prerelease.sh, verify-release.sh)
+- Comprehensive RELEASING.md documentation
+- Automatic changelog extraction in release notes
+- Build information in release artifacts (commit hash, build date)
 
 ### Changed
 - Window title now shows version number (e.g., "FOF9 Editor v0.1.0")
+- Release workflow now includes version info injection via ldflags
+- Release archives now include CHANGELOG.md instead of spec.md
+- Enhanced release notes with automatic changelog content
+
+### Infrastructure
+- Enhanced release.yml with prerelease support and changelog extraction
+- Added pre-release.yml workflow for alpha/beta/rc releases
+- Added changelog-check.yml to enforce changelog updates in PRs
 
 ## [0.1.0] - TBD (First Release)
 
