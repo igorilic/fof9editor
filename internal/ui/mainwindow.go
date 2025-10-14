@@ -368,12 +368,22 @@ func (mw *MainWindow) updatePlayerForm() {
 	currentTeamName := refData.GetTeamNameByID(player.Team)
 	currentPositionName := models.GetPositionName(player.PositionKey)
 
+	// Determine team field type based on whether teams are loaded
+	var teamField FieldDef
+	if len(teamOptions) > 0 {
+		// Teams loaded - use dropdown
+		teamField = FieldDef{Name: "team", Label: "Team", Type: FieldTypeSelect, Value: currentTeamName, Options: teamOptions}
+	} else {
+		// No teams loaded - show ID as text field
+		teamField = FieldDef{Name: "team", Label: "Team (ID)", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", player.Team)}
+	}
+
 	// Define form fields for player - expanded with more useful fields
 	fields := []FieldDef{
 		// Basic Info
 		{Name: "firstName", Label: "First Name", Type: FieldTypeText, Value: player.FirstName},
 		{Name: "lastName", Label: "Last Name", Type: FieldTypeText, Value: player.LastName},
-		{Name: "team", Label: "Team", Type: FieldTypeSelect, Value: currentTeamName, Options: teamOptions},
+		teamField,
 		{Name: "position", Label: "Position", Type: FieldTypeSelect, Value: currentPositionName, Options: positionOptions},
 		{Name: "uniform", Label: "Uniform #", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", player.Uniform)},
 		{Name: "overall", Label: "Overall Rating", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", player.OverallRating)},
@@ -445,13 +455,21 @@ func (mw *MainWindow) savePlayerForm() {
 	players[selectedIndex].LastName = mw.playerForm.GetFieldValue("lastName")
 	players[selectedIndex].College = mw.playerForm.GetFieldValue("college")
 
-	// Convert team name to ID
-	teamName := mw.playerForm.GetFieldValue("team")
-	if teamName != "" {
+	// Handle team field (could be dropdown or number field)
+	teamValue := mw.playerForm.GetFieldValue("team")
+	if teamValue != "" {
 		refData := mw.state.ReferenceData
-		teamID := refData.GetTeamIDByName(teamName)
-		if teamID >= 0 {
-			players[selectedIndex].Team = teamID
+		// Try to convert from team name first (if teams are loaded)
+		if len(refData.Teams) > 0 {
+			teamID := refData.GetTeamIDByName(teamValue)
+			if teamID >= 0 {
+				players[selectedIndex].Team = teamID
+			}
+		} else {
+			// Teams not loaded - parse as integer ID
+			if parsed, err := strconv.Atoi(teamValue); err == nil {
+				players[selectedIndex].Team = parsed
+			}
 		}
 	}
 
@@ -559,12 +577,22 @@ func (mw *MainWindow) updateCoachForm() {
 	currentTeamName := refData.GetTeamNameByID(coach.Team)
 	currentPositionName := refData.GetCoachPositionNameByID(coach.Position)
 
+	// Determine team field type based on whether teams are loaded
+	var teamField FieldDef
+	if len(teamOptions) > 0 {
+		// Teams loaded - use dropdown
+		teamField = FieldDef{Name: "team", Label: "Team", Type: FieldTypeSelect, Value: currentTeamName, Options: teamOptions}
+	} else {
+		// No teams loaded - show ID as text field
+		teamField = FieldDef{Name: "team", Label: "Team (ID)", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", coach.Team)}
+	}
+
 	// Define form fields for coach - comprehensive set
 	fields := []FieldDef{
 		// Basic Info
 		{Name: "firstName", Label: "First Name", Type: FieldTypeText, Value: coach.FirstName},
 		{Name: "lastName", Label: "Last Name", Type: FieldTypeText, Value: coach.LastName},
-		{Name: "team", Label: "Team", Type: FieldTypeSelect, Value: currentTeamName, Options: teamOptions},
+		teamField,
 		{Name: "position", Label: "Position", Type: FieldTypeSelect, Value: currentPositionName, Options: coachPositionOptions},
 		{Name: "positionGroup", Label: "Position Group", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", coach.PositionGroup)},
 
@@ -636,13 +664,21 @@ func (mw *MainWindow) saveCoachForm() {
 	coaches[selectedIndex].BirthCity = mw.coachForm.GetFieldValue("birthCity")
 	coaches[selectedIndex].College = mw.coachForm.GetFieldValue("college")
 
-	// Convert team name to ID
-	teamName := mw.coachForm.GetFieldValue("team")
-	if teamName != "" {
+	// Handle team field (could be dropdown or number field)
+	teamValue := mw.coachForm.GetFieldValue("team")
+	if teamValue != "" {
 		refData := mw.state.ReferenceData
-		teamID := refData.GetTeamIDByName(teamName)
-		if teamID >= 0 {
-			coaches[selectedIndex].Team = teamID
+		// Try to convert from team name first (if teams are loaded)
+		if len(refData.Teams) > 0 {
+			teamID := refData.GetTeamIDByName(teamValue)
+			if teamID >= 0 {
+				coaches[selectedIndex].Team = teamID
+			}
+		} else {
+			// Teams not loaded - parse as integer ID
+			if parsed, err := strconv.Atoi(teamValue); err == nil {
+				coaches[selectedIndex].Team = parsed
+			}
 		}
 	}
 
@@ -1301,6 +1337,14 @@ func (mw *MainWindow) loadTeamsCSV() {
 
 		// Update state
 		mw.state.SetTeams(teams)
+
+		// Refresh player/coach forms if they're currently displayed (to update dropdowns)
+		currentSection := mw.state.GetCurrentSection()
+		if currentSection == "Players" && mw.state.GetSelectedIndex() >= 0 {
+			mw.updatePlayerForm()
+		} else if currentSection == "Coaches" && mw.state.GetSelectedIndex() >= 0 {
+			mw.updateCoachForm()
+		}
 
 		// Update UI
 		mw.sidebar.SetSelectedSection("Teams")

@@ -39,6 +39,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Automatic fallback to user home directory if FOF9 path doesn't exist
   - Applied to all file open/save dialogs (project files, CSV imports/exports)
 
+### Fixed
+- Team dropdown in player/coach forms now handles cases where teams aren't loaded yet
+  - Shows team ID as number field when no teams are loaded
+  - Automatically converts to dropdown when teams are loaded
+  - Forms refresh automatically when teams CSV is loaded while viewing a player/coach
+
 ## [0.3.0] - 2025-10-13
 
 ### Added
