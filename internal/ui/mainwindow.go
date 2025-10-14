@@ -21,11 +21,11 @@ import (
 	"github.com/igorilic/fof9editor/internal/version"
 )
 
-// getDefaultFOF9Path returns the default folder location for file dialogs
-// Uses the Steam installation path if it exists, otherwise falls back to home directory
-func getDefaultFOF9Path() fyne.ListableURI {
-	// Default FOF9 Steam installation path
-	defaultPath := filepath.Join("C:", "Program Files (x86)", "Steam", "steamapps", "common", "Front Office Football Nine")
+// getDefaultCSVPath returns the default folder location for CSV file dialogs
+// Uses the FOF9 leagues folder if it exists, otherwise falls back to home directory
+func getDefaultCSVPath() fyne.ListableURI {
+	// Default FOF9 leagues folder path
+	defaultPath := filepath.Join("C:", "Program Files (x86)", "Steam", "steamapps", "common", "Front Office Football Nine", "leagues")
 
 	// Check if the path exists
 	if _, err := os.Stat(defaultPath); err == nil {
@@ -142,51 +142,38 @@ func (mw *MainWindow) setupWindow() {
 
 // setupMenuBar creates and configures the application menu bar
 func (mw *MainWindow) setupMenuBar() {
-	// File menu
-	newItem := fyne.NewMenuItem("New Project...", func() {
-		mw.newProject()
-	})
-	openItem := fyne.NewMenuItem("Open Project...", func() {
-		mw.openLeague()
-	})
-
-	// Load individual CSV files submenu
-	loadPlayersItem := fyne.NewMenuItem("Players CSV...", func() {
+	// File menu - Load CSV files
+	loadPlayersItem := fyne.NewMenuItem("Load Players...", func() {
 		mw.loadPlayersCSV()
 	})
-	loadCoachesItem := fyne.NewMenuItem("Coaches CSV...", func() {
+	loadCoachesItem := fyne.NewMenuItem("Load Coaches...", func() {
 		mw.loadCoachesCSV()
 	})
-	loadTeamsItem := fyne.NewMenuItem("Teams CSV...", func() {
+	loadTeamsItem := fyne.NewMenuItem("Load Teams...", func() {
 		mw.loadTeamsCSV()
 	})
-	loadCSVMenu := fyne.NewMenuItem("Load CSV", nil)
-	loadCSVMenu.ChildMenu = fyne.NewMenu("", loadPlayersItem, loadCoachesItem, loadTeamsItem)
 
-	// Save individual CSV files submenu
-	savePlayersItem := fyne.NewMenuItem("Players CSV...", func() {
+	// Save CSV files
+	savePlayersItem := fyne.NewMenuItem("Save Players...", func() {
 		mw.savePlayersCSV()
 	})
-	saveCoachesItem := fyne.NewMenuItem("Coaches CSV...", func() {
+	saveCoachesItem := fyne.NewMenuItem("Save Coaches...", func() {
 		mw.saveCoachesCSV()
 	})
-	saveTeamsItem := fyne.NewMenuItem("Teams CSV...", func() {
+	saveTeamsItem := fyne.NewMenuItem("Save Teams...", func() {
 		mw.saveTeamsCSV()
 	})
-	saveCSVMenu := fyne.NewMenuItem("Save CSV", nil)
-	saveCSVMenu.ChildMenu = fyne.NewMenu("", savePlayersItem, saveCoachesItem, saveTeamsItem)
 
-	saveItem := fyne.NewMenuItem("Save", func() {
-		mw.saveLeague()
-	})
-	saveAsItem := fyne.NewMenuItem("Save As...", func() {
-		mw.saveLeagueAs()
-	})
 	exitItem := fyne.NewMenuItem("Exit", func() {
 		mw.app.Quit()
 	})
 
-	fileMenu := fyne.NewMenu("File", newItem, openItem, loadCSVMenu, saveCSVMenu, fyne.NewMenuItemSeparator(), saveItem, saveAsItem, fyne.NewMenuItemSeparator(), exitItem)
+	fileMenu := fyne.NewMenu("File",
+		loadPlayersItem, loadCoachesItem, loadTeamsItem,
+		fyne.NewMenuItemSeparator(),
+		savePlayersItem, saveCoachesItem, saveTeamsItem,
+		fyne.NewMenuItemSeparator(),
+		exitItem)
 
 	// Edit menu
 	undoItem := fyne.NewMenuItem("Undo", func() {
@@ -1121,7 +1108,7 @@ func (mw *MainWindow) showOpenDialog() {
 	}, mw.window)
 
 	// Set default location to FOF9 installation folder
-	if defaultLocation := getDefaultFOF9Path(); defaultLocation != nil {
+	if defaultLocation := getDefaultCSVPath(); defaultLocation != nil {
 		fileDialog.SetLocation(defaultLocation)
 	}
 
@@ -1203,7 +1190,7 @@ func (mw *MainWindow) saveLeagueAs() {
 	}, mw.window)
 
 	// Set default location to FOF9 installation folder
-	if defaultLocation := getDefaultFOF9Path(); defaultLocation != nil {
+	if defaultLocation := getDefaultCSVPath(); defaultLocation != nil {
 		saveDialog.SetLocation(defaultLocation)
 	}
 
@@ -1215,17 +1202,11 @@ func (mw *MainWindow) handleWindowClose() {
 	// Check for unsaved changes
 	if mw.state.IsDirtyState() {
 		dialog.ShowConfirm("Unsaved Changes",
-			"You have unsaved changes. Do you want to save before closing?",
-			func(save bool) {
-				if save {
-					// Save project
-					if err := mw.state.SaveProject(); err != nil {
-						dialog.ShowError(fmt.Errorf("failed to save project: %w", err), mw.window)
-						return
-					}
+			"You have unsaved changes. Close anyway?",
+			func(close bool) {
+				if close {
+					mw.window.Close()
 				}
-				// Close window
-				mw.window.Close()
 			}, mw.window)
 		return
 	}
@@ -1267,7 +1248,7 @@ func (mw *MainWindow) loadPlayersCSV() {
 	}, mw.window)
 
 	// Set default location to FOF9 installation folder
-	if defaultLocation := getDefaultFOF9Path(); defaultLocation != nil {
+	if defaultLocation := getDefaultCSVPath(); defaultLocation != nil {
 		fileDialog.SetLocation(defaultLocation)
 	}
 
@@ -1307,7 +1288,7 @@ func (mw *MainWindow) loadCoachesCSV() {
 	}, mw.window)
 
 	// Set default location to FOF9 installation folder
-	if defaultLocation := getDefaultFOF9Path(); defaultLocation != nil {
+	if defaultLocation := getDefaultCSVPath(); defaultLocation != nil {
 		fileDialog.SetLocation(defaultLocation)
 	}
 
@@ -1355,7 +1336,7 @@ func (mw *MainWindow) loadTeamsCSV() {
 	}, mw.window)
 
 	// Set default location to FOF9 installation folder
-	if defaultLocation := getDefaultFOF9Path(); defaultLocation != nil {
+	if defaultLocation := getDefaultCSVPath(); defaultLocation != nil {
 		fileDialog.SetLocation(defaultLocation)
 	}
 
@@ -1456,7 +1437,7 @@ func (mw *MainWindow) showNewProjectDialog() {
 		}, mw.window)
 
 		// Set default location to FOF9 installation folder
-		if defaultLocation := getDefaultFOF9Path(); defaultLocation != nil {
+		if defaultLocation := getDefaultCSVPath(); defaultLocation != nil {
 			saveDialog.SetLocation(defaultLocation)
 		}
 
@@ -1510,7 +1491,7 @@ func (mw *MainWindow) savePlayersCSV() {
 	}, mw.window)
 
 	// Set default location to FOF9 installation folder
-	if defaultLocation := getDefaultFOF9Path(); defaultLocation != nil {
+	if defaultLocation := getDefaultCSVPath(); defaultLocation != nil {
 		saveDialog.SetLocation(defaultLocation)
 	}
 
@@ -1553,7 +1534,7 @@ func (mw *MainWindow) saveCoachesCSV() {
 	}, mw.window)
 
 	// Set default location to FOF9 installation folder
-	if defaultLocation := getDefaultFOF9Path(); defaultLocation != nil {
+	if defaultLocation := getDefaultCSVPath(); defaultLocation != nil {
 		saveDialog.SetLocation(defaultLocation)
 	}
 
@@ -1596,7 +1577,7 @@ func (mw *MainWindow) saveTeamsCSV() {
 	}, mw.window)
 
 	// Set default location to FOF9 installation folder
-	if defaultLocation := getDefaultFOF9Path(); defaultLocation != nil {
+	if defaultLocation := getDefaultCSVPath(); defaultLocation != nil {
 		saveDialog.SetLocation(defaultLocation)
 	}
 
