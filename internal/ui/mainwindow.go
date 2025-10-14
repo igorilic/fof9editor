@@ -327,13 +327,22 @@ func (mw *MainWindow) updatePlayerForm() {
 
 	player := players[selectedIndex]
 
+	// Get reference data for dropdowns
+	refData := mw.state.ReferenceData
+	teamOptions := refData.GetTeamOptions()
+	positionOptions := refData.GetPositionOptions()
+
+	// Get current team name and position name for the player
+	currentTeamName := refData.GetTeamNameByID(player.Team)
+	currentPositionName := models.GetPositionName(player.PositionKey)
+
 	// Define form fields for player - expanded with more useful fields
 	fields := []FieldDef{
 		// Basic Info
 		{Name: "firstName", Label: "First Name", Type: FieldTypeText, Value: player.FirstName},
 		{Name: "lastName", Label: "Last Name", Type: FieldTypeText, Value: player.LastName},
-		{Name: "team", Label: "Team", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", player.Team)},
-		{Name: "position", Label: "Position", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", player.PositionKey)},
+		{Name: "team", Label: "Team", Type: FieldTypeSelect, Value: currentTeamName, Options: teamOptions},
+		{Name: "position", Label: "Position", Type: FieldTypeSelect, Value: currentPositionName, Options: positionOptions},
 		{Name: "uniform", Label: "Uniform #", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", player.Uniform)},
 		{Name: "overall", Label: "Overall Rating", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", player.OverallRating)},
 
@@ -404,9 +413,27 @@ func (mw *MainWindow) savePlayerForm() {
 	players[selectedIndex].LastName = mw.playerForm.GetFieldValue("lastName")
 	players[selectedIndex].College = mw.playerForm.GetFieldValue("college")
 
+	// Convert team name to ID
+	teamName := mw.playerForm.GetFieldValue("team")
+	if teamName != "" {
+		refData := mw.state.ReferenceData
+		teamID := refData.GetTeamIDByName(teamName)
+		if teamID >= 0 {
+			players[selectedIndex].Team = teamID
+		}
+	}
+
+	// Convert position name to ID
+	positionName := mw.playerForm.GetFieldValue("position")
+	if positionName != "" {
+		refData := mw.state.ReferenceData
+		positionID := refData.GetPositionIDByName(positionName)
+		if positionID >= 0 {
+			players[selectedIndex].PositionKey = positionID
+		}
+	}
+
 	// Parse all numeric fields
-	parseIntField("team", &players[selectedIndex].Team)
-	parseIntField("position", &players[selectedIndex].PositionKey)
 	parseIntField("uniform", &players[selectedIndex].Uniform)
 	parseIntField("overall", &players[selectedIndex].OverallRating)
 	parseIntField("height", &players[selectedIndex].Height)
@@ -491,13 +518,22 @@ func (mw *MainWindow) updateCoachForm() {
 
 	coach := coaches[selectedIndex]
 
+	// Get reference data for dropdowns
+	refData := mw.state.ReferenceData
+	teamOptions := refData.GetTeamOptions()
+	coachPositionOptions := refData.GetCoachPositionOptions()
+
+	// Get current team name and position name for the coach
+	currentTeamName := refData.GetTeamNameByID(coach.Team)
+	currentPositionName := refData.GetCoachPositionNameByID(coach.Position)
+
 	// Define form fields for coach - comprehensive set
 	fields := []FieldDef{
 		// Basic Info
 		{Name: "firstName", Label: "First Name", Type: FieldTypeText, Value: coach.FirstName},
 		{Name: "lastName", Label: "Last Name", Type: FieldTypeText, Value: coach.LastName},
-		{Name: "team", Label: "Team", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", coach.Team)},
-		{Name: "position", Label: "Position", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", coach.Position)},
+		{Name: "team", Label: "Team", Type: FieldTypeSelect, Value: currentTeamName, Options: teamOptions},
+		{Name: "position", Label: "Position", Type: FieldTypeSelect, Value: currentPositionName, Options: coachPositionOptions},
 		{Name: "positionGroup", Label: "Position Group", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", coach.PositionGroup)},
 
 		// Birth Info
@@ -568,9 +604,27 @@ func (mw *MainWindow) saveCoachForm() {
 	coaches[selectedIndex].BirthCity = mw.coachForm.GetFieldValue("birthCity")
 	coaches[selectedIndex].College = mw.coachForm.GetFieldValue("college")
 
+	// Convert team name to ID
+	teamName := mw.coachForm.GetFieldValue("team")
+	if teamName != "" {
+		refData := mw.state.ReferenceData
+		teamID := refData.GetTeamIDByName(teamName)
+		if teamID >= 0 {
+			coaches[selectedIndex].Team = teamID
+		}
+	}
+
+	// Convert position name to ID
+	positionName := mw.coachForm.GetFieldValue("position")
+	if positionName != "" {
+		refData := mw.state.ReferenceData
+		positionID := refData.GetCoachPositionIDByName(positionName)
+		if positionID >= 0 {
+			coaches[selectedIndex].Position = positionID
+		}
+	}
+
 	// Parse all numeric fields
-	parseIntField("team", &coaches[selectedIndex].Team)
-	parseIntField("position", &coaches[selectedIndex].Position)
 	parseIntField("positionGroup", &coaches[selectedIndex].PositionGroup)
 	parseIntField("birthMonth", &coaches[selectedIndex].BirthMonth)
 	parseIntField("birthDay", &coaches[selectedIndex].BirthDay)

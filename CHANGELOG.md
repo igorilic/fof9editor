@@ -23,13 +23,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Validation prevents saving invalid data
   - 30 passing validation tests
   - Visual error feedback with red italic text below invalid fields
-- Phase 7: Reference Data (Partial Implementation)
+- Phase 7: Reference Data (Complete)
   - Position reference data with 22 standard football positions
+  - Coach position reference data (5 coaching positions)
   - ReferenceData model for centralized lookup data
   - Reference data integrated into AppState
-  - Player list now displays position abbreviations (QB, RB, WR, etc.) instead of numeric IDs
+  - Player list displays position abbreviations (QB, RB, WR, etc.) instead of numeric IDs
+  - Player form uses dropdowns for Team and Position selection
+  - Coach form uses dropdowns for Team and Position selection
   - Automatic reference data population when teams are loaded
-  - Position name/abbreviation lookup functions
+  - Position/team name-to-ID conversion functions
+  - Bidirectional lookups: ID→Name and Name→ID
 
 ## [0.3.0] - 2025-10-13
 

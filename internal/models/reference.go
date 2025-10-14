@@ -64,3 +64,44 @@ func (r *ReferenceData) GetTeamNameByID(id int) string {
 	}
 	return "Unknown Team"
 }
+
+// GetCoachPositionOptions returns coach position names for dropdown selections
+func (r *ReferenceData) GetCoachPositionOptions() []string {
+	return []string{
+		"Head Coach",
+		"Offensive Coordinator",
+		"Defensive Coordinator",
+		"Special Teams Coordinator",
+		"Strength & Conditioning",
+	}
+}
+
+// GetCoachPositionIDByName returns the coach position ID for a given name
+func (r *ReferenceData) GetCoachPositionIDByName(name string) int {
+	positions := map[string]int{
+		"Head Coach":                    0,
+		"Offensive Coordinator":         1,
+		"Defensive Coordinator":         2,
+		"Special Teams Coordinator":     3,
+		"Strength & Conditioning":       4,
+	}
+	if id, exists := positions[name]; exists {
+		return id
+	}
+	return -1
+}
+
+// GetCoachPositionNameByID returns the coach position name for a given ID
+func (r *ReferenceData) GetCoachPositionNameByID(id int) string {
+	names := []string{
+		"Head Coach",
+		"Offensive Coordinator",
+		"Defensive Coordinator",
+		"Special Teams Coordinator",
+		"Strength & Conditioning",
+	}
+	if id >= 0 && id < len(names) {
+		return names[id]
+	}
+	return "Unknown Position"
+}
