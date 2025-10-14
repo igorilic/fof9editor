@@ -34,6 +34,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Automatic reference data population when teams are loaded
   - Position/team name-to-ID conversion functions
   - Bidirectional lookups: ID→Name and Name→ID
+- Default file dialog location
+  - File dialogs now default to FOF9 Steam installation folder (C:\Program Files (x86)\Steam\steamapps\common\Front Office Football Nine)
+  - Automatic fallback to user home directory if FOF9 path doesn't exist
+  - Applied to all file open/save dialogs (project files, CSV imports/exports)
 
 ## [0.3.0] - 2025-10-13
 

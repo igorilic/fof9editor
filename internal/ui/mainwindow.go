@@ -5,12 +5,14 @@ package ui
 
 import (
 	"fmt"
+	"os"
 	"path/filepath"
 	"strconv"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/dialog"
+	"fyne.io/fyne/v2/storage"
 	"fyne.io/fyne/v2/widget"
 	"github.com/igorilic/fof9editor/internal/data"
 	"github.com/igorilic/fof9editor/internal/models"
@@ -18,6 +20,36 @@ import (
 	"github.com/igorilic/fof9editor/internal/validation"
 	"github.com/igorilic/fof9editor/internal/version"
 )
+
+// getDefaultFOF9Path returns the default folder location for file dialogs
+// Uses the Steam installation path if it exists, otherwise falls back to home directory
+func getDefaultFOF9Path() fyne.ListableURI {
+	// Default FOF9 Steam installation path
+	defaultPath := filepath.Join("C:", "Program Files (x86)", "Steam", "steamapps", "common", "Front Office Football Nine")
+
+	// Check if the path exists
+	if _, err := os.Stat(defaultPath); err == nil {
+		// Path exists, use it
+		if uri := storage.NewFileURI(defaultPath); uri != nil {
+			if listable, ok := uri.(fyne.ListableURI); ok {
+				return listable
+			}
+		}
+	}
+
+	// Fallback to user's home directory
+	homeDir, err := os.UserHomeDir()
+	if err == nil {
+		if uri := storage.NewFileURI(homeDir); uri != nil {
+			if listable, ok := uri.(fyne.ListableURI); ok {
+				return listable
+			}
+		}
+	}
+
+	// Last resort: return nil and let Fyne use its default
+	return nil
+}
 
 // MainWindow represents the main application window
 type MainWindow struct {
@@ -1018,7 +1050,7 @@ func (mw *MainWindow) openLeague() {
 
 // showOpenDialog shows the file open dialog
 func (mw *MainWindow) showOpenDialog() {
-	dialog.ShowFileOpen(func(reader fyne.URIReadCloser, err error) {
+	fileDialog := dialog.NewFileOpen(func(reader fyne.URIReadCloser, err error) {
 		if err != nil {
 			dialog.ShowError(err, mw.window)
 			return
@@ -1051,6 +1083,13 @@ func (mw *MainWindow) showOpenDialog() {
 		// Show success message
 		dialog.ShowInformation("Success", fmt.Sprintf("Opened league: %s", project.LeagueName), mw.window)
 	}, mw.window)
+
+	// Set default location to FOF9 installation folder
+	if defaultLocation := getDefaultFOF9Path(); defaultLocation != nil {
+		fileDialog.SetLocation(defaultLocation)
+	}
+
+	fileDialog.Show()
 }
 
 // saveLeague saves the current league project
@@ -1092,7 +1131,7 @@ func (mw *MainWindow) saveLeagueAs() {
 	}
 
 	// Show save dialog
-	dialog.ShowFileSave(func(writer fyne.URIWriteCloser, err error) {
+	saveDialog := dialog.NewFileSave(func(writer fyne.URIWriteCloser, err error) {
 		if err != nil {
 			dialog.ShowError(err, mw.window)
 			return
@@ -1126,6 +1165,13 @@ func (mw *MainWindow) saveLeagueAs() {
 		// Show success message
 		dialog.ShowInformation("Success", fmt.Sprintf("Project saved as: %s", filepath.Base(newPath)), mw.window)
 	}, mw.window)
+
+	// Set default location to FOF9 installation folder
+	if defaultLocation := getDefaultFOF9Path(); defaultLocation != nil {
+		saveDialog.SetLocation(defaultLocation)
+	}
+
+	saveDialog.Show()
 }
 
 // handleWindowClose handles the window close event, prompting for unsaved changes
@@ -1154,7 +1200,7 @@ func (mw *MainWindow) handleWindowClose() {
 
 // loadPlayersCSV loads players from a CSV file
 func (mw *MainWindow) loadPlayersCSV() {
-	dialog.ShowFileOpen(func(reader fyne.URIReadCloser, err error) {
+	fileDialog := dialog.NewFileOpen(func(reader fyne.URIReadCloser, err error) {
 		if err != nil {
 			dialog.ShowError(err, mw.window)
 			return
@@ -1183,11 +1229,18 @@ func (mw *MainWindow) loadPlayersCSV() {
 
 		dialog.ShowInformation("Success", fmt.Sprintf("Loaded %d players", len(players)), mw.window)
 	}, mw.window)
+
+	// Set default location to FOF9 installation folder
+	if defaultLocation := getDefaultFOF9Path(); defaultLocation != nil {
+		fileDialog.SetLocation(defaultLocation)
+	}
+
+	fileDialog.Show()
 }
 
 // loadCoachesCSV loads coaches from a CSV file
 func (mw *MainWindow) loadCoachesCSV() {
-	dialog.ShowFileOpen(func(reader fyne.URIReadCloser, err error) {
+	fileDialog := dialog.NewFileOpen(func(reader fyne.URIReadCloser, err error) {
 		if err != nil {
 			dialog.ShowError(err, mw.window)
 			return
@@ -1216,11 +1269,18 @@ func (mw *MainWindow) loadCoachesCSV() {
 
 		dialog.ShowInformation("Success", fmt.Sprintf("Loaded %d coaches", len(coaches)), mw.window)
 	}, mw.window)
+
+	// Set default location to FOF9 installation folder
+	if defaultLocation := getDefaultFOF9Path(); defaultLocation != nil {
+		fileDialog.SetLocation(defaultLocation)
+	}
+
+	fileDialog.Show()
 }
 
 // loadTeamsCSV loads teams from a CSV file
 func (mw *MainWindow) loadTeamsCSV() {
-	dialog.ShowFileOpen(func(reader fyne.URIReadCloser, err error) {
+	fileDialog := dialog.NewFileOpen(func(reader fyne.URIReadCloser, err error) {
 		if err != nil {
 			dialog.ShowError(err, mw.window)
 			return
@@ -1249,6 +1309,13 @@ func (mw *MainWindow) loadTeamsCSV() {
 
 		dialog.ShowInformation("Success", fmt.Sprintf("Loaded %d teams", len(teams)), mw.window)
 	}, mw.window)
+
+	// Set default location to FOF9 installation folder
+	if defaultLocation := getDefaultFOF9Path(); defaultLocation != nil {
+		fileDialog.SetLocation(defaultLocation)
+	}
+
+	fileDialog.Show()
 }
 
 // newProject creates a new project
@@ -1309,7 +1376,7 @@ func (mw *MainWindow) showNewProjectDialog() {
 		d.Hide()
 
 		// Show file save dialog for project location
-		dialog.ShowFileSave(func(writer fyne.URIWriteCloser, err error) {
+		saveDialog := dialog.NewFileSave(func(writer fyne.URIWriteCloser, err error) {
 			if err != nil {
 				dialog.ShowError(err, mw.window)
 				return
@@ -1343,6 +1410,13 @@ func (mw *MainWindow) showNewProjectDialog() {
 
 			dialog.ShowInformation("Success", fmt.Sprintf("Created project: %s", leagueName), mw.window)
 		}, mw.window)
+
+		// Set default location to FOF9 installation folder
+		if defaultLocation := getDefaultFOF9Path(); defaultLocation != nil {
+			saveDialog.SetLocation(defaultLocation)
+		}
+
+		saveDialog.Show()
 	})
 	createButton.Importance = widget.HighImportance
 
@@ -1364,7 +1438,7 @@ func (mw *MainWindow) savePlayersCSV() {
 		return
 	}
 
-	dialog.ShowFileSave(func(writer fyne.URIWriteCloser, err error) {
+	saveDialog := dialog.NewFileSave(func(writer fyne.URIWriteCloser, err error) {
 		if err != nil {
 			dialog.ShowError(err, mw.window)
 			return
@@ -1390,6 +1464,13 @@ func (mw *MainWindow) savePlayersCSV() {
 
 		dialog.ShowInformation("Success", fmt.Sprintf("Saved %d players to %s", len(players), filepath.Base(filePath)), mw.window)
 	}, mw.window)
+
+	// Set default location to FOF9 installation folder
+	if defaultLocation := getDefaultFOF9Path(); defaultLocation != nil {
+		saveDialog.SetLocation(defaultLocation)
+	}
+
+	saveDialog.Show()
 }
 
 // saveCoachesCSV saves coaches to a CSV file
@@ -1400,7 +1481,7 @@ func (mw *MainWindow) saveCoachesCSV() {
 		return
 	}
 
-	dialog.ShowFileSave(func(writer fyne.URIWriteCloser, err error) {
+	saveDialog := dialog.NewFileSave(func(writer fyne.URIWriteCloser, err error) {
 		if err != nil {
 			dialog.ShowError(err, mw.window)
 			return
@@ -1426,6 +1507,13 @@ func (mw *MainWindow) saveCoachesCSV() {
 
 		dialog.ShowInformation("Success", fmt.Sprintf("Saved %d coaches to %s", len(coaches), filepath.Base(filePath)), mw.window)
 	}, mw.window)
+
+	// Set default location to FOF9 installation folder
+	if defaultLocation := getDefaultFOF9Path(); defaultLocation != nil {
+		saveDialog.SetLocation(defaultLocation)
+	}
+
+	saveDialog.Show()
 }
 
 // saveTeamsCSV saves teams to a CSV file
@@ -1436,7 +1524,7 @@ func (mw *MainWindow) saveTeamsCSV() {
 		return
 	}
 
-	dialog.ShowFileSave(func(writer fyne.URIWriteCloser, err error) {
+	saveDialog := dialog.NewFileSave(func(writer fyne.URIWriteCloser, err error) {
 		if err != nil {
 			dialog.ShowError(err, mw.window)
 			return
@@ -1462,4 +1550,11 @@ func (mw *MainWindow) saveTeamsCSV() {
 
 		dialog.ShowInformation("Success", fmt.Sprintf("Saved %d teams to %s", len(teams), filepath.Base(filePath)), mw.window)
 	}, mw.window)
+
+	// Set default location to FOF9 installation folder
+	if defaultLocation := getDefaultFOF9Path(); defaultLocation != nil {
+		saveDialog.SetLocation(defaultLocation)
+	}
+
+	saveDialog.Show()
 }
