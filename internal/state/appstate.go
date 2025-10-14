@@ -23,6 +23,9 @@ type AppState struct {
 	Coaches []models.Coach
 	Teams   []models.Team
 
+	// Reference data
+	ReferenceData *models.ReferenceData
+
 	// UI state
 	CurrentSection string // e.g., "Players", "Coaches", "Teams"
 	SelectedIndex  int    // Currently selected item in list
@@ -46,6 +49,7 @@ func GetInstance() *AppState {
 			CurrentSection: "Players",
 			SelectedIndex:  -1,
 			IsDirty:        false,
+			ReferenceData:  models.NewReferenceData(),
 		}
 	})
 	return instance
@@ -84,6 +88,10 @@ func (s *AppState) LoadProject(filepath string) error {
 		teamsPath := project.GetFullPath("teams")
 		if teams, err := data.LoadTeams(teamsPath); err == nil {
 			s.Teams = teams
+			// Update reference data with teams for dropdowns
+			if s.ReferenceData != nil {
+				s.ReferenceData.Teams = teams
+			}
 		}
 	}
 
@@ -190,6 +198,10 @@ func (s *AppState) SetTeams(teams []models.Team) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	s.Teams = teams
+	// Update reference data with teams for dropdowns
+	if s.ReferenceData != nil {
+		s.ReferenceData.Teams = teams
+	}
 	s.IsDirty = true
 }
 

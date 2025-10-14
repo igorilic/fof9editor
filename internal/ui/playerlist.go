@@ -121,7 +121,8 @@ func (pl *PlayerList) setupTable() {
 			case 2:
 				label.SetText(player.LastName)
 			case 3:
-				label.SetText(fmt.Sprintf("%d", player.PositionKey))
+				// Show position name instead of ID
+				label.SetText(models.GetPositionAbbr(player.PositionKey))
 			case 4:
 				label.SetText(fmt.Sprintf("%d", player.Team))
 			case 5:

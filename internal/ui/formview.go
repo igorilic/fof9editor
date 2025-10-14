@@ -35,6 +35,7 @@ type FormView struct {
 	fields       map[string]fyne.CanvasObject
 	fieldEntries map[string]*widget.Entry  // Store entries for value retrieval
 	fieldSelects map[string]*widget.Select // Store selects for value retrieval
+	fieldErrors  map[string]*widget.Label  // Store error labels for each field
 	onSave       func()
 	onDelete     func()
 	onNext       func()
@@ -48,6 +49,7 @@ func NewFormView() *FormView {
 		fields:       make(map[string]fyne.CanvasObject),
 		fieldEntries: make(map[string]*widget.Entry),
 		fieldSelects: make(map[string]*widget.Select),
+		fieldErrors:  make(map[string]*widget.Label),
 	}
 
 	fv.container = container.NewVBox()
@@ -60,6 +62,7 @@ func (fv *FormView) SetFields(fieldDefs []FieldDef) {
 	fv.fields = make(map[string]fyne.CanvasObject)
 	fv.fieldEntries = make(map[string]*widget.Entry)
 	fv.fieldSelects = make(map[string]*widget.Select)
+	fv.fieldErrors = make(map[string]*widget.Label)
 
 	// Create form content
 	formContent := container.NewVBox()
@@ -111,9 +114,17 @@ func (fv *FormView) SetFields(fieldDefs []FieldDef) {
 
 		fv.fields[def.Name] = fieldWidget
 
-		// Add label and field to form
+		// Create error label (initially hidden)
+		errorLabel := widget.NewLabel("")
+		errorLabel.TextStyle = fyne.TextStyle{Italic: true}
+		errorLabel.Importance = widget.DangerImportance
+		errorLabel.Hide()
+		fv.fieldErrors[def.Name] = errorLabel
+
+		// Add label, field, and error label to form
 		fieldRow := container.NewBorder(nil, nil, label, nil, fieldWidget)
 		formContent.Add(fieldRow)
+		formContent.Add(errorLabel)
 	}
 
 	// Rebuild container with form content and button bar
@@ -199,9 +210,34 @@ func (fv *FormView) Clear() {
 	fv.fields = make(map[string]fyne.CanvasObject)
 	fv.fieldEntries = make(map[string]*widget.Entry)
 	fv.fieldSelects = make(map[string]*widget.Select)
+	fv.fieldErrors = make(map[string]*widget.Label)
 	fv.container.Objects = []fyne.CanvasObject{}
 	if fv.buttonBar != nil {
 		fv.container.Add(fv.buttonBar)
 	}
 	fv.container.Refresh()
+}
+
+// SetFieldError displays an error message for a specific field
+func (fv *FormView) SetFieldError(fieldName, errorMessage string) {
+	if errorLabel, exists := fv.fieldErrors[fieldName]; exists {
+		if errorMessage == "" {
+			errorLabel.Hide()
+		} else {
+			errorLabel.SetText(errorMessage)
+			errorLabel.Show()
+		}
+	}
+}
+
+// ClearFieldError removes the error message from a specific field
+func (fv *FormView) ClearFieldError(fieldName string) {
+	fv.SetFieldError(fieldName, "")
+}
+
+// ClearAllErrors removes all error messages from the form
+func (fv *FormView) ClearAllErrors() {
+	for fieldName := range fv.fieldErrors {
+		fv.ClearFieldError(fieldName)
+	}
 }

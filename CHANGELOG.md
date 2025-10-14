@@ -8,7 +8,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Nothing yet
+- Phase 5 Enhancements: Expanded Form Views
+  - Player form expanded from 6 to 15 fields including physical attributes and career info
+  - Coach form with 15 fields including birth info, college, coaching styles, and compensation
+  - Team form with 22 fields including identity, colors, stadium info, and financial data
+  - Split view layout (40% list, 60% form) for all three entity types
+  - Previous/Next navigation, Save, and Delete buttons for all forms
+  - Real-time field updates when selecting items from lists
+- Phase 6: Data Validation System
+  - Comprehensive validation rules for Player, Coach, and Team data
+  - Field-level validators (required, min/max length, integer ranges, year ranges)
+  - Game-specific constraints (uniform 0-99, team 0-31, ratings 0-99, etc.)
+  - Real-time validation on form save with inline error display
+  - Validation prevents saving invalid data
+  - 30 passing validation tests
+  - Visual error feedback with red italic text below invalid fields
+- Phase 7: Reference Data (Partial Implementation)
+  - Position reference data with 22 standard football positions
+  - ReferenceData model for centralized lookup data
+  - Reference data integrated into AppState
+  - Player list now displays position abbreviations (QB, RB, WR, etc.) instead of numeric IDs
+  - Automatic reference data population when teams are loaded
+  - Position name/abbreviation lookup functions
 
 ## [0.3.0] - 2025-10-13
 

@@ -6,6 +6,7 @@ package ui
 import (
 	"fmt"
 	"path/filepath"
+	"strconv"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
@@ -14,6 +15,7 @@ import (
 	"github.com/igorilic/fof9editor/internal/data"
 	"github.com/igorilic/fof9editor/internal/models"
 	"github.com/igorilic/fof9editor/internal/state"
+	"github.com/igorilic/fof9editor/internal/validation"
 	"github.com/igorilic/fof9editor/internal/version"
 )
 
@@ -30,6 +32,8 @@ type MainWindow struct {
 	coachList    *CoachList
 	teamList     *TeamList
 	playerForm   *FormView
+	coachForm    *FormView
+	teamForm     *FormView
 }
 
 // NewMainWindow creates a new main window
@@ -45,6 +49,8 @@ func NewMainWindow(app fyne.App) *MainWindow {
 		coachList:    NewCoachList(),
 		teamList:     NewTeamList(),
 		playerForm:   NewFormView(),
+		coachForm:    NewFormView(),
+		teamForm:     NewFormView(),
 	}
 
 	mw.setupWindow()
@@ -241,19 +247,47 @@ func (mw *MainWindow) updateContentArea(section string) {
 		mw.statusBar.SetRecordCount("Players", len(players))
 
 	case "Coaches":
-		// Load coaches from state and display in list
+		// Load coaches from state and display in split view
 		coaches := mw.state.GetCoaches()
 		mw.coachList.SetCoaches(coaches)
+
+		// Set up coach selection callback
+		mw.coachList.SetOnSelectChange(func(index int) {
+			mw.state.SetSelectedIndex(index)
+			mw.updateCoachForm()
+		})
+
+		// Create split view: 40% list, 60% form
+		split := container.NewHSplit(
+			mw.coachList.GetContainer(),
+			mw.coachForm.GetContainer(),
+		)
+		split.SetOffset(0.4)
+
 		// Wrap in NewMax to fill available space
-		mw.content.Objects = []fyne.CanvasObject{container.NewMax(mw.coachList.GetContainer())}
+		mw.content.Objects = []fyne.CanvasObject{container.NewMax(split)}
 		mw.statusBar.SetRecordCount("Coaches", len(coaches))
 
 	case "Teams":
-		// Load teams from state and display in list
+		// Load teams from state and display in split view
 		teams := mw.state.GetTeams()
 		mw.teamList.SetTeams(teams)
+
+		// Set up team selection callback
+		mw.teamList.SetOnSelectChange(func(index int) {
+			mw.state.SetSelectedIndex(index)
+			mw.updateTeamForm()
+		})
+
+		// Create split view: 40% list, 60% form
+		split := container.NewHSplit(
+			mw.teamList.GetContainer(),
+			mw.teamForm.GetContainer(),
+		)
+		split.SetOffset(0.4)
+
 		// Wrap in NewMax to fill available space
-		mw.content.Objects = []fyne.CanvasObject{container.NewMax(mw.teamList.GetContainer())}
+		mw.content.Objects = []fyne.CanvasObject{container.NewMax(split)}
 		mw.statusBar.SetRecordCount("Teams", len(teams))
 
 	default:
@@ -293,14 +327,28 @@ func (mw *MainWindow) updatePlayerForm() {
 
 	player := players[selectedIndex]
 
-	// Define form fields for player (key fields only for now)
+	// Define form fields for player - expanded with more useful fields
 	fields := []FieldDef{
+		// Basic Info
 		{Name: "firstName", Label: "First Name", Type: FieldTypeText, Value: player.FirstName},
 		{Name: "lastName", Label: "Last Name", Type: FieldTypeText, Value: player.LastName},
 		{Name: "team", Label: "Team", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", player.Team)},
 		{Name: "position", Label: "Position", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", player.PositionKey)},
-		{Name: "uniform", Label: "Uniform", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", player.Uniform)},
+		{Name: "uniform", Label: "Uniform #", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", player.Uniform)},
 		{Name: "overall", Label: "Overall Rating", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", player.OverallRating)},
+
+		// Physical Attributes
+		{Name: "height", Label: "Height (inches)", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", player.Height)},
+		{Name: "weight", Label: "Weight (lbs)", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", player.Weight)},
+		{Name: "handSize", Label: "Hand Size", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", player.HandSize)},
+		{Name: "armLength", Label: "Arm Length", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", player.ArmLength)},
+
+		// Career Info
+		{Name: "experience", Label: "Experience (years)", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", player.Experience)},
+		{Name: "college", Label: "College", Type: FieldTypeText, Value: player.College},
+		{Name: "yearEntry", Label: "Year Entered League", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", player.YearEntry)},
+		{Name: "roundDrafted", Label: "Draft Round", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", player.RoundDrafted)},
+		{Name: "selectionDrafted", Label: "Draft Pick", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", player.SelectionDrafted)},
 	}
 
 	// Set fields in form
@@ -339,30 +387,47 @@ func (mw *MainWindow) savePlayerForm() {
 		return
 	}
 
-	// Get field values
+	// Clear previous validation errors
+	mw.playerForm.ClearAllErrors()
+
+	// Helper function to parse integer field
+	parseIntField := func(fieldName string, target *int) {
+		if value := mw.playerForm.GetFieldValue(fieldName); value != "" {
+			if parsed, err := strconv.Atoi(value); err == nil {
+				*target = parsed
+			}
+		}
+	}
+
+	// Get text field values
 	players[selectedIndex].FirstName = mw.playerForm.GetFieldValue("firstName")
 	players[selectedIndex].LastName = mw.playerForm.GetFieldValue("lastName")
+	players[selectedIndex].College = mw.playerForm.GetFieldValue("college")
 
-	// Parse numeric fields
-	if team := mw.playerForm.GetFieldValue("team"); team != "" {
-		if val, err := fmt.Sscan(team, &players[selectedIndex].Team); err == nil && val > 0 {
-			// Successfully parsed
+	// Parse all numeric fields
+	parseIntField("team", &players[selectedIndex].Team)
+	parseIntField("position", &players[selectedIndex].PositionKey)
+	parseIntField("uniform", &players[selectedIndex].Uniform)
+	parseIntField("overall", &players[selectedIndex].OverallRating)
+	parseIntField("height", &players[selectedIndex].Height)
+	parseIntField("weight", &players[selectedIndex].Weight)
+	parseIntField("handSize", &players[selectedIndex].HandSize)
+	parseIntField("armLength", &players[selectedIndex].ArmLength)
+	parseIntField("experience", &players[selectedIndex].Experience)
+	parseIntField("yearEntry", &players[selectedIndex].YearEntry)
+	parseIntField("roundDrafted", &players[selectedIndex].RoundDrafted)
+	parseIntField("selectionDrafted", &players[selectedIndex].SelectionDrafted)
+
+	// Validate player data
+	validationResult := validation.ValidatePlayer(&players[selectedIndex])
+	if !validationResult.Valid {
+		// Display validation errors
+		for _, err := range validationResult.Errors {
+			// Map field names to form field names (convert to camelCase)
+			formFieldName := fieldNameToFormField(err.Field)
+			mw.playerForm.SetFieldError(formFieldName, err.Message)
 		}
-	}
-	if pos := mw.playerForm.GetFieldValue("position"); pos != "" {
-		if val, err := fmt.Sscan(pos, &players[selectedIndex].PositionKey); err == nil && val > 0 {
-			// Successfully parsed
-		}
-	}
-	if uniform := mw.playerForm.GetFieldValue("uniform"); uniform != "" {
-		if val, err := fmt.Sscan(uniform, &players[selectedIndex].Uniform); err == nil && val > 0 {
-			// Successfully parsed
-		}
-	}
-	if overall := mw.playerForm.GetFieldValue("overall"); overall != "" {
-		if val, err := fmt.Sscan(overall, &players[selectedIndex].OverallRating); err == nil && val > 0 {
-			// Successfully parsed
-		}
+		return // Don't save if validation fails
 	}
 
 	// Mark as modified
@@ -414,6 +479,344 @@ func (mw *MainWindow) navigatePlayer(delta int) {
 	mw.updatePlayerForm()
 }
 
+// updateCoachForm populates the coach form with the currently selected coach's data
+func (mw *MainWindow) updateCoachForm() {
+	selectedIndex := mw.state.GetSelectedIndex()
+	coaches := mw.state.GetCoaches()
+
+	if selectedIndex < 0 || selectedIndex >= len(coaches) {
+		mw.coachForm.Clear()
+		return
+	}
+
+	coach := coaches[selectedIndex]
+
+	// Define form fields for coach - comprehensive set
+	fields := []FieldDef{
+		// Basic Info
+		{Name: "firstName", Label: "First Name", Type: FieldTypeText, Value: coach.FirstName},
+		{Name: "lastName", Label: "Last Name", Type: FieldTypeText, Value: coach.LastName},
+		{Name: "team", Label: "Team", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", coach.Team)},
+		{Name: "position", Label: "Position", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", coach.Position)},
+		{Name: "positionGroup", Label: "Position Group", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", coach.PositionGroup)},
+
+		// Birth Info
+		{Name: "birthMonth", Label: "Birth Month", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", coach.BirthMonth)},
+		{Name: "birthDay", Label: "Birth Day", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", coach.BirthDay)},
+		{Name: "birthYear", Label: "Birth Year", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", coach.BirthYear)},
+		{Name: "birthCity", Label: "Birth City", Type: FieldTypeText, Value: coach.BirthCity},
+		{Name: "birthCityID", Label: "Birth City ID", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", coach.BirthCityID)},
+
+		// College
+		{Name: "college", Label: "College", Type: FieldTypeText, Value: coach.College},
+		{Name: "collegeID", Label: "College ID", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", coach.CollegeID)},
+
+		// Coaching Styles
+		{Name: "offensiveStyle", Label: "Offensive Style (0-6)", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", coach.OffensiveStyle)},
+		{Name: "defensiveStyle", Label: "Defensive Style (0-4)", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", coach.DefensiveStyle)},
+
+		// Compensation
+		{Name: "payScale", Label: "Pay Scale (x$10K)", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", coach.PayScale)},
+	}
+
+	mw.coachForm.SetFields(fields)
+
+	// Wire callbacks
+	mw.coachForm.SetCallbacks(
+		func() { // onSave
+			mw.saveCoachForm()
+		},
+		func() { // onDelete
+			mw.deleteCoach()
+		},
+		func() { // onNext
+			mw.navigateCoach(1)
+		},
+		func() { // onPrev
+			mw.navigateCoach(-1)
+		},
+	)
+
+	// Add buttons for save, delete, prev/next
+	mw.coachForm.AddButtons()
+}
+
+// saveCoachForm saves changes from the form back to the coach data
+func (mw *MainWindow) saveCoachForm() {
+	selectedIndex := mw.state.GetSelectedIndex()
+	coaches := mw.state.GetCoaches()
+
+	if selectedIndex < 0 || selectedIndex >= len(coaches) {
+		return
+	}
+
+	// Clear previous validation errors
+	mw.coachForm.ClearAllErrors()
+
+	// Helper function to parse integer field
+	parseIntField := func(fieldName string, target *int) {
+		if value := mw.coachForm.GetFieldValue(fieldName); value != "" {
+			if parsed, err := strconv.Atoi(value); err == nil {
+				*target = parsed
+			}
+		}
+	}
+
+	// Get text field values
+	coaches[selectedIndex].FirstName = mw.coachForm.GetFieldValue("firstName")
+	coaches[selectedIndex].LastName = mw.coachForm.GetFieldValue("lastName")
+	coaches[selectedIndex].BirthCity = mw.coachForm.GetFieldValue("birthCity")
+	coaches[selectedIndex].College = mw.coachForm.GetFieldValue("college")
+
+	// Parse all numeric fields
+	parseIntField("team", &coaches[selectedIndex].Team)
+	parseIntField("position", &coaches[selectedIndex].Position)
+	parseIntField("positionGroup", &coaches[selectedIndex].PositionGroup)
+	parseIntField("birthMonth", &coaches[selectedIndex].BirthMonth)
+	parseIntField("birthDay", &coaches[selectedIndex].BirthDay)
+	parseIntField("birthYear", &coaches[selectedIndex].BirthYear)
+	parseIntField("birthCityID", &coaches[selectedIndex].BirthCityID)
+	parseIntField("collegeID", &coaches[selectedIndex].CollegeID)
+	parseIntField("offensiveStyle", &coaches[selectedIndex].OffensiveStyle)
+	parseIntField("defensiveStyle", &coaches[selectedIndex].DefensiveStyle)
+	parseIntField("payScale", &coaches[selectedIndex].PayScale)
+
+	// Validate coach data
+	validationResult := validation.ValidateCoach(&coaches[selectedIndex])
+	if !validationResult.Valid {
+		// Display validation errors
+		for _, err := range validationResult.Errors {
+			formFieldName := fieldNameToFormField(err.Field)
+			mw.coachForm.SetFieldError(formFieldName, err.Message)
+		}
+		return // Don't save if validation fails
+	}
+
+	// Mark as modified
+	mw.state.MarkDirty()
+	mw.statusBar.SetSavedStatus(true)
+
+	// Refresh coach list
+	mw.coachList.SetCoaches(coaches)
+}
+
+// deleteCoach removes the currently selected coach
+func (mw *MainWindow) deleteCoach() {
+	selectedIndex := mw.state.GetSelectedIndex()
+	coaches := mw.state.GetCoaches()
+
+	if selectedIndex < 0 || selectedIndex >= len(coaches) {
+		return
+	}
+
+	// Remove coach
+	coaches = append(coaches[:selectedIndex], coaches[selectedIndex+1:]...)
+	mw.state.SetCoaches(coaches)
+
+	// Mark as modified
+	mw.state.MarkDirty()
+	mw.statusBar.SetSavedStatus(true)
+
+	// Refresh list and go back to list view
+	mw.coachList.SetCoaches(coaches)
+	mw.content.Objects = []fyne.CanvasObject{container.NewMax(mw.coachList.GetContainer())}
+	mw.content.Refresh()
+	mw.statusBar.SetRecordCount("Coaches", len(coaches))
+}
+
+// navigateCoach moves to the next or previous coach
+func (mw *MainWindow) navigateCoach(delta int) {
+	selectedIndex := mw.state.GetSelectedIndex()
+	coaches := mw.state.GetCoaches()
+
+	newIndex := selectedIndex + delta
+	if newIndex < 0 {
+		newIndex = 0
+	}
+	if newIndex >= len(coaches) {
+		newIndex = len(coaches) - 1
+	}
+
+	mw.state.SetSelectedIndex(newIndex)
+	mw.updateCoachForm()
+}
+
+// updateTeamForm populates the team form with the currently selected team's data
+func (mw *MainWindow) updateTeamForm() {
+	selectedIndex := mw.state.GetSelectedIndex()
+	teams := mw.state.GetTeams()
+
+	if selectedIndex < 0 || selectedIndex >= len(teams) {
+		mw.teamForm.Clear()
+		return
+	}
+
+	team := teams[selectedIndex]
+
+	// Define form fields for team - most useful editing fields
+	fields := []FieldDef{
+		// Team Identity
+		{Name: "teamName", Label: "Team Name", Type: FieldTypeText, Value: team.TeamName},
+		{Name: "nickName", Label: "Nickname", Type: FieldTypeText, Value: team.NickName},
+		{Name: "abbreviation", Label: "Abbreviation", Type: FieldTypeText, Value: team.Abbreviation},
+		{Name: "year", Label: "Year", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", team.Year)},
+		{Name: "teamID", Label: "Team ID", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", team.TeamID)},
+
+		// League Structure
+		{Name: "conference", Label: "Conference", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", team.Conference)},
+		{Name: "division", Label: "Division", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", team.Division)},
+		{Name: "city", Label: "City ID", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", team.City)},
+
+		// Team Colors
+		{Name: "primaryRed", Label: "Primary Red (0-255)", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", team.PrimaryRed)},
+		{Name: "primaryGreen", Label: "Primary Green (0-255)", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", team.PrimaryGreen)},
+		{Name: "primaryBlue", Label: "Primary Blue (0-255)", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", team.PrimaryBlue)},
+		{Name: "secondaryRed", Label: "Secondary Red (0-255)", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", team.SecondaryRed)},
+		{Name: "secondaryGreen", Label: "Secondary Green (0-255)", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", team.SecondaryGreen)},
+		{Name: "secondaryBlue", Label: "Secondary Blue (0-255)", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", team.SecondaryBlue)},
+
+		// Stadium Info
+		{Name: "roof", Label: "Roof Type (0=outdoor/1=dome/2=retract)", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", team.Roof)},
+		{Name: "turf", Label: "Turf Type (0=grass/1=artificial/2=hybrid)", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", team.Turf)},
+		{Name: "built", Label: "Year Built", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", team.Built)},
+		{Name: "capacity", Label: "Stadium Capacity", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", team.Capacity)},
+		{Name: "luxury", Label: "Luxury Boxes", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", team.Luxury)},
+		{Name: "condition", Label: "Condition (1-10)", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", team.Condition)},
+
+		// Financial Data
+		{Name: "attendance", Label: "Average Attendance", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", team.Attendance)},
+		{Name: "support", Label: "Fan Support", Type: FieldTypeNumber, Value: fmt.Sprintf("%d", team.Support)},
+	}
+
+	mw.teamForm.SetFields(fields)
+
+	// Wire callbacks
+	mw.teamForm.SetCallbacks(
+		func() { // onSave
+			mw.saveTeamForm()
+		},
+		func() { // onDelete
+			mw.deleteTeam()
+		},
+		func() { // onNext
+			mw.navigateTeam(1)
+		},
+		func() { // onPrev
+			mw.navigateTeam(-1)
+		},
+	)
+
+	// Add buttons for save, delete, prev/next
+	mw.teamForm.AddButtons()
+}
+
+// saveTeamForm saves changes from the form back to the team data
+func (mw *MainWindow) saveTeamForm() {
+	selectedIndex := mw.state.GetSelectedIndex()
+	teams := mw.state.GetTeams()
+
+	if selectedIndex < 0 || selectedIndex >= len(teams) {
+		return
+	}
+
+	// Clear previous validation errors
+	mw.teamForm.ClearAllErrors()
+
+	// Helper function to parse integer field
+	parseIntField := func(fieldName string, target *int) {
+		if value := mw.teamForm.GetFieldValue(fieldName); value != "" {
+			if parsed, err := strconv.Atoi(value); err == nil {
+				*target = parsed
+			}
+		}
+	}
+
+	// Get text field values
+	teams[selectedIndex].TeamName = mw.teamForm.GetFieldValue("teamName")
+	teams[selectedIndex].NickName = mw.teamForm.GetFieldValue("nickName")
+	teams[selectedIndex].Abbreviation = mw.teamForm.GetFieldValue("abbreviation")
+
+	// Parse all numeric fields
+	parseIntField("year", &teams[selectedIndex].Year)
+	parseIntField("teamID", &teams[selectedIndex].TeamID)
+	parseIntField("conference", &teams[selectedIndex].Conference)
+	parseIntField("division", &teams[selectedIndex].Division)
+	parseIntField("city", &teams[selectedIndex].City)
+	parseIntField("primaryRed", &teams[selectedIndex].PrimaryRed)
+	parseIntField("primaryGreen", &teams[selectedIndex].PrimaryGreen)
+	parseIntField("primaryBlue", &teams[selectedIndex].PrimaryBlue)
+	parseIntField("secondaryRed", &teams[selectedIndex].SecondaryRed)
+	parseIntField("secondaryGreen", &teams[selectedIndex].SecondaryGreen)
+	parseIntField("secondaryBlue", &teams[selectedIndex].SecondaryBlue)
+	parseIntField("roof", &teams[selectedIndex].Roof)
+	parseIntField("turf", &teams[selectedIndex].Turf)
+	parseIntField("built", &teams[selectedIndex].Built)
+	parseIntField("capacity", &teams[selectedIndex].Capacity)
+	parseIntField("luxury", &teams[selectedIndex].Luxury)
+	parseIntField("condition", &teams[selectedIndex].Condition)
+	parseIntField("attendance", &teams[selectedIndex].Attendance)
+	parseIntField("support", &teams[selectedIndex].Support)
+
+	// Validate team data
+	validationResult := validation.ValidateTeam(&teams[selectedIndex])
+	if !validationResult.Valid {
+		// Display validation errors
+		for _, err := range validationResult.Errors {
+			formFieldName := fieldNameToFormField(err.Field)
+			mw.teamForm.SetFieldError(formFieldName, err.Message)
+		}
+		return // Don't save if validation fails
+	}
+
+	// Mark as modified
+	mw.state.MarkDirty()
+	mw.statusBar.SetSavedStatus(true)
+
+	// Refresh team list
+	mw.teamList.SetTeams(teams)
+}
+
+// deleteTeam removes the currently selected team
+func (mw *MainWindow) deleteTeam() {
+	selectedIndex := mw.state.GetSelectedIndex()
+	teams := mw.state.GetTeams()
+
+	if selectedIndex < 0 || selectedIndex >= len(teams) {
+		return
+	}
+
+	// Remove team
+	teams = append(teams[:selectedIndex], teams[selectedIndex+1:]...)
+	mw.state.SetTeams(teams)
+
+	// Mark as modified
+	mw.state.MarkDirty()
+	mw.statusBar.SetSavedStatus(true)
+
+	// Refresh list and go back to list view
+	mw.teamList.SetTeams(teams)
+	mw.content.Objects = []fyne.CanvasObject{container.NewMax(mw.teamList.GetContainer())}
+	mw.content.Refresh()
+	mw.statusBar.SetRecordCount("Teams", len(teams))
+}
+
+// navigateTeam moves to the next or previous team
+func (mw *MainWindow) navigateTeam(delta int) {
+	selectedIndex := mw.state.GetSelectedIndex()
+	teams := mw.state.GetTeams()
+
+	newIndex := selectedIndex + delta
+	if newIndex < 0 {
+		newIndex = 0
+	}
+	if newIndex >= len(teams) {
+		newIndex = len(teams) - 1
+	}
+
+	mw.state.SetSelectedIndex(newIndex)
+	mw.updateTeamForm()
+}
+
 // Show displays the window
 func (mw *MainWindow) Show() {
 	mw.window.Show()
@@ -432,6 +835,77 @@ func (mw *MainWindow) GetWindow() fyne.Window {
 // GetStatusBar returns the status bar
 func (mw *MainWindow) GetStatusBar() *StatusBar {
 	return mw.statusBar
+}
+
+// fieldNameToFormField converts validation field names to form field names
+// Examples: "FirstName" -> "firstName", "OverallRating" -> "overall"
+func fieldNameToFormField(validationFieldName string) string {
+	// Map of validation field names to form field names
+	fieldMap := map[string]string{
+		"FirstName":        "firstName",
+		"LastName":         "lastName",
+		"Team":             "team",
+		"Position":         "position",
+		"PositionKey":      "position",
+		"Uniform":          "uniform",
+		"OverallRating":    "overall",
+		"Height":           "height",
+		"Weight":           "weight",
+		"HandSize":         "handSize",
+		"ArmLength":        "armLength",
+		"Experience":       "experience",
+		"College":          "college",
+		"YearEntry":        "yearEntry",
+		"RoundDrafted":     "roundDrafted",
+		"SelectionDrafted": "selectionDrafted",
+		// Coach fields
+		"BirthMonth":      "birthMonth",
+		"BirthDay":        "birthDay",
+		"BirthYear":       "birthYear",
+		"BirthCity":       "birthCity",
+		"BirthCityID":     "birthCityID",
+		"CollegeID":       "collegeID",
+		"PositionGroup":   "positionGroup",
+		"OffensiveStyle":  "offensiveStyle",
+		"DefensiveStyle":  "defensiveStyle",
+		"PayScale":        "payScale",
+		// Team fields
+		"TeamName":        "teamName",
+		"NickName":        "nickName",
+		"Abbreviation":    "abbreviation",
+		"Year":            "year",
+		"TeamID":          "teamID",
+		"Conference":      "conference",
+		"Division":        "division",
+		"City":            "city",
+		"PrimaryRed":      "primaryRed",
+		"PrimaryGreen":    "primaryGreen",
+		"PrimaryBlue":     "primaryBlue",
+		"SecondaryRed":    "secondaryRed",
+		"SecondaryGreen":  "secondaryGreen",
+		"SecondaryBlue":   "secondaryBlue",
+		"Roof":            "roof",
+		"Turf":            "turf",
+		"Built":           "built",
+		"Capacity":        "capacity",
+		"Luxury":          "luxury",
+		"Condition":       "condition",
+		"Attendance":      "attendance",
+		"Support":         "support",
+		"FutureName":      "futureName",
+		"FutureAbbr":      "futureAbbr",
+		"FutureRoof":      "futureRoof",
+		"FutureTurf":      "futureTurf",
+		"FutureCap":       "futureCap",
+		"FutureLuxury":    "futureLuxury",
+	}
+
+	if formFieldName, exists := fieldMap[validationFieldName]; exists {
+		return formFieldName
+	}
+
+	// If not in map, return as-is (shouldn't happen)
+	return validationFieldName
 }
 
 // GetSidebar returns the sidebar
