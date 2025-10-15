@@ -22,10 +22,10 @@ import (
 )
 
 // getDefaultCSVPath returns the default folder location for CSV file dialogs
-// Uses the FOF9 leagues folder if it exists, otherwise falls back to home directory
+// Uses the FOF9 installation folder if it exists, otherwise falls back to home directory
 func getDefaultCSVPath() fyne.ListableURI {
-	// Default FOF9 leagues folder path
-	defaultPath := filepath.Join("C:", "Program Files (x86)", "Steam", "steamapps", "common", "Front Office Football Nine", "leagues")
+	// Default FOF9 installation path
+	defaultPath := filepath.Join("C:", "Program Files (x86)", "Steam", "steamapps", "common", "Front Office Football Nine")
 
 	// Check if the path exists
 	if _, err := os.Stat(defaultPath); err == nil {

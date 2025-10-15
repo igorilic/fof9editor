@@ -45,9 +45,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Removed "New Project", "Open Project", "Save", and "Save As" menu items
   - Application focuses on editing individual CSV files instead of project management
   - Window close prompt simplified - just warns about unsaved changes
-- CSV file dialogs now default to FOF9 "leagues" subfolder
-  - Changed from main FOF9 folder to leagues subfolder for easier file access
-  - Path: C:\Program Files (x86)\Steam\steamapps\common\Front Office Football Nine\leagues
+- CSV file dialogs now default to FOF9 installation folder
+  - Path: C:\Program Files (x86)\Steam\steamapps\common\Front Office Football Nine
+  - Fallback to user home directory if FOF9 path doesn't exist
 
 ### Fixed
 - **Position IDs now correctly match FOF9 game values**
