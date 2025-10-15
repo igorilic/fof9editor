@@ -50,6 +50,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Path: C:\Program Files (x86)\Steam\steamapps\common\Front Office Football Nine\leagues
 
 ### Fixed
+- **Position IDs now correctly match FOF9 game values**
+  - Fixed incorrect position mapping (e.g., Kicker was showing as LOLB)
+  - Updated all 28 positions to match actual POSITION_KEY values from FOF9
+  - Graham Gano (and all kickers) now correctly display as "Kicker" instead of linebacker
+  - Position IDs now range from 1-28 matching game specification
 - Team dropdown in player/coach forms now handles cases where teams aren't loaded yet
   - Shows team ID as number field when no teams are loaded
   - Automatically converts to dropdown when teams are loaded

@@ -11,56 +11,68 @@ type Position struct {
 	PositionType string `csv:"TYPE"` // Offense, Defense, Special Teams
 }
 
-// Common position constants (typical FOF9 position IDs)
+// FOF9 position constants - matches the actual game's POSITION_KEY values
 const (
-	PositionQB  = 0  // Quarterback
-	PositionRB  = 1  // Running Back
-	PositionFB  = 2  // Fullback
-	PositionWR  = 3  // Wide Receiver
-	PositionTE  = 4  // Tight End
-	PositionLT  = 5  // Left Tackle
-	PositionLG  = 6  // Left Guard
-	PositionC   = 7  // Center
-	PositionRG  = 8  // Right Guard
-	PositionRT  = 9  // Right Tackle
-	PositionLE  = 10 // Left End (DE)
-	PositionRE  = 11 // Right End (DE)
-	PositionDT  = 12 // Defensive Tackle
-	PositionLOLB = 13 // Left Outside Linebacker
-	PositionMLB = 14 // Middle Linebacker
-	PositionROLB = 15 // Right Outside Linebacker
-	PositionCB  = 16 // Cornerback
-	PositionFS  = 17 // Free Safety
-	PositionSS  = 18 // Strong Safety
-	PositionK   = 19 // Kicker
-	PositionP   = 20 // Punter
-	PositionLS  = 21 // Long Snapper
+	PositionQB   = 1  // Quarterback
+	PositionRB   = 2  // Running Back
+	PositionFB   = 3  // Fullback
+	PositionTE   = 4  // Tight End
+	PositionFL   = 5  // Flanker (WR)
+	PositionSE   = 6  // Split End (WR)
+	PositionLT   = 7  // Left Tackle
+	PositionLG   = 8  // Left Guard
+	PositionC    = 9  // Center
+	PositionRG   = 10 // Right Guard
+	PositionRT   = 11 // Right Tackle
+	PositionP    = 12 // Punter
+	PositionK    = 13 // Kicker
+	PositionDLE  = 14 // Defensive Left End
+	PositionDLT  = 15 // Defensive Left Tackle
+	PositionDNT  = 16 // Defensive Nose Tackle
+	PositionDRT  = 17 // Defensive Right Tackle
+	PositionDRE  = 18 // Defensive Right End
+	PositionSLB  = 19 // Strong-Side Linebacker
+	PositionSILB = 20 // Strong Inside Linebacker
+	PositionMLB  = 21 // Middle Linebacker
+	PositionWILB = 22 // Weak Inside Linebacker
+	PositionWLB  = 23 // Weak-Side Linebacker
+	PositionLCB  = 24 // Left Cornerback
+	PositionRCB  = 25 // Right Cornerback
+	PositionSS   = 26 // Strong Safety
+	PositionFS   = 27 // Free Safety
+	PositionLS   = 28 // Long Snapper
 )
 
-// DefaultPositions returns the standard set of football positions
+// DefaultPositions returns the standard set of football positions matching FOF9
 func DefaultPositions() []Position {
 	return []Position{
 		{ID: PositionQB, Name: "Quarterback", Abbreviation: "QB", PositionType: "Offense"},
 		{ID: PositionRB, Name: "Running Back", Abbreviation: "RB", PositionType: "Offense"},
 		{ID: PositionFB, Name: "Fullback", Abbreviation: "FB", PositionType: "Offense"},
-		{ID: PositionWR, Name: "Wide Receiver", Abbreviation: "WR", PositionType: "Offense"},
 		{ID: PositionTE, Name: "Tight End", Abbreviation: "TE", PositionType: "Offense"},
+		{ID: PositionFL, Name: "Flanker", Abbreviation: "FL", PositionType: "Offense"},
+		{ID: PositionSE, Name: "Split End", Abbreviation: "SE", PositionType: "Offense"},
 		{ID: PositionLT, Name: "Left Tackle", Abbreviation: "LT", PositionType: "Offense"},
 		{ID: PositionLG, Name: "Left Guard", Abbreviation: "LG", PositionType: "Offense"},
 		{ID: PositionC, Name: "Center", Abbreviation: "C", PositionType: "Offense"},
 		{ID: PositionRG, Name: "Right Guard", Abbreviation: "RG", PositionType: "Offense"},
 		{ID: PositionRT, Name: "Right Tackle", Abbreviation: "RT", PositionType: "Offense"},
-		{ID: PositionLE, Name: "Left Defensive End", Abbreviation: "LE", PositionType: "Defense"},
-		{ID: PositionRE, Name: "Right Defensive End", Abbreviation: "RE", PositionType: "Defense"},
-		{ID: PositionDT, Name: "Defensive Tackle", Abbreviation: "DT", PositionType: "Defense"},
-		{ID: PositionLOLB, Name: "Left Outside Linebacker", Abbreviation: "LOLB", PositionType: "Defense"},
-		{ID: PositionMLB, Name: "Middle Linebacker", Abbreviation: "MLB", PositionType: "Defense"},
-		{ID: PositionROLB, Name: "Right Outside Linebacker", Abbreviation: "ROLB", PositionType: "Defense"},
-		{ID: PositionCB, Name: "Cornerback", Abbreviation: "CB", PositionType: "Defense"},
-		{ID: PositionFS, Name: "Free Safety", Abbreviation: "FS", PositionType: "Defense"},
-		{ID: PositionSS, Name: "Strong Safety", Abbreviation: "SS", PositionType: "Defense"},
-		{ID: PositionK, Name: "Kicker", Abbreviation: "K", PositionType: "Special Teams"},
 		{ID: PositionP, Name: "Punter", Abbreviation: "P", PositionType: "Special Teams"},
+		{ID: PositionK, Name: "Kicker", Abbreviation: "K", PositionType: "Special Teams"},
+		{ID: PositionDLE, Name: "Defensive Left End", Abbreviation: "DLE", PositionType: "Defense"},
+		{ID: PositionDLT, Name: "Defensive Left Tackle", Abbreviation: "DLT", PositionType: "Defense"},
+		{ID: PositionDNT, Name: "Defensive Nose Tackle", Abbreviation: "DNT", PositionType: "Defense"},
+		{ID: PositionDRT, Name: "Defensive Right Tackle", Abbreviation: "DRT", PositionType: "Defense"},
+		{ID: PositionDRE, Name: "Defensive Right End", Abbreviation: "DRE", PositionType: "Defense"},
+		{ID: PositionSLB, Name: "Strong-Side Linebacker", Abbreviation: "SLB", PositionType: "Defense"},
+		{ID: PositionSILB, Name: "Strong Inside Linebacker", Abbreviation: "SILB", PositionType: "Defense"},
+		{ID: PositionMLB, Name: "Middle Linebacker", Abbreviation: "MLB", PositionType: "Defense"},
+		{ID: PositionWILB, Name: "Weak Inside Linebacker", Abbreviation: "WILB", PositionType: "Defense"},
+		{ID: PositionWLB, Name: "Weak-Side Linebacker", Abbreviation: "WLB", PositionType: "Defense"},
+		{ID: PositionLCB, Name: "Left Cornerback", Abbreviation: "LCB", PositionType: "Defense"},
+		{ID: PositionRCB, Name: "Right Cornerback", Abbreviation: "RCB", PositionType: "Defense"},
+		{ID: PositionSS, Name: "Strong Safety", Abbreviation: "SS", PositionType: "Defense"},
+		{ID: PositionFS, Name: "Free Safety", Abbreviation: "FS", PositionType: "Defense"},
 		{ID: PositionLS, Name: "Long Snapper", Abbreviation: "LS", PositionType: "Special Teams"},
 	}
 }
